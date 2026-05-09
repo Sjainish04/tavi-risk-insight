@@ -1,0 +1,3134 @@
+{
+  "n_patients": 5000,
+  "outcome_30d_mortality_observed": 0.0476,
+  "spearman_rho": {
+    "brdav_vs_sts_recal": 0.5255085385794449,
+    "brdav_vs_sts_raw": 0.525163084276846,
+    "brdav_vs_lgbm_30d": 0.22812955185966075,
+    "sts_recal_vs_lgbm_30d": 0.5308000988732072
+  },
+  "top_decile_kappa": {
+    "sts_recal_vs_brdav": 0.2844444444444445,
+    "lgbm_vs_brdav": 0.12122577737719686,
+    "sts_recal_vs_lgbm": 0.28120775123929687
+  },
+  "oe_ratio_30d": {
+    "sts_raw": 6.254220544223728,
+    "sts_recal": 4.766435432247048,
+    "lgbm_30d": 0.6479829757213895
+  },
+  "by_recal_decile": [
+    {
+      "recal_decile": 0,
+      "n": 500,
+      "sts_recal_mean": 0.00236,
+      "lgbm_mean": 0.03167,
+      "brdav_mean": 0.30164,
+      "brdav_std": 0.07988,
+      "brdav_q25": 0.2482,
+      "brdav_q75": 0.35166,
+      "actual_mortality": 0.01
+    },
+    {
+      "recal_decile": 1,
+      "n": 500,
+      "sts_recal_mean": 0.00353,
+      "lgbm_mean": 0.02573,
+      "brdav_mean": 0.34483,
+      "brdav_std": 0.09522,
+      "brdav_q25": 0.28574,
+      "brdav_q75": 0.40895,
+      "actual_mortality": 0.004
+    },
+    {
+      "recal_decile": 2,
+      "n": 500,
+      "sts_recal_mean": 0.00453,
+      "lgbm_mean": 0.03854,
+      "brdav_mean": 0.38618,
+      "brdav_std": 0.09659,
+      "brdav_q25": 0.31984,
+      "brdav_q75": 0.4503,
+      "actual_mortality": 0.014
+    },
+    {
+      "recal_decile": 3,
+      "n": 500,
+      "sts_recal_mean": 0.00557,
+      "lgbm_mean": 0.03387,
+      "brdav_mean": 0.40667,
+      "brdav_std": 0.10705,
+      "brdav_q25": 0.33386,
+      "brdav_q75": 0.48082,
+      "actual_mortality": 0.008
+    },
+    {
+      "recal_decile": 4,
+      "n": 500,
+      "sts_recal_mean": 0.00673,
+      "lgbm_mean": 0.03682,
+      "brdav_mean": 0.42037,
+      "brdav_std": 0.11186,
+      "brdav_q25": 0.34586,
+      "brdav_q75": 0.49359,
+      "actual_mortality": 0.018
+    },
+    {
+      "recal_decile": 5,
+      "n": 500,
+      "sts_recal_mean": 0.00827,
+      "lgbm_mean": 0.05509,
+      "brdav_mean": 0.4507,
+      "brdav_std": 0.1127,
+      "brdav_q25": 0.38186,
+      "brdav_q75": 0.52394,
+      "actual_mortality": 0.026
+    },
+    {
+      "recal_decile": 6,
+      "n": 500,
+      "sts_recal_mean": 0.01029,
+      "lgbm_mean": 0.05507,
+      "brdav_mean": 0.45984,
+      "brdav_std": 0.11906,
+      "brdav_q25": 0.3724,
+      "brdav_q75": 0.53688,
+      "actual_mortality": 0.032
+    },
+    {
+      "recal_decile": 7,
+      "n": 500,
+      "sts_recal_mean": 0.0133,
+      "lgbm_mean": 0.0871,
+      "brdav_mean": 0.47092,
+      "brdav_std": 0.12312,
+      "brdav_q25": 0.39298,
+      "brdav_q75": 0.55867,
+      "actual_mortality": 0.058
+    },
+    {
+      "recal_decile": 8,
+      "n": 500,
+      "sts_recal_mean": 0.01718,
+      "lgbm_mean": 0.13252,
+      "brdav_mean": 0.49221,
+      "brdav_std": 0.12768,
+      "brdav_q25": 0.40986,
+      "brdav_q75": 0.58281,
+      "actual_mortality": 0.098
+    },
+    {
+      "recal_decile": 9,
+      "n": 500,
+      "sts_recal_mean": 0.02811,
+      "lgbm_mean": 0.23816,
+      "brdav_mean": 0.55241,
+      "brdav_std": 0.13087,
+      "brdav_q25": 0.46555,
+      "brdav_q75": 0.64808,
+      "actual_mortality": 0.208
+    }
+  ],
+  "scatter_sample": [
+    {
+      "sts_recal": 0.01026,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.58063,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01872,
+      "lgbm_30d": 0.1875,
+      "brdav_followup": 0.6492,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02058,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.65015,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01433,
+      "lgbm_30d": 0.0833,
+      "brdav_followup": 0.18001,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00404,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.44846,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00914,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.49617,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00692,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.3403,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00366,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.4477,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01137,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.44074,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00484,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.32069,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00331,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.22987,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01454,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.43634,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00534,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.44502,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00558,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.38192,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01195,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.52431,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00387,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.21534,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00621,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.29805,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00521,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.30396,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01442,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.50135,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00348,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.30079,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0304,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.80549,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01515,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.3633,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0196,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31879,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02271,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.59653,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.006,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.47258,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01482,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.44879,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.33879,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01533,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.47726,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01066,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.40059,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02154,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.61126,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00206,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.32647,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00414,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.3496,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00576,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.34339,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00429,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.41619,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00792,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.3874,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01535,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.6549,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00559,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.46557,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00568,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.52447,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01291,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.57356,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00729,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.46945,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00332,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.18778,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02342,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.57931,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00391,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.39958,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00903,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.4499,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00608,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.48799,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01972,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.57197,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01499,
+      "lgbm_30d": 0.14286,
+      "brdav_followup": 0.5624,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00966,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.46689,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00567,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.26409,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01324,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.14963,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00306,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.2089,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00674,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.51104,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00485,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.28766,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0149,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.43606,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01466,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.16502,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00235,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.29909,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02054,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.10958,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00574,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.22618,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00278,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.23486,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00282,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.5061,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03041,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.69042,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.01892,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.42606,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0075,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.57809,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01013,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.51803,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00878,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.47846,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02065,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.53988,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01553,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.56915,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00391,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.40104,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00826,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.42171,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00396,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.43788,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00494,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.28765,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00349,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.35914,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00283,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.33561,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00411,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.38555,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01551,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.51013,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00231,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.20715,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00752,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.40018,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01101,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.45221,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02086,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.70233,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00439,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.47098,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0054,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.30671,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00508,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.27708,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01517,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.3232,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00817,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.3963,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02348,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.62994,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00382,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.14181,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00651,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.58827,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0177,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.61078,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01696,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.62558,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00329,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36173,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00427,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.51116,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00687,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.43406,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00472,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.66795,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01043,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.51407,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00741,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.46722,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01061,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.25202,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00389,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.32782,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00328,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.46049,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00241,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.19296,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00616,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.34771,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00703,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.44732,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02158,
+      "lgbm_30d": 0.14286,
+      "brdav_followup": 0.46054,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00322,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.40905,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00209,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.30116,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00614,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.42694,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00207,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.23834,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0268,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.50855,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00753,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.37548,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00394,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.39776,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00588,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.38971,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.05089,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.636,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.01679,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.661,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00343,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.34226,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01072,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.48367,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00876,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.3741,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00168,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.2168,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00764,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.62038,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00563,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31046,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00771,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.29083,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03025,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.70627,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00654,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.42257,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00426,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.28045,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01072,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.37719,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00455,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.4793,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0046,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.28727,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00282,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.29243,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00293,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.17875,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03908,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.65176,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01036,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.32361,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00491,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.46684,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00211,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.23977,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00419,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.4575,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01339,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.45737,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00409,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.34555,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01946,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.39213,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01459,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.35994,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01231,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.54772,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.04568,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.54707,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00757,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.29862,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00782,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.416,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00648,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.47604,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00266,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.26085,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01612,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.47454,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00778,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.55466,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00938,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.53335,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01597,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.77328,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00845,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.47621,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01439,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.59728,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0047,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.33513,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01846,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36485,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01198,
+      "lgbm_30d": 0.05382,
+      "brdav_followup": 0.45369,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0152,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.48091,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00764,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.53497,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00507,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.49761,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01508,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.62241,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01886,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.51417,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00343,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.51744,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00502,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.4845,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01827,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.57218,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02283,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.5327,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00529,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.41462,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02247,
+      "lgbm_30d": 0.14286,
+      "brdav_followup": 0.37222,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00359,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.29315,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01917,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.445,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00207,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36156,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00481,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.43454,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01204,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.44476,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00251,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.15045,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00393,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.43177,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03179,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.61833,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00653,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.38735,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00279,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.16636,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0045,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.3635,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01494,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.36298,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00253,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.19175,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0048,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.44563,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00822,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.44795,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00637,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.61758,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00815,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.38494,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00299,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.34965,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.04582,
+      "lgbm_30d": 0.14286,
+      "brdav_followup": 0.11793,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00491,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.54286,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01642,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.33598,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0107,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.54113,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00321,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.28198,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0099,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.50586,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01723,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.51099,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02972,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.57094,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00442,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.19779,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01278,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.47883,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00703,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.22227,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00312,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.44919,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00263,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.3754,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00269,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.33825,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00181,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.14277,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0029,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.26514,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03005,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.62022,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.01084,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.26109,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00836,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.31725,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.01253,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.41502,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00352,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.47784,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01936,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36685,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00574,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.3626,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01019,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.31427,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02645,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.6855,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00627,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.28625,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00432,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.39287,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01709,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.52038,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02044,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.68347,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00687,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.45145,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01345,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.3648,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00615,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.43928,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01458,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.56393,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01604,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.41373,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00879,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.39202,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00507,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.56917,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.005,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.35189,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00561,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.38492,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.007,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.41731,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0151,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.37653,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00179,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.28153,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0098,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.34007,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.015,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.65395,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0119,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.60741,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01432,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.4067,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00585,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.53345,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01277,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.61958,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00718,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.59901,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01104,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.37816,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00798,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31436,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01212,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.52025,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00864,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31293,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.0042,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.39889,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00788,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.56803,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00345,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.3955,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01812,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.70617,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00513,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.13279,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00394,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.35734,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00983,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.45011,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00407,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.31025,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00383,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.35912,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02487,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.5747,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00371,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.32376,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00796,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.38,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00962,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.35476,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00528,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.5172,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01117,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.28801,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.01944,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.40115,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00182,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.34638,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00441,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.43462,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00809,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.53489,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00486,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.30197,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00693,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.38647,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00667,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.48927,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01363,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.53421,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01672,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.47727,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00425,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.38147,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01513,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.21578,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00513,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.53172,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0144,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.41703,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00291,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.3712,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02282,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.78086,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.03319,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.66287,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00925,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.66788,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00525,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.40684,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00582,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.30898,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00301,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.34752,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01961,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.471,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00342,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.40824,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00438,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.61012,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01033,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.52956,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0022,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.38439,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00155,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.27403,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01048,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.43866,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01233,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.29956,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02356,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.62584,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00541,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.28138,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00361,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.38911,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00532,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.4522,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00243,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.27942,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01539,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.50135,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01535,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.52909,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00932,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.52496,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00237,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.28219,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0028,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.29026,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00505,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31545,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00536,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.44354,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01148,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.63109,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01199,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.61007,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00675,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.5361,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00708,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.47041,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00401,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.12826,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01717,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.41994,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00748,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.5845,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01385,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.3508,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00329,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.1925,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0091,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.4879,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00775,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36944,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00631,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.38409,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00481,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.44659,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00615,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.52363,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01746,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.26722,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00859,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.41063,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00798,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.51481,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00587,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.45655,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00576,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.326,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00649,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.30496,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01365,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.5006,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0225,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.64477,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00853,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.32078,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02113,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.64279,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01304,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.38289,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00609,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.21067,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01146,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.27059,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00323,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.4012,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01182,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.24429,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01189,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.09264,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00302,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.15344,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00417,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.51027,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02533,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.54304,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00447,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.44926,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0176,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.5165,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.01737,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.48312,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01948,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.36879,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0138,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.31843,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00992,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.38875,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02032,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.5077,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02054,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.42607,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00581,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.2573,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00851,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.3347,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01474,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.55392,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02625,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.6168,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00324,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.29578,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00822,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.65857,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01405,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.3236,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01289,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31391,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0256,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.46583,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00501,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.56019,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.006,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.36759,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01062,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.35736,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0041,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.40003,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00179,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.19477,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03368,
+      "lgbm_30d": 0.14286,
+      "brdav_followup": 0.60921,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01456,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.55768,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00231,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.2967,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00921,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.45696,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00459,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.41934,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00729,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.06652,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00277,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.35832,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01227,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.51703,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0023,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.28663,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01122,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.49051,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00465,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.41815,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.015,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.34384,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0047,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.55565,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.003,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.37013,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02341,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.66736,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00254,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.34164,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00555,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.07588,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00972,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.52521,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00618,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.31574,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01751,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31624,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00249,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.39915,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00628,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.41135,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01857,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.37836,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00587,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.37234,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01471,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.28556,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00238,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.33192,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00512,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.42043,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0183,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.40736,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00908,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.53555,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01146,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.39072,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01271,
+      "lgbm_30d": 1.0,
+      "brdav_followup": 0.52416,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00421,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.46989,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00739,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.29122,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00468,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.3691,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01053,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.52114,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00903,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.53197,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00772,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.51975,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00407,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.21382,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02129,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.42373,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02117,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.54311,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00534,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.65665,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01534,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.72339,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00743,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.54885,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02149,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.65031,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00552,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.37551,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02015,
+      "lgbm_30d": 0.1875,
+      "brdav_followup": 0.51479,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00423,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.28451,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00603,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.27173,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00552,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.33662,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00622,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.60579,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00155,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.22556,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00825,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.33631,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00934,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.33863,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01243,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.48028,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00632,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.38148,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01037,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36865,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00194,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.36533,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00432,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.44911,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00729,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36623,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00171,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.20084,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00477,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.374,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00461,
+      "lgbm_30d": 0.0,
+      "brdav_followup": 0.3774,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0182,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.68708,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01719,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.44765,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.03356,
+      "lgbm_30d": 0.1875,
+      "brdav_followup": 0.50094,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00346,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.31089,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0034,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.3277,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0107,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.71846,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00549,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.44802,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01305,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.58577,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01531,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.57166,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01954,
+      "lgbm_30d": 0.12602,
+      "brdav_followup": 0.59093,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00319,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.30173,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00287,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.33507,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00461,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.43922,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00613,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.4605,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0047,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.34397,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00734,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.35906,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01215,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36392,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03905,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.41655,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00325,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.41383,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0057,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.31622,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01288,
+      "lgbm_30d": 0.1875,
+      "brdav_followup": 0.40839,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.01029,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.5856,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00609,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.16205,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00572,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.61407,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00951,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.5347,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00725,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.2843,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00585,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.46701,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01066,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.52207,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01001,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.42799,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0051,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.3607,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00273,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.25954,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00313,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.37087,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01239,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.42914,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00247,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.2882,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00536,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.3415,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01622,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.7223,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00352,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.28733,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00353,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.36211,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0056,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.36909,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00419,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.39644,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00697,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.38885,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0041,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.45093,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00775,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.44178,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00315,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.30315,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0036,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.39413,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00389,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.34354,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00586,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.34877,
+      "outcome_30d_mortality": 1
+    },
+    {
+      "sts_recal": 0.00433,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.2417,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00233,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.27117,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01201,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.62966,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00801,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.34874,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01545,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.44152,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00291,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.28412,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03842,
+      "lgbm_30d": 0.1875,
+      "brdav_followup": 0.50206,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00678,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.47027,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00646,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.54185,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00932,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.46329,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00869,
+      "lgbm_30d": 0.02439,
+      "brdav_followup": 0.40235,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00634,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.28914,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00599,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.34787,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01909,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.46882,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02028,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.47014,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00168,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.27944,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01778,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.52481,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.03482,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.38287,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01625,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.44251,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02032,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.56334,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00389,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.34394,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01999,
+      "lgbm_30d": 0.13793,
+      "brdav_followup": 0.59718,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00792,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.65161,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00864,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.40406,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01443,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.62789,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01421,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.65884,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00422,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.49033,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00327,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.45837,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01035,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.38138,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01865,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.16755,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00657,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.57689,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02148,
+      "lgbm_30d": 0.1875,
+      "brdav_followup": 0.69296,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00299,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.38079,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00249,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.36788,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01257,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.42738,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00535,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.48627,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00311,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.33322,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00707,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.50161,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01082,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.62747,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01089,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.59255,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.01954,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.51089,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00611,
+      "lgbm_30d": 0.02469,
+      "brdav_followup": 0.3903,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00582,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.45329,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00923,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.40318,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.02711,
+      "lgbm_30d": 0.14286,
+      "brdav_followup": 0.51493,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.0092,
+      "lgbm_30d": 0.01527,
+      "brdav_followup": 0.42382,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00779,
+      "lgbm_30d": 0.02165,
+      "brdav_followup": 0.51915,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00177,
+      "lgbm_30d": 0.0183,
+      "brdav_followup": 0.23689,
+      "outcome_30d_mortality": 0
+    },
+    {
+      "sts_recal": 0.00568,
+      "lgbm_30d": 0.06009,
+      "brdav_followup": 0.34559,
+      "outcome_30d_mortality": 0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+:80 {
+    root * /usr/share/caddy
+    encode gzip
+    try_files {path} /index.html
+    file_server
+
+    # Aggressive cache for hashed assets, no cache for index.html
+    @hashed path *.js *.css *.svg *.png *.woff2
+    header @hashed Cache-Control "public, max-age=31536000, immutable"
+    header /index.html Cache-Control "no-cache, must-revalidate"
+
+    # Security headers
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+}

@@ -1,0 +1,26 @@
+# Things the backend image doesn't need
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.pyc
+*.pyo
+
+# Tests + scripts: keep scripts (used by Code Engine Job), drop tests
+tests/
+
+# Don't bake the .env into the image (secrets via Code Engine)
+.env
+.env.example
+
+# These are large research/ML extras not needed for runtime
+docs/
+notebooks/
+
+# Git
+.git/
+.gitignore
+
+# OS
+.DS_Store

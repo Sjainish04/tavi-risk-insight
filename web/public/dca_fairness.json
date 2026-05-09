@@ -1,0 +1,2028 @@
+{
+  "n_test": 1000,
+  "outcome_30d_rate": 0.048,
+  "decision_curve_analysis": {
+    "v1_lgbm_baseline": [
+      {
+        "threshold": 0.005,
+        "label": "model",
+        "net_benefit": 0.043386934673366837
+      },
+      {
+        "threshold": 0.01,
+        "label": "model",
+        "net_benefit": 0.03872727272727273
+      },
+      {
+        "threshold": 0.015,
+        "label": "model",
+        "net_benefit": 0.03402030456852792
+      },
+      {
+        "threshold": 0.02,
+        "label": "model",
+        "net_benefit": 0.029897959183673474
+      },
+      {
+        "threshold": 0.025,
+        "label": "model",
+        "net_benefit": 0.02666666666666666
+      },
+      {
+        "threshold": 0.03,
+        "label": "model",
+        "net_benefit": 0.02494845360824742
+      },
+      {
+        "threshold": 0.035,
+        "label": "model",
+        "net_benefit": 0.023212435233160616
+      },
+      {
+        "threshold": 0.04,
+        "label": "model",
+        "net_benefit": 0.02145833333333333
+      },
+      {
+        "threshold": 0.045,
+        "label": "model",
+        "net_benefit": 0.019685863874345545
+      },
+      {
+        "threshold": 0.05,
+        "label": "model",
+        "net_benefit": 0.01789473684210526
+      },
+      {
+        "threshold": 0.055,
+        "label": "model",
+        "net_benefit": 0.01608465608465608
+      },
+      {
+        "threshold": 0.06,
+        "label": "model",
+        "net_benefit": 0.014255319148936168
+      },
+      {
+        "threshold": 0.065,
+        "label": "model",
+        "net_benefit": 0.01363101604278075
+      },
+      {
+        "threshold": 0.07,
+        "label": "model",
+        "net_benefit": 0.013021505376344085
+      },
+      {
+        "threshold": 0.075,
+        "label": "model",
+        "net_benefit": 0.012405405405405408
+      },
+      {
+        "threshold": 0.08,
+        "label": "model",
+        "net_benefit": 0.011782608695652176
+      },
+      {
+        "threshold": 0.085,
+        "label": "model",
+        "net_benefit": 0.011153005464480874
+      },
+      {
+        "threshold": 0.09,
+        "label": "model",
+        "net_benefit": 0.01051648351648352
+      },
+      {
+        "threshold": 0.095,
+        "label": "model",
+        "net_benefit": 0.009872928176795583
+      },
+      {
+        "threshold": 0.1,
+        "label": "model",
+        "net_benefit": 0.009222222222222224
+      },
+      {
+        "threshold": 0.105,
+        "label": "model",
+        "net_benefit": 0.00856424581005587
+      },
+      {
+        "threshold": 0.11,
+        "label": "model",
+        "net_benefit": 0.007898876404494383
+      },
+      {
+        "threshold": 0.115,
+        "label": "model",
+        "net_benefit": 0.007225988700564973
+      },
+      {
+        "threshold": 0.12,
+        "label": "model",
+        "net_benefit": 0.006545454545454549
+      },
+      {
+        "threshold": 0.125,
+        "label": "model",
+        "net_benefit": 0.005857142857142859
+      },
+      {
+        "threshold": 0.13,
+        "label": "model",
+        "net_benefit": 0.005160919540229885
+      },
+      {
+        "threshold": 0.135,
+        "label": "model",
+        "net_benefit": 0.004456647398843931
+      },
+      {
+        "threshold": 0.14,
+        "label": "model",
+        "net_benefit": 0.003813953488372093
+      },
+      {
+        "threshold": 0.145,
+        "label": "model",
+        "net_benefit": 0.0033859649122807024
+      },
+      {
+        "threshold": 0.15,
+        "label": "model",
+        "net_benefit": 0.003117647058823529
+      },
+      {
+        "threshold": 0.155,
+        "label": "model",
+        "net_benefit": 0.0028461538461538463
+      },
+      {
+        "threshold": 0.16,
+        "label": "model",
+        "net_benefit": 0.002571428571428571
+      },
+      {
+        "threshold": 0.165,
+        "label": "model",
+        "net_benefit": 0.002293413173652694
+      },
+      {
+        "threshold": 0.17,
+        "label": "model",
+        "net_benefit": 0.0020120481927710845
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "model",
+        "net_benefit": 0.0017272727272727266
+      },
+      {
+        "threshold": 0.18,
+        "label": "model",
+        "net_benefit": 0.0014390243902439037
+      },
+      {
+        "threshold": 0.185,
+        "label": "model",
+        "net_benefit": 0.0011472392638036798
+      },
+      {
+        "threshold": 0.19,
+        "label": "model",
+        "net_benefit": 0.001
+      },
+      {
+        "threshold": 0.195,
+        "label": "model",
+        "net_benefit": 0.001
+      },
+      {
+        "threshold": 0.2,
+        "label": "model",
+        "net_benefit": 0.001
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "model",
+        "net_benefit": 0.001
+      },
+      {
+        "threshold": 0.005,
+        "label": "all",
+        "net_benefit": 0.043216080402010054
+      },
+      {
+        "threshold": 0.01,
+        "label": "all",
+        "net_benefit": 0.03838383838383838
+      },
+      {
+        "threshold": 0.015,
+        "label": "all",
+        "net_benefit": 0.03350253807106599
+      },
+      {
+        "threshold": 0.02,
+        "label": "all",
+        "net_benefit": 0.02857142857142857
+      },
+      {
+        "threshold": 0.025,
+        "label": "all",
+        "net_benefit": 0.02358974358974359
+      },
+      {
+        "threshold": 0.03,
+        "label": "all",
+        "net_benefit": 0.018556701030927835
+      },
+      {
+        "threshold": 0.035,
+        "label": "all",
+        "net_benefit": 0.013471502590673576
+      },
+      {
+        "threshold": 0.04,
+        "label": "all",
+        "net_benefit": 0.008333333333333331
+      },
+      {
+        "threshold": 0.045,
+        "label": "all",
+        "net_benefit": 0.003141361256544503
+      },
+      {
+        "threshold": 0.05,
+        "label": "all",
+        "net_benefit": -0.002105263157894735
+      },
+      {
+        "threshold": 0.055,
+        "label": "all",
+        "net_benefit": -0.007407407407407404
+      },
+      {
+        "threshold": 0.06,
+        "label": "all",
+        "net_benefit": -0.012765957446808501
+      },
+      {
+        "threshold": 0.065,
+        "label": "all",
+        "net_benefit": -0.018181818181818174
+      },
+      {
+        "threshold": 0.07,
+        "label": "all",
+        "net_benefit": -0.023655913978494633
+      },
+      {
+        "threshold": 0.075,
+        "label": "all",
+        "net_benefit": -0.029189189189189182
+      },
+      {
+        "threshold": 0.08,
+        "label": "all",
+        "net_benefit": -0.03478260869565217
+      },
+      {
+        "threshold": 0.085,
+        "label": "all",
+        "net_benefit": -0.04043715846994536
+      },
+      {
+        "threshold": 0.09,
+        "label": "all",
+        "net_benefit": -0.04615384615384614
+      },
+      {
+        "threshold": 0.095,
+        "label": "all",
+        "net_benefit": -0.05193370165745856
+      },
+      {
+        "threshold": 0.1,
+        "label": "all",
+        "net_benefit": -0.057777777777777775
+      },
+      {
+        "threshold": 0.105,
+        "label": "all",
+        "net_benefit": -0.06368715083798882
+      },
+      {
+        "threshold": 0.11,
+        "label": "all",
+        "net_benefit": -0.0696629213483146
+      },
+      {
+        "threshold": 0.115,
+        "label": "all",
+        "net_benefit": -0.07570621468926553
+      },
+      {
+        "threshold": 0.12,
+        "label": "all",
+        "net_benefit": -0.0818181818181818
+      },
+      {
+        "threshold": 0.125,
+        "label": "all",
+        "net_benefit": -0.08799999999999998
+      },
+      {
+        "threshold": 0.13,
+        "label": "all",
+        "net_benefit": -0.09425287356321839
+      },
+      {
+        "threshold": 0.135,
+        "label": "all",
+        "net_benefit": -0.10057803468208092
+      },
+      {
+        "threshold": 0.14,
+        "label": "all",
+        "net_benefit": -0.10697674418604651
+      },
+      {
+        "threshold": 0.145,
+        "label": "all",
+        "net_benefit": -0.11345029239766082
+      },
+      {
+        "threshold": 0.15,
+        "label": "all",
+        "net_benefit": -0.12000000000000001
+      },
+      {
+        "threshold": 0.155,
+        "label": "all",
+        "net_benefit": -0.12662721893491125
+      },
+      {
+        "threshold": 0.16,
+        "label": "all",
+        "net_benefit": -0.13333333333333336
+      },
+      {
+        "threshold": 0.165,
+        "label": "all",
+        "net_benefit": -0.14011976047904195
+      },
+      {
+        "threshold": 0.17,
+        "label": "all",
+        "net_benefit": -0.1469879518072289
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "all",
+        "net_benefit": -0.153939393939394
+      },
+      {
+        "threshold": 0.18,
+        "label": "all",
+        "net_benefit": -0.16097560975609754
+      },
+      {
+        "threshold": 0.185,
+        "label": "all",
+        "net_benefit": -0.16809815950920248
+      },
+      {
+        "threshold": 0.19,
+        "label": "all",
+        "net_benefit": -0.1753086419753086
+      },
+      {
+        "threshold": 0.195,
+        "label": "all",
+        "net_benefit": -0.1826086956521739
+      },
+      {
+        "threshold": 0.2,
+        "label": "all",
+        "net_benefit": -0.19
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "all",
+        "net_benefit": -0.19748427672955976
+      },
+      {
+        "threshold": 0.005,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.01,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.015,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.02,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.025,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.03,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.035,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.04,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.045,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.05,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.055,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.06,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.065,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.07,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.075,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.08,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.085,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.09,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.095,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.1,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.105,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.11,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.115,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.12,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.125,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.13,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.135,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.14,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.145,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.15,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.155,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.16,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.165,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.17,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.18,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.185,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.19,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.195,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.2,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "none",
+        "net_benefit": 0.0
+      }
+    ],
+    "v2_lgbm_brdav": [
+      {
+        "threshold": 0.005,
+        "label": "model",
+        "net_benefit": 0.043462311557788944
+      },
+      {
+        "threshold": 0.01,
+        "label": "model",
+        "net_benefit": 0.03887878787878788
+      },
+      {
+        "threshold": 0.015,
+        "label": "model",
+        "net_benefit": 0.03484263959390863
+      },
+      {
+        "threshold": 0.02,
+        "label": "model",
+        "net_benefit": 0.03138775510204082
+      },
+      {
+        "threshold": 0.025,
+        "label": "model",
+        "net_benefit": 0.027897435897435895
+      },
+      {
+        "threshold": 0.03,
+        "label": "model",
+        "net_benefit": 0.025051546391752576
+      },
+      {
+        "threshold": 0.035,
+        "label": "model",
+        "net_benefit": 0.022642487046632125
+      },
+      {
+        "threshold": 0.04,
+        "label": "model",
+        "net_benefit": 0.02020833333333333
+      },
+      {
+        "threshold": 0.045,
+        "label": "model",
+        "net_benefit": 0.017884816753926704
+      },
+      {
+        "threshold": 0.05,
+        "label": "model",
+        "net_benefit": 0.017052631578947368
+      },
+      {
+        "threshold": 0.055,
+        "label": "model",
+        "net_benefit": 0.01621164021164021
+      },
+      {
+        "threshold": 0.06,
+        "label": "model",
+        "net_benefit": 0.015361702127659577
+      },
+      {
+        "threshold": 0.065,
+        "label": "model",
+        "net_benefit": 0.014770053475935827
+      },
+      {
+        "threshold": 0.07,
+        "label": "model",
+        "net_benefit": 0.014172043010752686
+      },
+      {
+        "threshold": 0.075,
+        "label": "model",
+        "net_benefit": 0.013567567567567568
+      },
+      {
+        "threshold": 0.08,
+        "label": "model",
+        "net_benefit": 0.012956521739130434
+      },
+      {
+        "threshold": 0.085,
+        "label": "model",
+        "net_benefit": 0.01233879781420765
+      },
+      {
+        "threshold": 0.09,
+        "label": "model",
+        "net_benefit": 0.011714285714285714
+      },
+      {
+        "threshold": 0.095,
+        "label": "model",
+        "net_benefit": 0.011082872928176795
+      },
+      {
+        "threshold": 0.1,
+        "label": "model",
+        "net_benefit": 0.010444444444444444
+      },
+      {
+        "threshold": 0.105,
+        "label": "model",
+        "net_benefit": 0.009798882681564246
+      },
+      {
+        "threshold": 0.11,
+        "label": "model",
+        "net_benefit": 0.009146067415730336
+      },
+      {
+        "threshold": 0.115,
+        "label": "model",
+        "net_benefit": 0.00852542372881356
+      },
+      {
+        "threshold": 0.12,
+        "label": "model",
+        "net_benefit": 0.00790909090909091
+      },
+      {
+        "threshold": 0.125,
+        "label": "model",
+        "net_benefit": 0.007285714285714288
+      },
+      {
+        "threshold": 0.13,
+        "label": "model",
+        "net_benefit": 0.006655172413793103
+      },
+      {
+        "threshold": 0.135,
+        "label": "model",
+        "net_benefit": 0.0060173410404624275
+      },
+      {
+        "threshold": 0.14,
+        "label": "model",
+        "net_benefit": 0.005372093023255815
+      },
+      {
+        "threshold": 0.145,
+        "label": "model",
+        "net_benefit": 0.004725146198830409
+      },
+      {
+        "threshold": 0.15,
+        "label": "model",
+        "net_benefit": 0.004470588235294117
+      },
+      {
+        "threshold": 0.155,
+        "label": "model",
+        "net_benefit": 0.00421301775147929
+      },
+      {
+        "threshold": 0.16,
+        "label": "model",
+        "net_benefit": 0.003999999999999999
+      },
+      {
+        "threshold": 0.165,
+        "label": "model",
+        "net_benefit": 0.0038502994011976044
+      },
+      {
+        "threshold": 0.17,
+        "label": "model",
+        "net_benefit": 0.003698795180722891
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "model",
+        "net_benefit": 0.0035454545454545443
+      },
+      {
+        "threshold": 0.18,
+        "label": "model",
+        "net_benefit": 0.003390243902439025
+      },
+      {
+        "threshold": 0.185,
+        "label": "model",
+        "net_benefit": 0.0032331288343558275
+      },
+      {
+        "threshold": 0.19,
+        "label": "model",
+        "net_benefit": 0.0030740740740740746
+      },
+      {
+        "threshold": 0.195,
+        "label": "model",
+        "net_benefit": 0.002913043478260869
+      },
+      {
+        "threshold": 0.2,
+        "label": "model",
+        "net_benefit": 0.00275
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "model",
+        "net_benefit": 0.0026163522012578625
+      },
+      {
+        "threshold": 0.005,
+        "label": "all",
+        "net_benefit": 0.043216080402010054
+      },
+      {
+        "threshold": 0.01,
+        "label": "all",
+        "net_benefit": 0.03838383838383838
+      },
+      {
+        "threshold": 0.015,
+        "label": "all",
+        "net_benefit": 0.03350253807106599
+      },
+      {
+        "threshold": 0.02,
+        "label": "all",
+        "net_benefit": 0.02857142857142857
+      },
+      {
+        "threshold": 0.025,
+        "label": "all",
+        "net_benefit": 0.02358974358974359
+      },
+      {
+        "threshold": 0.03,
+        "label": "all",
+        "net_benefit": 0.018556701030927835
+      },
+      {
+        "threshold": 0.035,
+        "label": "all",
+        "net_benefit": 0.013471502590673576
+      },
+      {
+        "threshold": 0.04,
+        "label": "all",
+        "net_benefit": 0.008333333333333331
+      },
+      {
+        "threshold": 0.045,
+        "label": "all",
+        "net_benefit": 0.003141361256544503
+      },
+      {
+        "threshold": 0.05,
+        "label": "all",
+        "net_benefit": -0.002105263157894735
+      },
+      {
+        "threshold": 0.055,
+        "label": "all",
+        "net_benefit": -0.007407407407407404
+      },
+      {
+        "threshold": 0.06,
+        "label": "all",
+        "net_benefit": -0.012765957446808501
+      },
+      {
+        "threshold": 0.065,
+        "label": "all",
+        "net_benefit": -0.018181818181818174
+      },
+      {
+        "threshold": 0.07,
+        "label": "all",
+        "net_benefit": -0.023655913978494633
+      },
+      {
+        "threshold": 0.075,
+        "label": "all",
+        "net_benefit": -0.029189189189189182
+      },
+      {
+        "threshold": 0.08,
+        "label": "all",
+        "net_benefit": -0.03478260869565217
+      },
+      {
+        "threshold": 0.085,
+        "label": "all",
+        "net_benefit": -0.04043715846994536
+      },
+      {
+        "threshold": 0.09,
+        "label": "all",
+        "net_benefit": -0.04615384615384614
+      },
+      {
+        "threshold": 0.095,
+        "label": "all",
+        "net_benefit": -0.05193370165745856
+      },
+      {
+        "threshold": 0.1,
+        "label": "all",
+        "net_benefit": -0.057777777777777775
+      },
+      {
+        "threshold": 0.105,
+        "label": "all",
+        "net_benefit": -0.06368715083798882
+      },
+      {
+        "threshold": 0.11,
+        "label": "all",
+        "net_benefit": -0.0696629213483146
+      },
+      {
+        "threshold": 0.115,
+        "label": "all",
+        "net_benefit": -0.07570621468926553
+      },
+      {
+        "threshold": 0.12,
+        "label": "all",
+        "net_benefit": -0.0818181818181818
+      },
+      {
+        "threshold": 0.125,
+        "label": "all",
+        "net_benefit": -0.08799999999999998
+      },
+      {
+        "threshold": 0.13,
+        "label": "all",
+        "net_benefit": -0.09425287356321839
+      },
+      {
+        "threshold": 0.135,
+        "label": "all",
+        "net_benefit": -0.10057803468208092
+      },
+      {
+        "threshold": 0.14,
+        "label": "all",
+        "net_benefit": -0.10697674418604651
+      },
+      {
+        "threshold": 0.145,
+        "label": "all",
+        "net_benefit": -0.11345029239766082
+      },
+      {
+        "threshold": 0.15,
+        "label": "all",
+        "net_benefit": -0.12000000000000001
+      },
+      {
+        "threshold": 0.155,
+        "label": "all",
+        "net_benefit": -0.12662721893491125
+      },
+      {
+        "threshold": 0.16,
+        "label": "all",
+        "net_benefit": -0.13333333333333336
+      },
+      {
+        "threshold": 0.165,
+        "label": "all",
+        "net_benefit": -0.14011976047904195
+      },
+      {
+        "threshold": 0.17,
+        "label": "all",
+        "net_benefit": -0.1469879518072289
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "all",
+        "net_benefit": -0.153939393939394
+      },
+      {
+        "threshold": 0.18,
+        "label": "all",
+        "net_benefit": -0.16097560975609754
+      },
+      {
+        "threshold": 0.185,
+        "label": "all",
+        "net_benefit": -0.16809815950920248
+      },
+      {
+        "threshold": 0.19,
+        "label": "all",
+        "net_benefit": -0.1753086419753086
+      },
+      {
+        "threshold": 0.195,
+        "label": "all",
+        "net_benefit": -0.1826086956521739
+      },
+      {
+        "threshold": 0.2,
+        "label": "all",
+        "net_benefit": -0.19
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "all",
+        "net_benefit": -0.19748427672955976
+      },
+      {
+        "threshold": 0.005,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.01,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.015,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.02,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.025,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.03,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.035,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.04,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.045,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.05,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.055,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.06,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.065,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.07,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.075,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.08,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.085,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.09,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.095,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.1,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.105,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.11,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.115,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.12,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.125,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.13,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.135,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.14,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.145,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.15,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.155,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.16,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.165,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.17,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.18,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.185,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.19,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.195,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.2,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "none",
+        "net_benefit": 0.0
+      }
+    ],
+    "v3_stacking": [
+      {
+        "threshold": 0.005,
+        "label": "model",
+        "net_benefit": 0.044673366834170856
+      },
+      {
+        "threshold": 0.01,
+        "label": "model",
+        "net_benefit": 0.041313131313131315
+      },
+      {
+        "threshold": 0.015,
+        "label": "model",
+        "net_benefit": 0.03791878172588833
+      },
+      {
+        "threshold": 0.02,
+        "label": "model",
+        "net_benefit": 0.034489795918367344
+      },
+      {
+        "threshold": 0.025,
+        "label": "model",
+        "net_benefit": 0.031025641025641027
+      },
+      {
+        "threshold": 0.03,
+        "label": "model",
+        "net_benefit": 0.027670103092783505
+      },
+      {
+        "threshold": 0.035,
+        "label": "model",
+        "net_benefit": 0.024331606217616576
+      },
+      {
+        "threshold": 0.04,
+        "label": "model",
+        "net_benefit": 0.02145833333333333
+      },
+      {
+        "threshold": 0.045,
+        "label": "model",
+        "net_benefit": 0.019293193717277484
+      },
+      {
+        "threshold": 0.05,
+        "label": "model",
+        "net_benefit": 0.017631578947368422
+      },
+      {
+        "threshold": 0.055,
+        "label": "model",
+        "net_benefit": 0.01664021164021164
+      },
+      {
+        "threshold": 0.06,
+        "label": "model",
+        "net_benefit": 0.015638297872340425
+      },
+      {
+        "threshold": 0.065,
+        "label": "model",
+        "net_benefit": 0.01462566844919786
+      },
+      {
+        "threshold": 0.07,
+        "label": "model",
+        "net_benefit": 0.013602150537634406
+      },
+      {
+        "threshold": 0.075,
+        "label": "model",
+        "net_benefit": 0.01256756756756757
+      },
+      {
+        "threshold": 0.08,
+        "label": "model",
+        "net_benefit": 0.011695652173913045
+      },
+      {
+        "threshold": 0.085,
+        "label": "model",
+        "net_benefit": 0.011333333333333334
+      },
+      {
+        "threshold": 0.09,
+        "label": "model",
+        "net_benefit": 0.01096703296703297
+      },
+      {
+        "threshold": 0.095,
+        "label": "model",
+        "net_benefit": 0.01059668508287293
+      },
+      {
+        "threshold": 0.1,
+        "label": "model",
+        "net_benefit": 0.010222222222222223
+      },
+      {
+        "threshold": 0.105,
+        "label": "model",
+        "net_benefit": 0.009843575418994416
+      },
+      {
+        "threshold": 0.11,
+        "label": "model",
+        "net_benefit": 0.009460674157303374
+      },
+      {
+        "threshold": 0.115,
+        "label": "model",
+        "net_benefit": 0.009073446327683619
+      },
+      {
+        "threshold": 0.12,
+        "label": "model",
+        "net_benefit": 0.008681818181818185
+      },
+      {
+        "threshold": 0.125,
+        "label": "model",
+        "net_benefit": 0.008285714285714289
+      },
+      {
+        "threshold": 0.13,
+        "label": "model",
+        "net_benefit": 0.00788505747126437
+      },
+      {
+        "threshold": 0.135,
+        "label": "model",
+        "net_benefit": 0.00747976878612717
+      },
+      {
+        "threshold": 0.14,
+        "label": "model",
+        "net_benefit": 0.007069767441860468
+      },
+      {
+        "threshold": 0.145,
+        "label": "model",
+        "net_benefit": 0.006654970760233921
+      },
+      {
+        "threshold": 0.15,
+        "label": "model",
+        "net_benefit": 0.006235294117647061
+      },
+      {
+        "threshold": 0.155,
+        "label": "model",
+        "net_benefit": 0.005810650887573968
+      },
+      {
+        "threshold": 0.16,
+        "label": "model",
+        "net_benefit": 0.005380952380952382
+      },
+      {
+        "threshold": 0.165,
+        "label": "model",
+        "net_benefit": 0.004946107784431138
+      },
+      {
+        "threshold": 0.17,
+        "label": "model",
+        "net_benefit": 0.004626506024096385
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "model",
+        "net_benefit": 0.004363636363636363
+      },
+      {
+        "threshold": 0.18,
+        "label": "model",
+        "net_benefit": 0.004097560975609758
+      },
+      {
+        "threshold": 0.185,
+        "label": "model",
+        "net_benefit": 0.003828220858895705
+      },
+      {
+        "threshold": 0.19,
+        "label": "model",
+        "net_benefit": 0.0035555555555555566
+      },
+      {
+        "threshold": 0.195,
+        "label": "model",
+        "net_benefit": 0.0032795031055900623
+      },
+      {
+        "threshold": 0.2,
+        "label": "model",
+        "net_benefit": 0.003000000000000001
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "model",
+        "net_benefit": 0.0027169811320754706
+      },
+      {
+        "threshold": 0.005,
+        "label": "all",
+        "net_benefit": 0.043216080402010054
+      },
+      {
+        "threshold": 0.01,
+        "label": "all",
+        "net_benefit": 0.03838383838383838
+      },
+      {
+        "threshold": 0.015,
+        "label": "all",
+        "net_benefit": 0.03350253807106599
+      },
+      {
+        "threshold": 0.02,
+        "label": "all",
+        "net_benefit": 0.02857142857142857
+      },
+      {
+        "threshold": 0.025,
+        "label": "all",
+        "net_benefit": 0.02358974358974359
+      },
+      {
+        "threshold": 0.03,
+        "label": "all",
+        "net_benefit": 0.018556701030927835
+      },
+      {
+        "threshold": 0.035,
+        "label": "all",
+        "net_benefit": 0.013471502590673576
+      },
+      {
+        "threshold": 0.04,
+        "label": "all",
+        "net_benefit": 0.008333333333333331
+      },
+      {
+        "threshold": 0.045,
+        "label": "all",
+        "net_benefit": 0.003141361256544503
+      },
+      {
+        "threshold": 0.05,
+        "label": "all",
+        "net_benefit": -0.002105263157894735
+      },
+      {
+        "threshold": 0.055,
+        "label": "all",
+        "net_benefit": -0.007407407407407404
+      },
+      {
+        "threshold": 0.06,
+        "label": "all",
+        "net_benefit": -0.012765957446808501
+      },
+      {
+        "threshold": 0.065,
+        "label": "all",
+        "net_benefit": -0.018181818181818174
+      },
+      {
+        "threshold": 0.07,
+        "label": "all",
+        "net_benefit": -0.023655913978494633
+      },
+      {
+        "threshold": 0.075,
+        "label": "all",
+        "net_benefit": -0.029189189189189182
+      },
+      {
+        "threshold": 0.08,
+        "label": "all",
+        "net_benefit": -0.03478260869565217
+      },
+      {
+        "threshold": 0.085,
+        "label": "all",
+        "net_benefit": -0.04043715846994536
+      },
+      {
+        "threshold": 0.09,
+        "label": "all",
+        "net_benefit": -0.04615384615384614
+      },
+      {
+        "threshold": 0.095,
+        "label": "all",
+        "net_benefit": -0.05193370165745856
+      },
+      {
+        "threshold": 0.1,
+        "label": "all",
+        "net_benefit": -0.057777777777777775
+      },
+      {
+        "threshold": 0.105,
+        "label": "all",
+        "net_benefit": -0.06368715083798882
+      },
+      {
+        "threshold": 0.11,
+        "label": "all",
+        "net_benefit": -0.0696629213483146
+      },
+      {
+        "threshold": 0.115,
+        "label": "all",
+        "net_benefit": -0.07570621468926553
+      },
+      {
+        "threshold": 0.12,
+        "label": "all",
+        "net_benefit": -0.0818181818181818
+      },
+      {
+        "threshold": 0.125,
+        "label": "all",
+        "net_benefit": -0.08799999999999998
+      },
+      {
+        "threshold": 0.13,
+        "label": "all",
+        "net_benefit": -0.09425287356321839
+      },
+      {
+        "threshold": 0.135,
+        "label": "all",
+        "net_benefit": -0.10057803468208092
+      },
+      {
+        "threshold": 0.14,
+        "label": "all",
+        "net_benefit": -0.10697674418604651
+      },
+      {
+        "threshold": 0.145,
+        "label": "all",
+        "net_benefit": -0.11345029239766082
+      },
+      {
+        "threshold": 0.15,
+        "label": "all",
+        "net_benefit": -0.12000000000000001
+      },
+      {
+        "threshold": 0.155,
+        "label": "all",
+        "net_benefit": -0.12662721893491125
+      },
+      {
+        "threshold": 0.16,
+        "label": "all",
+        "net_benefit": -0.13333333333333336
+      },
+      {
+        "threshold": 0.165,
+        "label": "all",
+        "net_benefit": -0.14011976047904195
+      },
+      {
+        "threshold": 0.17,
+        "label": "all",
+        "net_benefit": -0.1469879518072289
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "all",
+        "net_benefit": -0.153939393939394
+      },
+      {
+        "threshold": 0.18,
+        "label": "all",
+        "net_benefit": -0.16097560975609754
+      },
+      {
+        "threshold": 0.185,
+        "label": "all",
+        "net_benefit": -0.16809815950920248
+      },
+      {
+        "threshold": 0.19,
+        "label": "all",
+        "net_benefit": -0.1753086419753086
+      },
+      {
+        "threshold": 0.195,
+        "label": "all",
+        "net_benefit": -0.1826086956521739
+      },
+      {
+        "threshold": 0.2,
+        "label": "all",
+        "net_benefit": -0.19
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "all",
+        "net_benefit": -0.19748427672955976
+      },
+      {
+        "threshold": 0.005,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.01,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.015,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.02,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.025,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.03,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.035,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.04,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.045,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.05,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.055,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.06,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.065,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.07,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.075,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.08,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.085,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.09,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.095,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.1,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.105,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.11,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.115,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.12,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.125,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.13,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.135,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.14,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.145,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.15,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.155,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.16,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.165,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.17,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.17500000000000002,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.18,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.185,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.19,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.195,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.2,
+        "label": "none",
+        "net_benefit": 0.0
+      },
+      {
+        "threshold": 0.20500000000000002,
+        "label": "none",
+        "net_benefit": 0.0
+      }
+    ]
+  },
+  "fairness": {
+    "v1_lgbm_baseline": {
+      "threshold_used": 0.13793103448275862,
+      "by_sex": {
+        "female": {
+          "n": 464,
+          "outcome_rate": 0.05172413793103448,
+          "selection_rate": 0.14439655172413793,
+          "auroc": 0.7807765151515151,
+          "fnr": 0.5416666666666666,
+          "fpr": 0.12727272727272726
+        },
+        "male": {
+          "n": 536,
+          "outcome_rate": 0.04477611940298507,
+          "selection_rate": 0.11194029850746269,
+          "auroc": 0.7068277994791666,
+          "fnr": 0.5833333333333334,
+          "fpr": 0.09765625
+        }
+      },
+      "by_age": {
+        "age_lo": {
+          "n": 334,
+          "outcome_rate": 0.023952095808383235,
+          "selection_rate": 0.06287425149700598,
+          "auroc": 0.7536426380368099
+        },
+        "age_mid": {
+          "n": 333,
+          "outcome_rate": 0.03303303303303303,
+          "selection_rate": 0.11711711711711711,
+          "auroc": 0.7765386787125919
+        },
+        "age_hi": {
+          "n": 333,
+          "outcome_rate": 0.08708708708708708,
+          "selection_rate": 0.2012012012012012,
+          "auroc": 0.6830762250453721
+        }
+      },
+      "equalized_odds_difference_sex": 0.04166666666666663
+    },
+    "v2_lgbm_brdav": {
+      "threshold_used": 0.14492753623188406,
+      "by_sex": {
+        "female": {
+          "n": 464,
+          "outcome_rate": 0.05172413793103448,
+          "selection_rate": 0.1336206896551724,
+          "auroc": 0.7559659090909091,
+          "fnr": 0.5416666666666666,
+          "fpr": 0.1159090909090909
+        },
+        "male": {
+          "n": 536,
+          "outcome_rate": 0.04477611940298507,
+          "selection_rate": 0.10261194029850747,
+          "auroc": 0.7519124348958333,
+          "fnr": 0.5833333333333334,
+          "fpr": 0.087890625
+        }
+      },
+      "by_age": {
+        "age_lo": {
+          "n": 334,
+          "outcome_rate": 0.023952095808383235,
+          "selection_rate": 0.041916167664670656,
+          "auroc": 0.7758819018404908
+        },
+        "age_mid": {
+          "n": 333,
+          "outcome_rate": 0.03303303303303303,
+          "selection_rate": 0.10810810810810811,
+          "auroc": 0.7169678147939018
+        },
+        "age_hi": {
+          "n": 333,
+          "outcome_rate": 0.08708708708708708,
+          "selection_rate": 0.2012012012012012,
+          "auroc": 0.7206215970961887
+        }
+      },
+      "equalized_odds_difference_sex": 0.04166666666666663
+    },
+    "v3_stacking": {
+      "threshold_used": 0.07874015748031496,
+      "by_sex": {
+        "female": {
+          "n": 464,
+          "outcome_rate": 0.05172413793103448,
+          "selection_rate": 0.20905172413793102,
+          "auroc": 0.7955018939393939,
+          "fnr": 0.375,
+          "fpr": 0.18636363636363637
+        },
+        "male": {
+          "n": 536,
+          "outcome_rate": 0.04477611940298507,
+          "selection_rate": 0.20149253731343283,
+          "auroc": 0.7657470703125,
+          "fnr": 0.5,
+          "fpr": 0.1875
+        }
+      },
+      "by_age": {
+        "age_lo": {
+          "n": 334,
+          "outcome_rate": 0.023952095808383235,
+          "selection_rate": 0.08083832335329341,
+          "auroc": 0.7925613496932515
+        },
+        "age_mid": {
+          "n": 333,
+          "outcome_rate": 0.03303303303303303,
+          "selection_rate": 0.1921921921921922,
+          "auroc": 0.8373800112930548
+        },
+        "age_hi": {
+          "n": 333,
+          "outcome_rate": 0.08708708708708708,
+          "selection_rate": 0.34234234234234234,
+          "auroc": 0.6895984573502723
+        }
+      },
+      "equalized_odds_difference_sex": 0.125
+    }
+  },
+  "thresholds": [
+    0.005,
+    0.01,
+    0.015,
+    0.02,
+    0.025,
+    0.03,
+    0.035,
+    0.04,
+    0.045,
+    0.05,
+    0.055,
+    0.06,
+    0.065,
+    0.07,
+    0.075,
+    0.08,
+    0.085,
+    0.09,
+    0.095,
+    0.1,
+    0.105,
+    0.11,
+    0.115,
+    0.12,
+    0.125,
+    0.13,
+    0.135,
+    0.14,
+    0.145,
+    0.15,
+    0.155,
+    0.16,
+    0.165,
+    0.17,
+    0.17500000000000002,
+    0.18,
+    0.185,
+    0.19,
+    0.195,
+    0.2,
+    0.20500000000000002
+  ]
+}
