@@ -240,4 +240,5 @@ MIT — see [LICENSE](LICENSE). Vendored repos (`external/tavr` brdav, `external
 ## Authors
 
 - **Jainish Solanki** — ML Engineer at Netramark Corporation; UofT MEng (Mechanical & Industrial Engineering); B.Tech (Aerospace, IIT Kharagpur) — _team lead_
+- **Siddhartha Pahari** — Material Discovery & Energy Storage Materials Engieering  at Rain Carbon Inc; UofT Basc Eng. Chemical Engineering
 - IBM Z × UNSA Sheridan Hackathon team
