@@ -33,7 +33,7 @@ export function WorkspaceNav({ active, onChange }: Props) {
     <nav
       role="tablist"
       aria-label="Heart Team workspace sections"
-      className="ibm-card p-1 flex flex-wrap gap-0.5"
+      className="ibm-card p-1 flex md:flex-wrap gap-0.5 overflow-x-auto"
     >
       {VIEWS.map((v) => {
         const isActive = v.id === active;

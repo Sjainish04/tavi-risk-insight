@@ -1,7 +1,7 @@
 import { ArrowDownRight, ArrowUpRight, Minus, Wrench } from "lucide-react";
 
 import type { RiskScoreDriver } from "@/lib/types";
-import { cn, fmtPct } from "@/lib/utils";
+import { RISK_BAND_CHIP, RISK_BAND_LABEL, cn, fmtPct, riskBand } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 
 interface CardProps {
@@ -16,20 +16,31 @@ interface CardProps {
 }
 
 function MlFooter({
+  p,
   ci,
   decile,
   baseRateMultiplier,
   drivers,
 }: {
+  p: number;
   ci: [number, number];
   decile: number;
   baseRateMultiplier: number;
   drivers: RiskScoreDriver[];
 }) {
   const topDrivers = drivers.slice(0, 3);
+  const band = riskBand(p);
   return (
     <div className="space-y-1.5 pt-1.5 border-t border-gray-100">
       <div className="flex items-center gap-1.5 flex-wrap text-[10px]">
+        <span
+          className={cn(
+            "uppercase tracking-wider font-semibold px-1.5 py-px border rounded-sm",
+            RISK_BAND_CHIP[band],
+          )}
+        >
+          {RISK_BAND_LABEL[band]}
+        </span>
         <span className="font-mono text-gray-700">
           CI {fmtPct(ci[0])}–{fmtPct(ci[1])}
         </span>
@@ -189,6 +200,7 @@ export function RiskComparison() {
           badge={primaryBadge}
           footer={
             <MlFooter
+              p={result.lgbm.raw_probability}
               ci={result.lgbm_ci}
               decile={result.lgbm_decile}
               baseRateMultiplier={result.lgbm_base_rate_comparison}

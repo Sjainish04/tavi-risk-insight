@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import type { DeviceAssessment, ProbabilityWithCI } from "@/lib/types";
-import { cn, fmtPct } from "@/lib/utils";
+import { RISK_BAND_CHIP, RISK_BAND_LABEL, cn, fmtPct, riskBand } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 import type { WorkspaceView } from "./WorkspaceNav";
 
@@ -67,7 +67,7 @@ function SummaryRow({
   emphasis?: boolean;
 }) {
   return (
-    <div className="grid grid-cols-[140px_1fr] gap-3 items-baseline py-1.5 border-b border-gray-100 last:border-0">
+    <div className="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-3 sm:items-baseline py-1.5 border-b border-gray-100 last:border-0">
       <div className="text-[10px] uppercase tracking-wider text-gray-500">{label}</div>
       <div className={cn("text-sm leading-snug", emphasis ? "text-gray-900" : "text-gray-800")}>
         {children}
@@ -137,9 +137,17 @@ export function HeartTeamSummary({ onNavigate }: Props) {
       </SummaryRow>
 
       <SummaryRow label="30-day mortality" emphasis>
-        <div className="flex items-baseline gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xl font-mono font-semibold text-gray-900">
             {fmtPct(result.lgbm.raw_probability)}
+          </span>
+          <span
+            className={cn(
+              "text-[11px] uppercase tracking-wider font-semibold px-2 py-0.5 border rounded-sm",
+              RISK_BAND_CHIP[riskBand(result.lgbm.raw_probability)],
+            )}
+          >
+            {RISK_BAND_LABEL[riskBand(result.lgbm.raw_probability)]}
           </span>
           <span className="text-xs text-gray-600 font-mono">
             CI {fmtPct(result.lgbm_ci[0])}–{fmtPct(result.lgbm_ci[1])}

@@ -1,4 +1,4 @@
-import { ChevronDown, Database, Image, Loader2 } from "lucide-react";
+import { AlertCircle, ChevronDown, Database, Image, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,11 +15,12 @@ interface FieldProps {
   label: string;
   hint?: string;
   error?: string;
+  alert?: string | null;
   children: React.ReactNode;
   className?: string;
 }
 
-function Field({ label, hint, error, children, className }: FieldProps) {
+function Field({ label, hint, error, alert, children, className }: FieldProps) {
   return (
     <div className={cn("space-y-1", className)}>
       <label className={fieldLabel}>
@@ -28,8 +29,46 @@ function Field({ label, hint, error, children, className }: FieldProps) {
       </label>
       {children}
       {error && <p className="text-xs text-red-600">{error}</p>}
+      {alert && !error && (
+        <p className="text-[11px] text-red-700 bg-red-50 border border-red-200 px-2 py-1 rounded-sm flex items-start gap-1.5">
+          <AlertCircle className="w-3 h-3 mt-0.5 flex-shrink-0" />
+          <span>{alert}</span>
+        </p>
+      )}
     </div>
   );
+}
+
+function toNum(v: unknown): number | null {
+  if (v === null || v === undefined || v === "") return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+function clinicalAlert(field: string, raw: unknown): string | null {
+  const v = toNum(raw);
+  if (v == null) return null;
+  switch (field) {
+    case "egfr":
+      if (v < 30) return "Severe CKD (eGFR < 30) — high AKI risk; pre-op renal optimisation recommended.";
+      if (v < 45) return "Moderate CKD — monitor renal function peri-procedure.";
+      return null;
+    case "hemoglobin_g_dl":
+      if (v < 9) return "Severe anaemia (Hb < 9) — major bleeding risk; treat before elective procedure.";
+      if (v < 11) return "Anaemia — consider iron / EPO before procedure.";
+      return null;
+    case "albumin_g_dl":
+      if (v < 2.5) return "Severe hypoalbuminaemia (< 2.5) — frailty marker; nutrition consult recommended.";
+      return null;
+    case "lvef_pct":
+      if (v < 25) return "Severely reduced LVEF (< 25 %) — high peri-procedural mortality.";
+      return null;
+    case "aortic_valve_area_cm2":
+      if (v < 0.5) return "Critical AS (AVA < 0.5 cm²) — expedited Heart Team review.";
+      return null;
+    default:
+      return null;
+  }
 }
 
 const COMORBIDITIES = [
@@ -89,11 +128,21 @@ export function PatientForm() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm<PatientFormValues>({
     resolver: zodResolver(patientSchema),
     defaultValues: demoPresets.intermediateRisk.values,
   });
+
+  // Live clinical alerts on out-of-range (but valid) values
+  const alerts = {
+    egfr: clinicalAlert("egfr", watch("egfr")),
+    hemoglobin: clinicalAlert("hemoglobin_g_dl", watch("hemoglobin_g_dl")),
+    albumin: clinicalAlert("albumin_g_dl", watch("albumin_g_dl")),
+    lvef: clinicalAlert("lvef_pct", watch("lvef_pct")),
+    ava: clinicalAlert("aortic_valve_area_cm2", watch("aortic_valve_area_cm2")),
+  };
 
   const onSubmit: SubmitHandler<PatientFormValues> = async (values) => {
     await submit(values as never);
@@ -174,6 +223,8 @@ export function PatientForm() {
               label="AVA"
               hint="cm²"
               error={errors.aortic_valve_area_cm2?.message}
+              alert={alerts.ava}
+              className="col-span-2"
             >
               <input
                 type="number"
@@ -230,7 +281,7 @@ export function PatientForm() {
 
         <Section title="Cardiac &amp; renal" source="EHR labs">
           <div className="grid grid-cols-2 gap-3">
-            <Field label="LVEF" hint="% (echo)" error={errors.lvef_pct?.message}>
+            <Field label="LVEF" hint="% (echo)" error={errors.lvef_pct?.message} alert={alerts.lvef} className="col-span-2">
               <input
                 type="number"
                 step="1"
@@ -238,7 +289,7 @@ export function PatientForm() {
                 className={fieldInput}
               />
             </Field>
-            <Field label="eGFR" hint="mL/min/1.73m²" error={errors.egfr?.message}>
+            <Field label="eGFR" hint="mL/min/1.73m²" error={errors.egfr?.message} alert={alerts.egfr} className="col-span-2">
               <input
                 type="number"
                 step="1"
@@ -262,6 +313,8 @@ export function PatientForm() {
               label="Hemoglobin"
               hint="g/dL"
               error={errors.hemoglobin_g_dl?.message}
+              alert={alerts.hemoglobin}
+              className="col-span-2"
             >
               <input
                 type="number"
@@ -274,6 +327,8 @@ export function PatientForm() {
               label="Albumin"
               hint="g/dL"
               error={errors.albumin_g_dl?.message}
+              alert={alerts.albumin}
+              className="col-span-2"
             >
               <input
                 type="number"

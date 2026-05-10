@@ -1,3 +1,4 @@
+import { Edit3 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { AnnularSizingTable } from "@/components/AnnularSizingTable";
@@ -21,6 +22,7 @@ import { ShapWaterfall } from "@/components/ShapWaterfall";
 import { SpecialConsiderationsCard } from "@/components/SpecialConsiderationsCard";
 import { SurvivalCurve } from "@/components/SurvivalCurve";
 import { WorkspaceNav, type WorkspaceView } from "@/components/WorkspaceNav";
+import { cn } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 
 type Tab = "results" | "modelcard";
@@ -28,13 +30,17 @@ type Tab = "results" | "modelcard";
 function App() {
   const [tab, setTab] = useState<Tab>("results");
   const [view, setView] = useState<WorkspaceView>("summary");
+  const [formCollapsed, setFormCollapsed] = useState(false);
   const error = usePrediction((s) => s.error);
   const result = usePrediction((s) => s.result);
   const lastInput = usePrediction((s) => s.lastInput);
 
-  // New result → land on Summary
+  // New result → land on Summary, auto-collapse form to free up width
   useEffect(() => {
-    if (result) setView("summary");
+    if (result) {
+      setView("summary");
+      setFormCollapsed(true);
+    }
   }, [result]);
 
   const caseId = useMemo(() => {
@@ -55,11 +61,18 @@ function App() {
       <main className="max-w-7xl mx-auto px-4 py-6">
         {tab === "results" ? (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <aside className="lg:col-span-4">
-              <PatientForm />
-            </aside>
+            {!formCollapsed && (
+              <aside className="lg:col-span-4">
+                <PatientForm />
+              </aside>
+            )}
 
-            <section className="lg:col-span-8 space-y-4">
+            <section
+              className={cn(
+                "space-y-4",
+                formCollapsed ? "lg:col-span-12" : "lg:col-span-8",
+              )}
+            >
               {error && (
                 <div className="ibm-card border-red-300 bg-red-50 p-3 text-sm text-red-900">
                   {error}
@@ -76,6 +89,19 @@ function App() {
                     severity, three risk scores, complications, and per-device sizing in
                     under 2 seconds.
                   </p>
+                </div>
+              )}
+
+              {result && formCollapsed && (
+                <div className="flex justify-end -mb-2">
+                  <button
+                    type="button"
+                    onClick={() => setFormCollapsed(false)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-sm transition-colors"
+                  >
+                    <Edit3 className="w-3.5 h-3.5" />
+                    Edit case
+                  </button>
                 </div>
               )}
 
