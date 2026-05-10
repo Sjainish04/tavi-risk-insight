@@ -59,7 +59,7 @@ export function CalibrationPlot() {
           xaxis: { title: { text: "Raw STS-PROM decile" }, tickfont: { size: 10 } },
           yaxis: { title: { text: "Observed / Expected" }, range: [0, 1.8] },
           showlegend: false,
-          font: { family: "IBM Plex Sans, sans-serif", size: 11 },
+          font: { family: "Times New Roman, Times, serif", size: 11 },
           paper_bgcolor: "white",
           plot_bgcolor: "white",
         }}

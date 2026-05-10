@@ -70,7 +70,7 @@ export function ModelROCCurves() {
             zeroline: true,
           },
           legend: { orientation: "h", x: 0, y: -0.2, font: { size: 10 } },
-          font: { family: "IBM Plex Sans, sans-serif", size: 11 },
+          font: { family: "Times New Roman, Times, serif", size: 11 },
           paper_bgcolor: "white",
           plot_bgcolor: "white",
         }}

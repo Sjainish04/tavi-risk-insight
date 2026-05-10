@@ -20,14 +20,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: [
-          "IBM Plex Sans",
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-          "sans-serif",
-        ],
-        mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
+        sans: ['"Times New Roman"', "Times", "serif"],
+        mono: ['"Courier New"', "Courier", "monospace"],
       },
     },
   },

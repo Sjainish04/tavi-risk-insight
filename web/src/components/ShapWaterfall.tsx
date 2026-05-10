@@ -46,7 +46,7 @@ export function ShapWaterfall() {
           margin: { l: 220, r: 40, t: 10, b: 30 },
           xaxis: { title: { text: "Risk impact (percentage points)" }, zeroline: true },
           yaxis: { automargin: true, tickfont: { size: 11 } },
-          font: { family: "IBM Plex Sans, sans-serif", size: 11 },
+          font: { family: "Times New Roman, Times, serif", size: 11 },
           paper_bgcolor: "white",
           plot_bgcolor: "white",
         }}

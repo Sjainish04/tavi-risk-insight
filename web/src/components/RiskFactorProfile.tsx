@@ -136,7 +136,7 @@ export function RiskFactorProfile() {
             range: [-3, 3],
           },
           yaxis: { tickfont: { size: 11 } },
-          font: { family: "IBM Plex Sans, sans-serif", size: 11 },
+          font: { family: "Times New Roman, Times, serif", size: 11 },
           paper_bgcolor: "white",
           plot_bgcolor: "white",
           showlegend: false,
