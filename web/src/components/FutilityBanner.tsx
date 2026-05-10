@@ -15,15 +15,18 @@ export function FutilityBanner() {
           Futility flag — composite score {f.composite_score.toFixed(2)} ≥ 0.50
         </h3>
         <p className="text-sm text-amber-900 leading-relaxed">
-          {f.alternative}
+          Valve replacement is unlikely to add survival here. The alternative is{" "}
+          <strong>medical therapy</strong> (diuretics, neurohormonal blockade, palliative-care
+          referral). <strong>SAVR is not the alternative</strong> — the same factors raise
+          surgical risk too.
         </p>
         {f.drivers.length > 0 && (
-          <p className="text-xs text-amber-900 mt-1.5 leading-snug">
+          <p className="text-xs text-amber-900 mt-2 leading-snug">
             <strong>Drivers:</strong> {f.drivers.join(" · ")}
           </p>
         )}
-        <p className="text-[11px] text-amber-800 mt-1.5 leading-snug">
-          {f.evidence}
+        <p className="text-[11px] text-amber-800 mt-1.5 leading-snug italic">
+          Heart Team makes the call.
         </p>
       </div>
     </div>

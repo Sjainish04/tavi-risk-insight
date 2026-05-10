@@ -14,18 +14,21 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install brdav requirements (already patched: onnxruntime-gpu -> onnxruntime)
-COPY tavr/requirements.txt /tmp/brdav-reqs.txt
-RUN pip install --no-cache-dir -r /tmp/brdav-reqs.txt \
-    && pip install --no-cache-dir "fastapi>=0.100" "uvicorn[standard]>=0.30"
-
 # Layout that server.py expects:
 #   /app/tavr/         - brdav repo source (so `from src.model` resolves)
 #   /app/tavr-cache/   - the Swin checkpoint
 #   /app/tavr-server/  - server.py (working dir)
+# Copy tavr/ FIRST because requirements.txt has `-e .` on the last line,
+# which needs setup.py present in the cwd we run pip from.
 COPY tavr            /app/tavr
 COPY tavr-cache      /app/tavr-cache
 COPY tavr-server     /app/tavr-server
+
+# Install brdav deps (requirements already patched: onnxruntime-gpu -> onnxruntime).
+# Run from /app/tavr so `-e .` in requirements.txt resolves to brdav's setup.py.
+RUN cd /app/tavr \
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir "fastapi>=0.100" "uvicorn[standard]>=0.30"
 
 # Pre-place ONNX localizers + MONAI SwinViT backbone in torch.hub cache so the
 # brdav model loads offline. These files are pulled by the deploy script from

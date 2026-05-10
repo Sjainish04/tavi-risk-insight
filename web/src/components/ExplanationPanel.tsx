@@ -36,7 +36,7 @@ export function ExplanationPanel() {
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-ibm-500" />
-          Heart Team summary
+          Heart Team note
         </h3>
         {loading ? (
           <button

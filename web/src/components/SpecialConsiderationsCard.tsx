@@ -2,13 +2,20 @@ import { Stethoscope } from "lucide-react";
 
 import { usePrediction } from "@/store/prediction";
 
+// Strip inline parenthetical citations (e.g., " (Yoon 2017)") for the main view
+function stripCitation(s: string): string {
+  return s.replace(/\s*\(([^)]*\d{4}[^)]*)\)\s*/g, " ").trim();
+}
+
 export function SpecialConsiderationsCard() {
   const result = usePrediction((s) => s.result);
   if (!result || result.device_assessments.length === 0) return null;
 
-  // Aggregate considerations across devices, deduped
+  // Aggregate considerations across devices, deduped, citations stripped
   const allConsiderations = Array.from(
-    new Set(result.device_assessments.flatMap((d) => d.considerations)),
+    new Set(
+      result.device_assessments.flatMap((d) => d.considerations.map(stripCitation)),
+    ),
   );
 
   if (allConsiderations.length === 0) return null;
@@ -27,6 +34,9 @@ export function SpecialConsiderationsCard() {
           </li>
         ))}
       </ul>
+      <p className="text-[10px] text-gray-400 mt-2 italic">
+        Sources for each rule are in the Model Card.
+      </p>
     </div>
   );
 }

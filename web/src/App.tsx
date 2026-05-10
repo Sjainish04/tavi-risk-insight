@@ -1,32 +1,42 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { AnnularSizingTable } from "@/components/AnnularSizingTable";
-import { CalibrationPlot } from "@/components/CalibrationPlot";
 import { ComplicationsTable } from "@/components/ComplicationsTable";
 import { CoronaryRiskCard } from "@/components/CoronaryRiskCard";
-import { DecisionCurvePlot } from "@/components/DecisionCurvePlot";
+import { EhrExportActions } from "@/components/EhrExportActions";
 import { ExplanationPanel } from "@/components/ExplanationPanel";
 import { FutilityBanner } from "@/components/FutilityBanner";
 import { Header } from "@/components/Header";
-import { MiscalibrationBanner } from "@/components/MiscalibrationBanner";
+import { HeartTeamSummary } from "@/components/HeartTeamSummary";
 import { ModelCardTab } from "@/components/ModelCardTab";
+import { ModelROCCurves } from "@/components/ModelROCCurves";
 import { PatientForm } from "@/components/PatientForm";
 import { PatientHeader } from "@/components/PatientHeader";
+import { PredictedVsObservedCalibration } from "@/components/PredictedVsObservedCalibration";
 import { RiskComparison } from "@/components/RiskComparison";
+import { RiskFactorProfile } from "@/components/RiskFactorProfile";
+import { SensitivityAnalysis } from "@/components/SensitivityAnalysis";
 import { SeverityCard } from "@/components/SeverityCard";
 import { ShapWaterfall } from "@/components/ShapWaterfall";
 import { SpecialConsiderationsCard } from "@/components/SpecialConsiderationsCard";
+import { SurvivalCurve } from "@/components/SurvivalCurve";
+import { WorkspaceNav, type WorkspaceView } from "@/components/WorkspaceNav";
 import { usePrediction } from "@/store/prediction";
 
 type Tab = "results" | "modelcard";
 
 function App() {
   const [tab, setTab] = useState<Tab>("results");
+  const [view, setView] = useState<WorkspaceView>("summary");
   const error = usePrediction((s) => s.error);
   const result = usePrediction((s) => s.result);
   const lastInput = usePrediction((s) => s.lastInput);
 
-  // Stable case ID derived from a hash of the patient features
+  // New result → land on Summary
+  useEffect(() => {
+    if (result) setView("summary");
+  }, [result]);
+
   const caseId = useMemo(() => {
     if (!lastInput) return "TVI-····-····";
     let hash = 0;
@@ -56,30 +66,64 @@ function App() {
                 </div>
               )}
 
-              {result && (
-                <>
-                  <SeverityCard />
-                  <FutilityBanner />
-                </>
+              {!result && !error && (
+                <div className="ibm-card p-8 text-center">
+                  <p className="text-sm text-gray-700 font-medium">
+                    Submit a case to start.
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Pull a demo from the EHR or fill the form on the left. We compute
+                    severity, three risk scores, complications, and per-device sizing in
+                    under 2 seconds.
+                  </p>
+                </div>
               )}
 
-              <RiskComparison />
-              <MiscalibrationBanner />
-
               {result && (
                 <>
-                  <ComplicationsTable />
-                  <AnnularSizingTable />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <CoronaryRiskCard />
-                    <SpecialConsiderationsCard />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <CalibrationPlot />
-                    <DecisionCurvePlot />
-                  </div>
-                  <ShapWaterfall />
-                  <ExplanationPanel />
+                  {/* Futility lives above the workspace nav — too urgent to hide behind a tab */}
+                  <FutilityBanner />
+
+                  <WorkspaceNav active={view} onChange={setView} />
+
+                  {view === "summary" && <HeartTeamSummary onNavigate={setView} />}
+
+                  {view === "triage" && <SeverityCard />}
+
+                  {view === "risk" && (
+                    <>
+                      <RiskComparison />
+                      <ComplicationsTable />
+                    </>
+                  )}
+
+                  {view === "devices" && (
+                    <>
+                      <AnnularSizingTable />
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <CoronaryRiskCard />
+                        <SpecialConsiderationsCard />
+                      </div>
+                    </>
+                  )}
+
+                  {view === "note" && (
+                    <>
+                      <ExplanationPanel />
+                      <EhrExportActions />
+                    </>
+                  )}
+
+                  {view === "visual" && (
+                    <>
+                      <ShapWaterfall />
+                      <SurvivalCurve />
+                      <PredictedVsObservedCalibration />
+                      <RiskFactorProfile />
+                      <SensitivityAnalysis />
+                      <ModelROCCurves />
+                    </>
+                  )}
                 </>
               )}
             </section>

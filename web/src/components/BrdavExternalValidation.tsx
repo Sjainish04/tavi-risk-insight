@@ -46,7 +46,7 @@ export function BrdavExternalValidation() {
   return (
     <section>
       <h4 className="font-semibold text-gray-900 mb-1">
-        External validation against Brüggemann 2024 (real-cohort-trained, n=1,449 Zürich patients)
+        Cross-model agreement: Brüggemann 2024 model run on our cohort (n=1,449 Zürich training)
       </h4>
       <p className="text-xs text-gray-700 leading-relaxed mb-2">
         We ran the pretrained Brüggemann 2024 Swin-UNETR model (MIT-licensed, Sci Rep)

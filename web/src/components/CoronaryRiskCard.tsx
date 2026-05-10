@@ -16,6 +16,11 @@ const GRADE_LABEL: Record<CoronaryRiskGrade, string> = {
   high: "High",
 };
 
+// Filter out meta-explanatory reasons that aren't patient-specific
+function patientReasons(reasons: string[]): string[] {
+  return reasons.filter((r) => !r.toLowerCase().includes("thresholds shifted"));
+}
+
 export function CoronaryRiskCard() {
   const result = usePrediction((s) => s.result);
   if (!result || result.device_assessments.length === 0) return null;
@@ -29,35 +34,37 @@ export function CoronaryRiskCard() {
         </h3>
       </div>
       <p className="text-[11px] text-gray-500 mb-2 leading-snug">
-        Graded from coronary heights and sinus of Valsalva diameter (Ribeiro 2013, Yamamoto 2014).
-        Self-expanding supra-annular thresholds shifted +2 mm.
+        From coronary heights and sinus of Valsalva. Self-expanding supra-annular has tighter limits.
       </p>
       <div className="space-y-2">
-        {result.device_assessments.map((d) => (
-          <div
-            key={d.valve}
-            className="flex items-start justify-between gap-3 border-b border-gray-100 last:border-0 py-1.5"
-          >
-            <div className="min-w-0 flex-1">
-              <div className="text-xs font-medium text-gray-900">{d.valve}</div>
-              {d.coronary_risk.reasons.length > 0 && (
-                <ul className="text-[11px] text-gray-600 mt-0.5 leading-snug list-disc pl-4">
-                  {d.coronary_risk.reasons.slice(0, 3).map((r, i) => (
-                    <li key={i}>{r}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <span
-              className={cn(
-                "text-[10px] uppercase tracking-wider px-1.5 py-0.5 border rounded-sm whitespace-nowrap",
-                GRADE_BADGE[d.coronary_risk.grade],
-              )}
+        {result.device_assessments.map((d) => {
+          const reasons = patientReasons(d.coronary_risk.reasons);
+          return (
+            <div
+              key={d.valve}
+              className="flex items-start justify-between gap-3 border-b border-gray-100 last:border-0 py-1.5"
             >
-              {GRADE_LABEL[d.coronary_risk.grade]}
-            </span>
-          </div>
-        ))}
+              <div className="min-w-0 flex-1">
+                <div className="text-xs font-medium text-gray-900">{d.valve}</div>
+                {reasons.length > 0 && (
+                  <ul className="text-[11px] text-gray-600 mt-0.5 leading-snug list-disc pl-4">
+                    {reasons.slice(0, 3).map((r, i) => (
+                      <li key={i}>{r}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <span
+                className={cn(
+                  "text-[10px] uppercase tracking-wider px-1.5 py-0.5 border rounded-sm whitespace-nowrap",
+                  GRADE_BADGE[d.coronary_risk.grade],
+                )}
+              >
+                {GRADE_LABEL[d.coronary_risk.grade]}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
