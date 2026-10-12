@@ -1,4 +1,5 @@
 import Plotly from "plotly.js-basic-dist-min";
+import { useSyncExternalStore } from "react";
 import createPlotlyComponent from "react-plotly.js/factory";
 import type { Config, Layout, LayoutAxis } from "plotly.js-basic-dist-min";
 
@@ -99,4 +100,20 @@ export function config(filename: string): Partial<Config> {
     modeBarButtonsToRemove: ["select2d", "lasso2d", "autoScale2d", "toggleSpikelines"],
     toImageButtonOptions: { format: "png", filename: `tavi-${filename}`, scale: 2 },
   };
+}
+
+const NARROW = "(max-width: 640px)";
+function subscribeNarrow(onChange: () => void): () => void {
+  const query = window.matchMedia(NARROW);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+}
+
+/** True on phone-width screens, where charts drop long tick labels. */
+export function useNarrow(): boolean {
+  return useSyncExternalStore(
+    subscribeNarrow,
+    () => window.matchMedia(NARROW).matches,
+    () => false,
+  );
 }

@@ -10,20 +10,15 @@ import { FutilityBanner } from "@/components/FutilityBanner";
 import { Header } from "@/components/Header";
 import { HeartTeamSummary } from "@/components/HeartTeamSummary";
 import { ModelCardTab } from "@/components/ModelCardTab";
-import { ModelROCCurves } from "@/components/ModelROCCurves";
 import { PatientForm } from "@/components/PatientForm";
 import { PatientHeader } from "@/components/PatientHeader";
-import { PredictedVsObservedCalibration } from "@/components/PredictedVsObservedCalibration";
 import { ErrorState, LoadingState } from "@/components/RequestStatus";
 import { RiskComparison } from "@/components/RiskComparison";
-import { RiskFactorProfile } from "@/components/RiskFactorProfile";
-import { SensitivityAnalysis } from "@/components/SensitivityAnalysis";
 import { SeverityCard } from "@/components/SeverityCard";
 import { SeverityMeters } from "@/components/SeverityMeters";
-import { ShapWaterfall } from "@/components/ShapWaterfall";
 import { SpecialConsiderationsCard } from "@/components/SpecialConsiderationsCard";
 import { StartScreen } from "@/components/StartScreen";
-import { SurvivalCurve } from "@/components/SurvivalCurve";
+import { VisualAnalysis } from "@/components/VisualAnalysis";
 import { WorkspaceNav, type WorkspaceView } from "@/components/WorkspaceNav";
 import { cn } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
@@ -138,16 +133,7 @@ function App() {
                     </>
                   )}
 
-                  {view === "visual" && (
-                    <>
-                      <ShapWaterfall />
-                      <SurvivalCurve />
-                      <PredictedVsObservedCalibration />
-                      <RiskFactorProfile />
-                      <SensitivityAnalysis />
-                      <ModelROCCurves />
-                    </>
-                  )}
+                  {view === "visual" && <VisualAnalysis />}
                 </>
               )}
             </section>

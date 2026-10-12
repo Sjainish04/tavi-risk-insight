@@ -7,7 +7,7 @@ import { DCAandFairness } from "./DCAandFairness";
 import { DecisionCurvePlot } from "./DecisionCurvePlot";
 import { ModelCardNav, type ModelCardView } from "./ModelCardNav";
 import { ModelComparison } from "./ModelComparison";
-import { ShapWaterfall } from "./ShapWaterfall";
+import { RiskDrivers } from "./RiskDrivers";
 import { usePrediction } from "@/store/prediction";
 
 interface SectionBlock {
@@ -271,7 +271,7 @@ export function ModelCardTab() {
               <p className="text-xs text-gray-500 italic">
                 Driven by the most recent /predict result. Submit a new case from the Heart Team Workspace tab to refresh.
               </p>
-              <ShapWaterfall />
+              <RiskDrivers />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <CalibrationPlot />
                 <DecisionCurvePlot />
