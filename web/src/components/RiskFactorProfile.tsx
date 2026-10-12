@@ -1,4 +1,4 @@
-import Plot from "react-plotly.js";
+import { COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 
 import { usePrediction } from "@/store/prediction";
 
@@ -93,8 +93,12 @@ export function RiskFactorProfile() {
     return fac.protective ? -raw : raw;
   });
 
-  // Color: red if riskier, green if healthier
-  const colors = deviations.map((d) => (d > 0 ? "#da1e28" : "#198038"));
+  // Rose if riskier, emerald if healthier; the further from the registry
+  // average, the stronger the fill, so the biggest outliers stand out first.
+  const colors = deviations.map((d) =>
+    alpha(d > 0 ? COLORS.increases : COLORS.decreases, 0.35 + Math.min(0.6, Math.abs(d) / 3)),
+  );
+  const outlines = deviations.map((d) => (d > 0 ? COLORS.increases : COLORS.decreases));
 
   // Hover labels with patient + registry values
   const hoverText = factors.map(
@@ -103,14 +107,14 @@ export function RiskFactorProfile() {
   );
 
   return (
-    <div className="ibm-card p-3">
-      <h3 className="text-sm font-semibold text-gray-900 mb-1">
-        Risk factor profile · this patient vs PARTNER 3 average
-      </h3>
+    <div className="ibm-card p-4">
+      <p className="eyebrow">Patient profile</p>
+      <h3 className="card-title mb-1">This patient vs the PARTNER 3 average</h3>
       <p className="text-xs text-gray-500 mb-2">
-        Standardised deviation from a low-risk TAVR cohort. Bars to the right (red) flag
-        outlier factors driving risk up; bars to the left (green) are protective.
+        Standardised deviation from a low-risk TAVR cohort. Bars to the right (rose) flag
+        outlier factors driving risk up; bars to the left (emerald) are protective.
       </p>
+      <div className="figure-plate px-1 pt-2">
       <Plot
         data={[
           {
@@ -118,32 +122,38 @@ export function RiskFactorProfile() {
             orientation: "h",
             x: deviations,
             y: factors.map((fac) => fac.name),
-            marker: { color: colors },
+            marker: { color: colors, line: { color: outlines, width: 1.5 } },
             text: factors.map((fac) => `${fac.patient.toFixed(1)} ${fac.unit}`),
             textposition: "outside",
+            textfont: { family: "ui-monospace, Menlo, monospace", size: 11 },
+            cliponaxis: false,
             customdata: hoverText,
             hovertemplate: "%{customdata}<extra></extra>",
           },
         ]}
-        layout={{
-          height: 240,
-          margin: { l: 90, r: 50, t: 10, b: 40 },
+        layout={layout({
+          height: 270,
+          margin: { l: 12, r: 64, t: 8, b: 48 },
+          bargap: 0.35,
           xaxis: {
             title: { text: "← healthier · standardised units · riskier →" },
             zeroline: true,
-            zerolinecolor: "#525252",
+            zerolinecolor: COLORS.ink,
             zerolinewidth: 2,
             range: [-3, 3],
           },
-          yaxis: { tickfont: { size: 11 } },
-          font: { family: "Times New Roman, Times, serif", size: 11 },
-          paper_bgcolor: "white",
-          plot_bgcolor: "white",
+          yaxis: { tickfont: { size: 12, color: COLORS.ink }, showgrid: false },
           showlegend: false,
-        }}
-        config={{ displayModeBar: false, responsive: true }}
+          // The two halves of the axis, tinted, so direction reads before the bars do.
+          shapes: [
+            { type: "rect", xref: "x", yref: "paper", x0: -3, x1: 0, y0: 0, y1: 1, fillcolor: alpha(COLORS.decreases, 0.04), line: { width: 0 }, layer: "below" },
+            { type: "rect", xref: "x", yref: "paper", x0: 0, x1: 3, y0: 0, y1: 1, fillcolor: alpha(COLORS.increases, 0.04), line: { width: 0 }, layer: "below" },
+          ],
+        })}
+        config={config("risk-factor-profile")}
         style={{ width: "100%" }}
       />
+      </div>
     </div>
   );
 }

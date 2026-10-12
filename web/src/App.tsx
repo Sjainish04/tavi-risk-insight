@@ -14,12 +14,15 @@ import { ModelROCCurves } from "@/components/ModelROCCurves";
 import { PatientForm } from "@/components/PatientForm";
 import { PatientHeader } from "@/components/PatientHeader";
 import { PredictedVsObservedCalibration } from "@/components/PredictedVsObservedCalibration";
+import { ErrorState, LoadingState } from "@/components/RequestStatus";
 import { RiskComparison } from "@/components/RiskComparison";
 import { RiskFactorProfile } from "@/components/RiskFactorProfile";
 import { SensitivityAnalysis } from "@/components/SensitivityAnalysis";
 import { SeverityCard } from "@/components/SeverityCard";
+import { SeverityMeters } from "@/components/SeverityMeters";
 import { ShapWaterfall } from "@/components/ShapWaterfall";
 import { SpecialConsiderationsCard } from "@/components/SpecialConsiderationsCard";
+import { StartScreen } from "@/components/StartScreen";
 import { SurvivalCurve } from "@/components/SurvivalCurve";
 import { WorkspaceNav, type WorkspaceView } from "@/components/WorkspaceNav";
 import { cn } from "@/lib/utils";
@@ -32,6 +35,7 @@ function App() {
   const [view, setView] = useState<WorkspaceView>("summary");
   const [formCollapsed, setFormCollapsed] = useState(false);
   const error = usePrediction((s) => s.error);
+  const loading = usePrediction((s) => s.loading);
   const result = usePrediction((s) => s.result);
   const lastInput = usePrediction((s) => s.lastInput);
 
@@ -54,7 +58,7 @@ function App() {
   }, [lastInput]);
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen text-gray-900">
       <Header tab={tab} onTabChange={setTab} />
       {lastInput && <PatientHeader values={lastInput} caseId={caseId} />}
 
@@ -71,33 +75,22 @@ function App() {
               className={cn(
                 "space-y-4",
                 formCollapsed ? "lg:col-span-12" : "lg:col-span-8",
+                // On a phone the start screen (demo cases) comes before the long form.
+                !result && "order-first lg:order-none",
               )}
             >
-              {error && (
-                <div className="ibm-card border-red-300 bg-red-50 p-3 text-sm text-red-900">
-                  {error}
-                </div>
-              )}
+              {error && <ErrorState message={error} />}
 
-              {!result && !error && (
-                <div className="ibm-card p-8 text-center">
-                  <p className="text-sm text-gray-700 font-medium">
-                    Submit a case to start.
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Pull a demo from the EHR or fill the form on the left. We compute
-                    severity, three risk scores, complications, and per-device sizing in
-                    under 2 seconds.
-                  </p>
-                </div>
-              )}
+              {loading && !result && <LoadingState />}
+
+              {!result && !error && !loading && <StartScreen />}
 
               {result && formCollapsed && (
                 <div className="flex justify-end -mb-2">
                   <button
                     type="button"
                     onClick={() => setFormCollapsed(false)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-sm transition-colors"
+                    className="ibm-btn-secondary text-xs"
                   >
                     <Edit3 className="w-3.5 h-3.5" />
                     Edit case
@@ -107,14 +100,19 @@ function App() {
 
               {result && (
                 <>
-                  {/* Futility lives above the workspace nav — too urgent to hide behind a tab */}
+                  {/* Futility lives above the workspace nav: too urgent to hide behind a tab */}
                   <FutilityBanner />
 
                   <WorkspaceNav active={view} onChange={setView} />
 
                   {view === "summary" && <HeartTeamSummary onNavigate={setView} />}
 
-                  {view === "triage" && <SeverityCard />}
+                  {view === "triage" && (
+                    <>
+                      <SeverityCard />
+                      <SeverityMeters />
+                    </>
+                  )}
 
                   {view === "risk" && (
                     <>

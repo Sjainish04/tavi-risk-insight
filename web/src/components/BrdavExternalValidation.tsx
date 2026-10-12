@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Plot from "react-plotly.js";
+import { COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 
 interface BrdavReport {
   n_patients: number;
@@ -123,11 +123,13 @@ export function BrdavExternalValidation() {
                 symmetric: false,
                 array: deciles.map((d) => d.brdav_q75 - d.brdav_mean),
                 arrayminus: deciles.map((d) => d.brdav_mean - d.brdav_q25),
-                color: "#a6c8ff",
+                color: alpha(COLORS.ibm, 0.45),
+                thickness: 1.5,
+                width: 5,
               },
               name: "brdav mean (IQR bars)",
-              marker: { color: "#0f62fe", size: 8 },
-              line: { color: "#0f62fe" },
+              marker: { color: COLORS.ibm, size: 9, line: { color: "#ffffff", width: 1.5 } },
+              line: { color: COLORS.ibm, width: 2.5 },
             },
             {
               type: "scatter",
@@ -135,24 +137,23 @@ export function BrdavExternalValidation() {
               x: deciles.map((d) => d.recal_decile),
               y: deciles.map((d) => d.actual_mortality),
               name: "actual 30-d mortality",
-              marker: { color: "#da1e28", size: 6, symbol: "diamond" },
-              line: { color: "#da1e28", dash: "dot" },
+              marker: { color: COLORS.increases, size: 8, symbol: "diamond", line: { color: "#ffffff", width: 1.5 } },
+              line: { color: COLORS.increases, dash: "dot", width: 2 },
               yaxis: "y",
             },
           ]}
-          layout={{
+          layout={layout({
             autosize: true,
-            height: 240,
-            margin: { l: 56, r: 12, t: 8, b: 40 },
+            height: 260,
+            margin: { l: 56, r: 12, t: 8, b: 44 },
             xaxis: {
               title: { text: "Decile of our recal STS-PROM" },
               dtick: 1,
             },
             yaxis: { tickformat: ".0%" },
-            legend: { x: 0.02, y: 0.98, font: { size: 10 } },
-            font: { size: 11 },
-          }}
-          config={{ displayModeBar: false, responsive: true }}
+            legend: { orientation: "v", x: 0.02, y: 0.98, bgcolor: "rgba(255,255,255,0.85)" },
+          })}
+          config={config("brdav-agreement")}
           style={{ width: "100%" }}
         />
       </div>
@@ -163,7 +164,7 @@ export function BrdavExternalValidation() {
         {(deciles[deciles.length - 1].brdav_mean * 100).toFixed(0)}%), confirming the
         models agree on relative risk ordering. The actual 30-day mortality (red diamonds)
         in the top decile is{" "}
-        {(deciles[deciles.length - 1].actual_mortality * 100).toFixed(0)}% — consistent
+        {(deciles[deciles.length - 1].actual_mortality * 100).toFixed(0)}%: consistent
         with brdav's higher relative ranking of these patients.
         <br />
         <strong>Caveats (in the spirit of TRIPOD+AI honesty):</strong> our synthetic cohort

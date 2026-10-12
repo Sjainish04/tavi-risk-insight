@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Plot from "react-plotly.js";
+import { COLORS, Plot, config, layout } from "@/lib/plot";
 
 interface CalibrationPoint {
   decile: number;
@@ -69,8 +69,8 @@ interface ComparisonReport {
 }
 
 const VARIANT_COLOR: Record<string, string> = {
-  v1_lgbm_baseline: "#8d8d8d",
-  v2_lgbm_brdav: "#0072c3",
+  v1_lgbm_baseline: "#94a3b8",
+  v2_lgbm_brdav: "#0d9488",
   v3_stacking: "#0f62fe",
   v4_tabpfn: "#8a3ffc",
   brdav_followup: "#da1e28",
@@ -98,7 +98,7 @@ export function ModelComparison() {
   return (
     <section>
       <h4 className="font-semibold text-gray-900 mb-1">
-        Model variants — bootstrap 95% CI on a {data.n_test.toLocaleString()}-patient
+        Model variants: bootstrap 95% CI on a {data.n_test.toLocaleString()}-patient
         held-out test set
       </h4>
       <p className="text-xs text-gray-700 leading-relaxed mb-2">
@@ -106,7 +106,7 @@ export function ModelComparison() {
         synthetic train fold (same stratified split, seed 42). Confidence intervals
         from {data.n_bootstraps} non-parametric bootstraps of the test set.
         v2/v3/v4 use Brüggemann 2024's predictions on each patient as a 27th
-        feature — real-data knowledge transfer.
+        feature: real-data knowledge transfer.
       </p>
 
       <div className="overflow-x-auto">
@@ -130,7 +130,7 @@ export function ModelComparison() {
                   <tr key={v.name} className="border-b border-gray-100 text-gray-400">
                     <td className="py-1 pr-2">{v.label}</td>
                     <td colSpan={7} className="py-1 px-2 text-right italic">
-                      skipped — {v.skip_reason.slice(0, 80)}…
+                      skipped: {v.skip_reason.slice(0, 80)}…
                     </td>
                   </tr>
                 );
@@ -161,19 +161,19 @@ export function ModelComparison() {
       <p className="text-[11px] text-gray-500 mt-2 leading-relaxed">
         ★ winner by AUROC. <strong>v4 TabPFN</strong> beats all locals but runs in
         Prior Labs cloud (data leaves the box). <strong>v3 stacking</strong> is the
-        production deployment — best LOCAL model, fully offline. v2 (LGBM gaining
+        production deployment: best LOCAL model, fully offline. v2 (LGBM gaining
         brdav as feature 27) is a single-model alternative.
       </p>
 
       <h4 className="font-semibold text-gray-900 mt-4 mb-1">
-        Reliability diagram — raw model probability vs actual 30-d mortality on the
+        Reliability diagram: raw model probability vs actual 30-d mortality on the
         same {data.n_test}-patient held-out test
       </h4>
       <p className="text-xs text-gray-700 leading-relaxed mb-2">
         Each model's predictions are split into 10 quantile bins; for each bin we
         plot mean predicted probability (x) vs actual outcome rate (y). Closer to
         the 45° diagonal = better-calibrated <em>before isotonic</em>. brdav lives
-        on the right because it predicts a different (longer-horizon) endpoint —
+        on the right because it predicts a different (longer-horizon) endpoint:
         it's plotted to make the endpoint mismatch visible, not for fair calibration
         comparison.
       </p>
@@ -185,7 +185,7 @@ export function ModelComparison() {
             mode: "lines",
             x: [0, 0.7],
             y: [0, 0.7],
-            line: { color: "#cccccc", dash: "dot" as const, width: 1 },
+            line: { color: COLORS.neutral, dash: "dot" as const, width: 1.2 },
             name: "perfect calibration",
             hoverinfo: "skip",
             showlegend: true,
@@ -199,8 +199,8 @@ export function ModelComparison() {
               x: v.calibration_curve.map((p) => p.pred_mean),
               y: v.calibration_curve.map((p) => p.actual_mortality),
               name: `${v.label.split(" (")[0]} (raw O/E ${v.calibration_raw_o_over_e.toFixed(2)})`,
-              marker: { color: VARIANT_COLOR[v.name] ?? "#393939", size: 7 },
-              line: { color: VARIANT_COLOR[v.name] ?? "#393939", width: 2 },
+              marker: { color: VARIANT_COLOR[v.name] ?? "#393939", size: 8, line: { color: "#ffffff", width: 1.5 } },
+              line: { color: VARIANT_COLOR[v.name] ?? "#393939", width: 2.5 },
             })),
           // Brdav as a separate trace
           ...(data.brdav_on_test
@@ -211,16 +211,16 @@ export function ModelComparison() {
                   x: data.brdav_on_test.calibration_curve.map((p) => p.pred_mean),
                   y: data.brdav_on_test.calibration_curve.map((p) => p.actual_mortality),
                   name: "Brüggemann 2024 oracle (different endpoint)",
-                  marker: { color: VARIANT_COLOR.brdav_followup, size: 7, symbol: "diamond" },
+                  marker: { color: VARIANT_COLOR.brdav_followup, size: 8, symbol: "diamond", line: { color: "#ffffff", width: 1.5 } },
                   line: { color: VARIANT_COLOR.brdav_followup, width: 2, dash: "dash" as const },
                 },
               ]
             : []),
         ]}
-        layout={{
+        layout={layout({
           autosize: true,
-          height: 340,
-          margin: { l: 56, r: 12, t: 8, b: 44 },
+          height: 360,
+          margin: { l: 56, r: 12, t: 8, b: 48 },
           xaxis: {
             title: { text: "Mean predicted probability (raw, pre-isotonic)" },
             tickformat: ".0%",
@@ -231,28 +231,27 @@ export function ModelComparison() {
             tickformat: ".0%",
             range: [0, 0.25],
           },
-          legend: { x: 0.02, y: 0.98, font: { size: 10 }, bgcolor: "rgba(255,255,255,0.85)" },
-          font: { size: 11 },
-        }}
-        config={{ displayModeBar: false, responsive: true }}
+          legend: { orientation: "v", x: 0.02, y: 0.98, bgcolor: "rgba(255,255,255,0.85)" },
+        })}
+        config={config("reliability-diagram")}
         style={{ width: "100%" }}
       />
       <p className="text-[11px] text-gray-500 mt-2 leading-relaxed">
         <strong>Reading this plot:</strong> v1 LightGBM raw probabilities are
-        compressed (O/E 2.93 — under-predicts by 3×) which is why isotonic
+        compressed (O/E 2.93; under-predicts by 3×) which is why isotonic
         calibration helps it most. <strong>v3 stacking is naturally well-calibrated
-        even raw (O/E 1.06)</strong> — that's the ensemble averaging out individual
+        even raw (O/E 1.06)</strong>: that's the ensemble averaging out individual
         member biases. v4 TabPFN sits between (O/E 1.43). brdav's curve sits on the
         right (predicted 21–66%) but actual 30-d mortality maxes at 14% in its top
-        decile — visible proof the endpoint differs.
+        decile: visible proof the endpoint differs.
       </p>
 
       <h4 className="font-semibold text-gray-900 mt-4 mb-1">
-        External benchmarks — published AUROC on real cohorts
+        External benchmarks: published AUROC on real cohorts
       </h4>
       <p className="text-xs text-gray-700 leading-relaxed mb-2">
         Where our number sits in the published real-world band. Direct comparison
-        is imperfect (different cohorts, endpoints, eras) — but it answers the
+        is imperfect (different cohorts, endpoints, eras), but it answers the
         natural Q&amp;A question "is 0.78 any good?".
       </p>
       <div className="overflow-x-auto">

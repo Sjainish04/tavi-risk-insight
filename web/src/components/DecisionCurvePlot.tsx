@@ -1,4 +1,4 @@
-import Plot from "react-plotly.js";
+import { COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 
 import { usePrediction } from "@/store/prediction";
 
@@ -20,10 +20,10 @@ export function DecisionCurvePlot() {
   const xs = dca.map((d) => d.threshold * 100);
 
   return (
-    <div className="ibm-card p-3">
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">
-        Decision curve analysis
-      </h3>
+    <div className="ibm-card p-4">
+      <p className="eyebrow">Clinical utility</p>
+      <h3 className="card-title mb-2">Decision curve analysis</h3>
+      <div className="figure-plate px-1 pt-2">
       <Plot
         data={[
           {
@@ -31,39 +31,37 @@ export function DecisionCurvePlot() {
             y: dca.map((d) => d.net_benefit_model),
             mode: "lines+markers",
             name: "LightGBM",
-            line: { color: "#0f62fe", width: 2 },
-            marker: { size: 6 },
+            line: { color: COLORS.ibm, width: 3 },
+            marker: { size: 7, color: COLORS.ibm, line: { color: "#ffffff", width: 1.5 } },
+            fill: "tozeroy",
+            fillcolor: alpha(COLORS.ibm, 0.06),
           },
           {
             x: xs,
             y: dca.map((d) => d.net_benefit_treat_all),
             mode: "lines",
             name: "Treat all",
-            line: { color: "#ffb000", width: 1, dash: "dot" },
+            line: { color: COLORS.modifiable, width: 1.5, dash: "dot" },
           },
           {
             x: xs,
             y: dca.map((d) => d.net_benefit_treat_none),
             mode: "lines",
             name: "Treat none",
-            line: { color: "#525252", width: 1, dash: "dot" },
+            line: { color: COLORS.muted, width: 1.5, dash: "dot" },
           },
         ]}
-        layout={{
-          height: 260,
-          margin: { l: 50, r: 10, t: 10, b: 40 },
+        layout={layout({
+          height: 290,
           xaxis: { title: { text: "Threshold probability (%)" } },
           yaxis: { title: { text: "Net benefit" } },
-          legend: { orientation: "h", x: 0, y: -0.25, font: { size: 10 } },
-          font: { family: "Times New Roman, Times, serif", size: 11 },
-          paper_bgcolor: "white",
-          plot_bgcolor: "white",
-        }}
-        config={{ displayModeBar: false, responsive: true }}
+        })}
+        config={config("decision-curve")}
         style={{ width: "100%" }}
       />
+      </div>
       <p className="text-xs text-gray-500 mt-1">
-        Vickers &amp; Elkin 2006 — model is clinically useful where its line
+        Vickers &amp; Elkin 2006: the model is clinically useful where its line
         sits above both treat-all and treat-none baselines.
       </p>
     </div>

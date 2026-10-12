@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import type { DeviceAssessment, ProbabilityWithCI } from "@/lib/types";
+import { RiskBandScale } from "./RiskBandScale";
 import { RISK_BAND_CHIP, RISK_BAND_LABEL, cn, fmtPct, riskBand } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 import type { WorkspaceView } from "./WorkspaceNav";
@@ -67,7 +68,7 @@ function SummaryRow({
   emphasis?: boolean;
 }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-1 sm:gap-3 sm:items-baseline py-1.5 border-b border-gray-100 last:border-0">
+    <div className="grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-1 sm:gap-4 sm:items-baseline py-2.5 border-b border-slate-100 last:border-0">
       <div className="text-[10px] uppercase tracking-wider text-gray-500">{label}</div>
       <div className={cn("text-sm leading-snug", emphasis ? "text-gray-900" : "text-gray-800")}>
         {children}
@@ -87,7 +88,7 @@ function JumpLink({
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-ibm-50 text-ibm-700 hover:bg-ibm-100 border border-ibm-200 rounded-sm transition-colors"
+      className="inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 bg-ibm-50 text-ibm-700 hover:bg-ibm-100 hover:-translate-y-px border border-ibm-200 rounded-full transition-all"
     >
       {label}
       <ArrowRight className="w-3 h-3" />
@@ -110,18 +111,27 @@ export function HeartTeamSummary({ onNavigate }: Props) {
     result.risk_score_drivers.find((d) => d.is_modifiable && d.effect === "increases") ?? null;
 
   const echoChips = [
-    `AVA ${result.feature_summary["aortic_valve_area_cm2"]?.toString().slice(0, 4) ?? "—"}`,
-    `MG ${result.feature_summary["mean_aortic_gradient_mmhg"]?.toString().slice(0, 3) ?? "—"}`,
-    `Vel ${result.feature_summary["peak_aortic_velocity_m_per_s"]?.toString().slice(0, 4) ?? "—"}`,
+    `AVA ${result.feature_summary["aortic_valve_area_cm2"]?.toString().slice(0, 4) ?? "n/a"}`,
+    `MG ${result.feature_summary["mean_aortic_gradient_mmhg"]?.toString().slice(0, 3) ?? "n/a"}`,
+    `Vel ${result.feature_summary["peak_aortic_velocity_m_per_s"]?.toString().slice(0, 4) ?? "n/a"}`,
   ];
+  const primaryName =
+    result.primary_model_name === "v3_stacking_brdav" ? "Stacking ensemble" : "LightGBM";
 
   return (
-    <div className="ibm-card border-l-4 border-ibm-500 bg-white p-4 space-y-1">
-      <div className="flex items-center gap-2 mb-2">
-        <Star className="w-4 h-4 text-ibm-500 fill-ibm-500" />
-        <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-          Heart Team Summary
-        </h2>
+    <div className="ibm-card relative overflow-hidden p-5 space-y-1 animate-fade-up">
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-ibm-400 via-ibm-600 to-ibm-800"
+      />
+      <div className="flex items-center gap-2.5 mb-2">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ibm-50 ring-1 ring-ibm-100">
+          <Star className="w-4 h-4 text-ibm-500 fill-ibm-500" />
+        </span>
+        <div>
+          <p className="eyebrow">At a glance</p>
+          <h2 className="card-title">Heart Team summary</h2>
+        </div>
       </div>
 
       <SummaryRow label="Severity" emphasis>
@@ -138,9 +148,10 @@ export function HeartTeamSummary({ onNavigate }: Props) {
 
       <SummaryRow label="30-day mortality" emphasis>
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xl font-mono font-semibold text-gray-900">
+          <span className="text-2xl font-mono font-semibold text-gray-900">
             {fmtPct(result.lgbm.raw_probability)}
           </span>
+          <span className="text-[11px] text-gray-500">{primaryName}</span>
           <span
             className={cn(
               "text-[11px] uppercase tracking-wider font-semibold px-2 py-0.5 border rounded-sm",
@@ -161,6 +172,10 @@ export function HeartTeamSummary({ onNavigate }: Props) {
         </div>
       </SummaryRow>
 
+      <SummaryRow label="All risk models">
+        <RiskBandScale compact />
+      </SummaryRow>
+
       <SummaryRow label="Recommended fit">
         {recommended ? (
           <div className="flex items-center gap-2 flex-wrap">
@@ -175,20 +190,20 @@ export function HeartTeamSummary({ onNavigate }: Props) {
           </div>
         ) : (
           <span className="text-amber-700">
-            No device fits the published sizing range — Heart Team review.
+            No device fits the published sizing range; Heart Team review.
           </span>
         )}
       </SummaryRow>
 
       <SummaryRow label="Watch for">
         {elevated.length === 0 ? (
-          <span className="text-gray-500">— no complication above 2× cohort base —</span>
+          <span className="text-gray-500">No complication above 2× the cohort base rate</span>
         ) : (
           <div className="flex flex-wrap gap-1.5">
             {elevated.map((e) => (
               <span
                 key={e.name}
-                className="inline-flex items-center gap-1 text-xs px-2 py-0.5 bg-red-50 text-red-800 border border-red-200 rounded-sm"
+                className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-rose-50 text-rose-800 border border-rose-200 rounded-full"
               >
                 <AlertTriangle className="w-3 h-3" />
                 {e.name} {fmtPct(e.c.p)} · {e.c.multiplier_vs_base.toFixed(1)}× base
@@ -210,12 +225,12 @@ export function HeartTeamSummary({ onNavigate }: Props) {
             </div>
           </div>
         ) : (
-          <span className="text-gray-500">— no modifiable driver flagged —</span>
+          <span className="text-gray-500">No modifiable driver flagged</span>
         )}
       </SummaryRow>
 
       {onNavigate && (
-        <div className="pt-3 mt-2 border-t border-gray-100">
+        <div className="pt-3 mt-2 border-t border-slate-100">
           <p className="text-[11px] uppercase tracking-wider text-gray-500 mb-2">
             Need details?
           </p>

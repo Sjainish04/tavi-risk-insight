@@ -1,4 +1,4 @@
-import Plot from "react-plotly.js";
+import { COLORS, MODEL_COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 
 // STS-PROM per-decile (mid of decile range × O/E ratio = observed)
 const STS_DECILES = [
@@ -14,7 +14,7 @@ const STS_DECILES = [
   { pred: 0.20, oe: 0.45 },
 ];
 
-// LightGBM (post-isotonic calibration) — close to diagonal with realistic noise
+// LightGBM (post-isotonic calibration): close to diagonal with realistic noise
 const LGBM_DECILES = [
   { pred: 0.005, obs: 0.005 },
   { pred: 0.012, obs: 0.014 },
@@ -33,68 +33,82 @@ const MAX = 0.25;
 
 export function PredictedVsObservedCalibration() {
   return (
-    <div className="ibm-card p-3">
-      <h3 className="text-sm font-semibold text-gray-900 mb-1">
-        Calibration · predicted vs observed mortality
-      </h3>
+    <div className="ibm-card p-4">
+      <p className="eyebrow">Calibration</p>
+      <h3 className="card-title mb-1">Predicted vs observed mortality</h3>
       <p className="text-xs text-gray-500 mb-2">
         A perfectly calibrated model sits on the dashed diagonal. STS-PROM drifts
         upward in the low-risk range (over-predicts) and downward in the high-risk
         range (under-predicts). LightGBM tracks the diagonal after isotonic calibration.
       </p>
-      <Plot
-        data={[
-          {
-            type: "scatter",
-            mode: "lines",
-            x: [0, MAX],
-            y: [0, MAX],
-            name: "Perfect calibration",
-            line: { color: "#cccccc", dash: "dash", width: 1 },
-            hoverinfo: "skip",
-          },
-          {
-            type: "scatter",
-            mode: "lines+markers",
-            x: stsPoints.map((d) => d.pred),
-            y: stsPoints.map((d) => d.obs),
-            name: "STS-PROM (drifts in modern TAVI)",
-            marker: { color: "#da1e28", size: 8 },
-            line: { color: "#da1e28", width: 2 },
-            hovertemplate: "Predicted %{x:.1%}<br>Observed %{y:.1%}<extra>STS-PROM</extra>",
-          },
-          {
-            type: "scatter",
-            mode: "lines+markers",
-            x: LGBM_DECILES.map((d) => d.pred),
-            y: LGBM_DECILES.map((d) => d.obs),
-            name: "LightGBM (calibrated)",
-            marker: { color: "#0f62fe", size: 8, symbol: "diamond" },
-            line: { color: "#0f62fe", width: 2 },
-            hovertemplate: "Predicted %{x:.1%}<br>Observed %{y:.1%}<extra>LightGBM</extra>",
-          },
-        ]}
-        layout={{
-          height: 320,
-          margin: { l: 60, r: 10, t: 10, b: 50 },
-          xaxis: {
-            title: { text: "Predicted 30-day mortality" },
-            range: [0, MAX],
-            tickformat: ".0%",
-          },
-          yaxis: {
-            title: { text: "Observed mortality" },
-            range: [0, MAX],
-            tickformat: ".0%",
-          },
-          legend: { orientation: "h", x: 0, y: -0.2, font: { size: 10 } },
-          font: { family: "Times New Roman, Times, serif", size: 11 },
-          paper_bgcolor: "white",
-          plot_bgcolor: "white",
-        }}
-        config={{ displayModeBar: false, responsive: true }}
-        style={{ width: "100%" }}
-      />
+      <div className="figure-plate px-1 pt-2">
+        <Plot
+          data={[
+            {
+              type: "scatter",
+              mode: "lines",
+              x: [0, MAX],
+              y: [0, MAX],
+              name: "Perfect calibration",
+              line: { color: COLORS.neutral, dash: "dash", width: 1.2 },
+              hoverinfo: "skip",
+            },
+            {
+              // The gap between STS-PROM and the diagonal, shaded, so the drift
+              // reads as an area rather than two nearly parallel lines.
+              type: "scatter",
+              mode: "lines",
+              x: stsPoints.map((d) => d.pred),
+              y: stsPoints.map((d) => d.pred),
+              line: { width: 0 },
+              hoverinfo: "skip",
+              showlegend: false,
+            },
+            {
+              type: "scatter",
+              mode: "lines+markers",
+              x: stsPoints.map((d) => d.pred),
+              y: stsPoints.map((d) => d.obs),
+              name: "STS-PROM (drifts in modern TAVI)",
+              fill: "tonexty",
+              fillcolor: alpha(COLORS.increases, 0.08),
+              marker: { color: COLORS.increases, size: 9, line: { color: "#ffffff", width: 1.5 } },
+              line: { color: COLORS.increases, width: 2.5 },
+              hovertemplate: "Predicted %{x:.1%}<br>Observed %{y:.1%}<extra>STS-PROM</extra>",
+            },
+            {
+              type: "scatter",
+              mode: "lines+markers",
+              x: LGBM_DECILES.map((d) => d.pred),
+              y: LGBM_DECILES.map((d) => d.obs),
+              name: "LightGBM (calibrated)",
+              marker: {
+                color: MODEL_COLORS.lgbm,
+                size: 10,
+                symbol: "diamond",
+                line: { color: "#ffffff", width: 1.5 },
+              },
+              line: { color: MODEL_COLORS.lgbm, width: 2.5 },
+              hovertemplate: "Predicted %{x:.1%}<br>Observed %{y:.1%}<extra>LightGBM</extra>",
+            },
+          ]}
+          layout={layout({
+            height: 340,
+            xaxis: {
+              title: { text: "Predicted 30-day mortality" },
+              range: [0, MAX],
+              tickformat: ".0%",
+            },
+            yaxis: {
+              title: { text: "Observed mortality" },
+              range: [0, MAX],
+              tickformat: ".0%",
+            },
+          })}
+          config={config("calibration")}
+          style={{ width: "100%" }}
+        />
+      </div>
     </div>
   );
 }

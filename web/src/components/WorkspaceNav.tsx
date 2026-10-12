@@ -33,7 +33,7 @@ export function WorkspaceNav({ active, onChange }: Props) {
     <nav
       role="tablist"
       aria-label="Heart Team workspace sections"
-      className="ibm-card p-1 flex md:flex-wrap gap-0.5 overflow-x-auto"
+      className="ibm-card p-1.5 flex md:flex-wrap gap-1 overflow-x-auto"
     >
       {VIEWS.map((v) => {
         const isActive = v.id === active;
@@ -46,10 +46,10 @@ export function WorkspaceNav({ active, onChange }: Props) {
             aria-selected={isActive}
             onClick={() => onChange(v.id)}
             className={cn(
-              "flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-sm transition-colors flex-1 min-w-[100px] justify-center",
+              "flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg transition-all flex-1 min-w-[110px] justify-center whitespace-nowrap",
               isActive
-                ? "bg-ibm-500 text-white shadow-sm"
-                : "text-gray-700 hover:bg-gray-50",
+                ? "bg-gradient-to-b from-ibm-500 to-ibm-600 text-white shadow-glow"
+                : "text-gray-600 hover:bg-ibm-50 hover:text-ibm-700",
             )}
           >
             <Icon className="w-4 h-4" />

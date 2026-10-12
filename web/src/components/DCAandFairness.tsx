@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Plot from "react-plotly.js";
+import { COLORS, Plot, config, layout } from "@/lib/plot";
 
 interface DcaPoint {
   threshold: number;
@@ -38,8 +38,8 @@ const VARIANT_LABEL: Record<string, string> = {
 };
 
 const VARIANT_COLOR: Record<string, string> = {
-  v1_lgbm_baseline: "#8d8d8d",
-  v2_lgbm_brdav: "#0072c3",
+  v1_lgbm_baseline: "#94a3b8",
+  v2_lgbm_brdav: "#0d9488",
   v3_stacking: "#0f62fe",
 };
 
@@ -53,7 +53,7 @@ export function DCAandFairness() {
   }, []);
   if (!data) return null;
 
-  // Build DCA traces — one "model" line per variant + one shared "all"/"none"
+  // Build DCA traces: one "model" line per variant + one shared "all"/"none"
   const dcaTraces: Plotly.Data[] = [];
   const variantNames = Object.keys(data.decision_curve_analysis);
   // Treat-all reference (any variant has the same series)
@@ -67,7 +67,7 @@ export function DCAandFairness() {
     x: treatAll.map((p) => p.threshold),
     y: treatAll.map((p) => p.net_benefit ?? 0),
     name: "treat all",
-    line: { color: "#525252", dash: "dot" as const, width: 1 },
+    line: { color: COLORS.muted, dash: "dot" as const, width: 1.5 },
   });
   dcaTraces.push({
     type: "scatter",
@@ -75,7 +75,7 @@ export function DCAandFairness() {
     x: treatNone.map((p) => p.threshold),
     y: treatNone.map((p) => p.net_benefit ?? 0),
     name: "treat none",
-    line: { color: "#a8a8a8", dash: "dot" as const, width: 1 },
+    line: { color: COLORS.neutral, dash: "dot" as const, width: 1.5 },
   });
   for (const name of variantNames) {
     const modelPoints = data.decision_curve_analysis[name].filter((p) => p.label === "model");
@@ -85,7 +85,7 @@ export function DCAandFairness() {
       x: modelPoints.map((p) => p.threshold),
       y: modelPoints.map((p) => p.net_benefit ?? 0),
       name: VARIANT_LABEL[name] ?? name,
-      line: { color: VARIANT_COLOR[name] ?? "#393939", width: 2 },
+      line: { color: VARIANT_COLOR[name] ?? "#393939", width: 2.75 },
     });
   }
 
@@ -100,12 +100,13 @@ export function DCAandFairness() {
         below "treat all" or "treat none" at a threshold means using the model harms
         decisions at that threshold.
       </p>
+      <div className="figure-plate px-1 pt-2">
       <Plot
         data={dcaTraces}
-        layout={{
+        layout={layout({
           autosize: true,
-          height: 280,
-          margin: { l: 56, r: 12, t: 8, b: 40 },
+          height: 300,
+          margin: { l: 56, r: 12, t: 8, b: 44 },
           xaxis: {
             title: { text: "Decision threshold (probability)" },
             tickformat: ".0%",
@@ -115,12 +116,12 @@ export function DCAandFairness() {
             title: { text: "Net benefit" },
             tickformat: ".3f",
           },
-          legend: { x: 0.7, y: 0.98, font: { size: 10 } },
-          font: { size: 11 },
-        }}
-        config={{ displayModeBar: false, responsive: true }}
+          legend: { orientation: "v", x: 0.68, y: 0.98, bgcolor: "rgba(255,255,255,0.85)" },
+        })}
+        config={config("decision-curves-by-variant")}
         style={{ width: "100%" }}
       />
+      </div>
       <p className="text-[11px] text-gray-500 mt-1 leading-relaxed">
         At low thresholds (~1-3%, common for screening) all variants beat treat-all
         and treat-none. As threshold rises (toward "only treat very high-risk")
@@ -133,7 +134,7 @@ export function DCAandFairness() {
       <p className="text-xs text-gray-700 leading-relaxed mb-2">
         Equalized-Odds Difference (EOD) measures disparity in true-positive and
         false-positive rates across groups; closer to 0 is fairer. AUROC by sex
-        shows discrimination ability per group — small gaps preferred.
+        shows discrimination ability per group: small gaps preferred.
       </p>
       <div className="overflow-x-auto">
         <table className="text-xs w-full">
@@ -158,16 +159,16 @@ export function DCAandFairness() {
                     {f.equalized_odds_difference_sex.toFixed(3)}
                   </td>
                   <td className="py-1 px-2 text-right font-mono">
-                    {female?.auroc != null ? female.auroc.toFixed(3) : "—"}
+                    {female?.auroc != null ? female.auroc.toFixed(3) : "n/a"}
                   </td>
                   <td className="py-1 px-2 text-right font-mono">
-                    {male?.auroc != null ? male.auroc.toFixed(3) : "—"}
+                    {male?.auroc != null ? male.auroc.toFixed(3) : "n/a"}
                   </td>
                   <td className="py-1 px-2 text-right font-mono">
-                    {female ? female.fnr.toFixed(3) : "—"}
+                    {female ? female.fnr.toFixed(3) : "n/a"}
                   </td>
                   <td className="py-1 pl-2 text-right font-mono">
-                    {male ? male.fnr.toFixed(3) : "—"}
+                    {male ? male.fnr.toFixed(3) : "n/a"}
                   </td>
                 </tr>
               );
@@ -177,11 +178,11 @@ export function DCAandFairness() {
       </div>
       <p className="text-[11px] text-gray-500 mt-1 leading-relaxed">
         <strong>Notable:</strong> v2 LightGBM-with-brdav has the most uniform AUROC
-        across sex (0.756 F vs 0.752 M, gap 0.004) — adding the real-cohort
+        across sex (0.756 F vs 0.752 M, gap 0.004), adding the real-cohort
         oracle as a feature <em>improved fairness</em>. v3 stacking has the highest
         absolute AUROC in both groups but a wider EOD (0.125), trading some
-        uniformity for accuracy. v1 baseline shows an 8-pp female-male AUROC gap
-        — the largest fairness concern of the three.
+        uniformity for accuracy. v1 baseline shows an 8-pp female-male AUROC gap:
+        the largest fairness concern of the three.
       </p>
     </section>
   );

@@ -1,4 +1,4 @@
-// Mirrors api/src/tavi_api/schemas.py — keep in sync.
+// Mirrors api/src/tavi_api/schemas.py: keep in sync.
 
 export type Sex = "male" | "female";
 export type NyhaClass = "I" | "II" | "III" | "IV";
@@ -21,7 +21,7 @@ export interface PatientInput {
   hemoglobin_g_dl: number;
   albumin_g_dl: number;
   nt_probnp_pg_ml?: number | null;
-  // Aortic-valve hemodynamics (echo) — required for severity assessment
+  // Aortic-valve hemodynamics (echo), required for severity assessment
   aortic_valve_area_cm2: number;
   mean_aortic_gradient_mmhg: number;
   peak_aortic_velocity_m_per_s: number;

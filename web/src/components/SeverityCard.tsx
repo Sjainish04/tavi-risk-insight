@@ -1,6 +1,6 @@
 import { Activity, AlertOctagon, CheckCircle2 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cleanText, cn } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 import type { SeverityClass } from "@/lib/types";
 
@@ -27,7 +27,7 @@ export function SeverityCard() {
   const isSevere = sev.is_severe;
 
   return (
-    <div className="ibm-card p-3">
+    <div className="ibm-card p-4">
       <div className="flex items-start gap-3">
         {isSevere ? (
           <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
@@ -36,12 +36,12 @@ export function SeverityCard() {
         )}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-semibold text-gray-900">
+            <h3 className="card-title">
               {isSevere ? "Severe AS confirmed" : "Severe AS not met"}
             </h3>
             <span
               className={cn(
-                "text-[10px] uppercase tracking-wider px-1.5 py-0.5 border rounded-sm",
+                "text-[10px] uppercase tracking-wider px-2 py-0.5 border rounded-full",
                 CLASS_BADGE[sev.severity_class],
               )}
             >
@@ -53,13 +53,13 @@ export function SeverityCard() {
               {sev.criteria_met.map((c, i) => (
                 <li key={i} className="flex items-start gap-1.5">
                   <Activity className="w-3 h-3 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span>{c}</span>
+                  <span>{cleanText(c)}</span>
                 </li>
               ))}
             </ul>
           )}
           {sev.notes && (
-            <p className="text-[11px] text-gray-500 mt-1 leading-snug">{sev.notes}</p>
+            <p className="text-[11px] text-gray-500 mt-1 leading-snug">{cleanText(sev.notes)}</p>
           )}
         </div>
       </div>

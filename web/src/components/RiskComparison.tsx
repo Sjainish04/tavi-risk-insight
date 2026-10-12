@@ -3,6 +3,7 @@ import { ArrowDownRight, ArrowUpRight, Minus, Wrench } from "lucide-react";
 import type { RiskScoreDriver } from "@/lib/types";
 import { RISK_BAND_CHIP, RISK_BAND_LABEL, cn, fmtPct, riskBand } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
+import { RiskBandScale } from "./RiskBandScale";
 
 interface CardProps {
   title: string;
@@ -111,7 +112,7 @@ function RiskCard({ title, subtitle, pct, highlight, delta, note, badge, footer 
             };
 
   return (
-    <div className={cn("ibm-card p-3 space-y-1.5", accent)}>
+    <div className={cn("ibm-card p-4 space-y-1.5 transition-shadow hover:shadow-lift", accent)}>
       <div className="flex items-center justify-between">
         <h3 className="text-[10px] font-semibold text-gray-500 uppercase tracking-wide">
           {title}
@@ -124,7 +125,7 @@ function RiskCard({ title, subtitle, pct, highlight, delta, note, badge, footer 
       </div>
       <div className="flex items-baseline gap-1.5">
         <span className="text-2xl font-mono font-semibold text-gray-900">
-          {pct == null ? "—" : fmtPct(pct)}
+          {pct == null ? "n/a" : fmtPct(pct)}
         </span>
         {deltaLabel && (
           <span className={cn("flex items-center text-[10px]", deltaLabel.cls)}>
@@ -164,7 +165,13 @@ export function RiskComparison() {
 
   return (
     <div className="space-y-2">
-      <div className="text-[11px] uppercase tracking-wider text-gray-500 px-1">
+      <div className="ibm-card p-4">
+        <p className="eyebrow">30-day mortality · every model on one scale</p>
+        <div className="mt-2">
+          <RiskBandScale />
+        </div>
+      </div>
+      <div className="text-[11px] uppercase tracking-wider text-gray-500 px-1 pt-1">
         30-day mortality estimates · ensemble of validated calculators
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
@@ -190,7 +197,7 @@ export function RiskComparison() {
           pct={result.tvt.raw_probability}
           highlight="neutral"
           badge="TAVI native"
-          note="Slope 0.83 — best-calibrated external score."
+          note="Slope 0.83: the best-calibrated external score."
         />
         <RiskCard
           title={primaryTitle}
@@ -226,8 +233,8 @@ export function RiskComparison() {
           <p className="text-[11px] text-gray-700 leading-snug">
             <strong>Different endpoint</strong>: brdav predicts all-cause follow-up
             mortality (months–years), not 30-day. Direct probability comparison would
-            mislead — the value is in <em>rank agreement</em> with our recalibrated
-            scores (Spearman ρ ≈ 0.53 across 5,000 patients — see Model Card).
+            mislead; the value is in <em>rank agreement</em> with our recalibrated
+            scores (Spearman ρ ≈ 0.53 across 5,000 patients, see Model Card).
             {result.brdav.miscalibration_note && (
               <span className="text-gray-500 italic"> · {result.brdav.miscalibration_note}</span>
             )}

@@ -1,5 +1,6 @@
 import { OctagonAlert } from "lucide-react";
 
+import { cleanText } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 
 export function FutilityBanner() {
@@ -12,17 +13,17 @@ export function FutilityBanner() {
       <OctagonAlert className="w-5 h-5 text-amber-700 flex-shrink-0 mt-0.5" />
       <div className="flex-1">
         <h3 className="text-sm font-semibold text-amber-900 mb-1">
-          Futility flag — composite score {f.composite_score.toFixed(2)} ≥ 0.50
+          Futility flag: composite score {f.composite_score.toFixed(2)} ≥ 0.50
         </h3>
         <p className="text-sm text-amber-900 leading-relaxed">
           Valve replacement is unlikely to add survival here. The alternative is{" "}
           <strong>medical therapy</strong> (diuretics, neurohormonal blockade, palliative-care
-          referral). <strong>SAVR is not the alternative</strong> — the same factors raise
+          referral). <strong>SAVR is not the alternative</strong>: the same factors raise
           surgical risk too.
         </p>
         {f.drivers.length > 0 && (
           <p className="text-xs text-amber-900 mt-2 leading-snug">
-            <strong>Drivers:</strong> {f.drivers.join(" · ")}
+            <strong>Drivers:</strong> {f.drivers.map(cleanText).join(" · ")}
           </p>
         )}
         <p className="text-[11px] text-amber-800 mt-1.5 leading-snug italic">

@@ -4,10 +4,10 @@ import type { PatientInput } from "@/lib/types";
 import { usePrediction } from "@/store/prediction";
 
 const NYHA_LABEL: Record<string, string> = {
-  I: "I — asymptomatic",
-  II: "II — slight limitation",
-  III: "III — marked limitation",
-  IV: "IV — symptoms at rest",
+  I: "I (asymptomatic)",
+  II: "II (slight limitation)",
+  III: "III (marked limitation)",
+  IV: "IV (symptoms at rest)",
 };
 
 interface Props {
@@ -20,10 +20,10 @@ export function PatientHeader({ values, caseId }: Props) {
   const recal = result?.sts_prom.recalibrated_probability ?? null;
 
   return (
-    <div className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center gap-x-6 gap-y-1 text-xs">
+    <div className="bg-gradient-to-r from-ink-900 via-ink-800 to-ibm-900 text-white shadow-lift">
+      <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs">
         <Cell icon={<Hash className="w-3.5 h-3.5" />} label="Case">
-          {caseId}
+          <span className="font-mono">{caseId}</span>
         </Cell>
         <Cell icon={<User2 className="w-3.5 h-3.5" />} label="Patient">
           {`${values.sex === "female" ? "F" : "M"} · ${Math.round(values.age_years)} yo`}
@@ -39,8 +39,14 @@ export function PatientHeader({ values, caseId }: Props) {
           Today · pending review
         </Cell>
         {recal != null && (
-          <span className="ml-auto bg-ibm-500 text-white px-2 py-0.5 font-mono font-medium">
-            30-day risk · {(recal * 100).toFixed(1)}%
+          <span
+            className="ml-auto inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/25"
+            title="30-day mortality from the era-recalibrated STS-PROM. Other models are compared on the Risk tab."
+          >
+            <span className="text-slate-300">STS-PROM, recalibrated</span>
+            <span className="font-mono font-semibold text-white">
+              {(recal * 100).toFixed(1)}%
+            </span>
           </span>
         )}
       </div>
@@ -61,11 +67,9 @@ function Cell({
 }) {
   return (
     <span className="flex items-center gap-1.5">
-      {icon}
-      <span className="text-gray-400">{label}</span>
-      <span className={capitalize ? "capitalize text-white" : "text-white"}>
-        {children}
-      </span>
+      <span className="text-slate-400">{icon}</span>
+      <span className="text-slate-400">{label}</span>
+      <span className={capitalize ? "capitalize text-white" : "text-white"}>{children}</span>
     </span>
   );
 }

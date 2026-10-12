@@ -1,5 +1,6 @@
 import { Stethoscope } from "lucide-react";
 
+import { cleanText } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 
 // Strip inline parenthetical citations (e.g., " (Yoon 2017)") for the main view
@@ -14,22 +15,25 @@ export function SpecialConsiderationsCard() {
   // Aggregate considerations across devices, deduped, citations stripped
   const allConsiderations = Array.from(
     new Set(
-      result.device_assessments.flatMap((d) => d.considerations.map(stripCitation)),
+      result.device_assessments.flatMap((d) => d.considerations.map((c) => cleanText(stripCitation(c)))),
     ),
   );
 
   if (allConsiderations.length === 0) return null;
 
   return (
-    <div className="ibm-card p-3">
-      <div className="flex items-center gap-2 mb-2">
+    <div className="ibm-card p-4">
+      <div className="flex items-center gap-2 mb-3">
         <Stethoscope className="w-4 h-4 text-ibm-500" />
-        <h3 className="text-sm font-semibold text-gray-900">Special considerations</h3>
+        <h3 className="card-title">Special considerations</h3>
       </div>
-      <ul className="space-y-1.5 text-xs text-gray-700">
+      <ul className="space-y-2 text-xs text-gray-700">
         {allConsiderations.map((c, i) => (
-          <li key={i} className="flex gap-2 leading-snug">
-            <span className="text-ibm-500 flex-shrink-0">·</span>
+          <li
+            key={i}
+            className="flex gap-2.5 rounded-lg border border-slate-200 bg-slate-50/70 px-3 py-2 leading-snug"
+          >
+            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-ibm-500" />
             <span>{c}</span>
           </li>
         ))}

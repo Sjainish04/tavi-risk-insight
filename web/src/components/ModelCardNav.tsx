@@ -25,7 +25,7 @@ export function ModelCardNav({ active, onChange }: Props) {
     <nav
       role="tablist"
       aria-label="Model card sections"
-      className="flex flex-wrap gap-0.5 border-b border-gray-200 -mt-1"
+      className="flex flex-wrap gap-1 border-b border-slate-200 -mt-1"
     >
       {VIEWS.map((v) => {
         const isActive = v.id === active;

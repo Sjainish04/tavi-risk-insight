@@ -1,4 +1,4 @@
-import Plot from "react-plotly.js";
+import { COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 
 import { usePrediction } from "@/store/prediction";
 
@@ -22,23 +22,25 @@ export function CalibrationPlot() {
   const patientDecile = result?.sts_prom.decile ?? null;
 
   const colors = O_E_TABLE.map((d) =>
-    d.decile === patientDecile ? "#0f62fe" : d.oe > 1 ? "#ffb000" : "#0043ce",
+    d.decile === patientDecile ? COLORS.ibm : d.oe > 1 ? alpha(COLORS.modifiable, 0.75) : alpha(COLORS.ibmDark, 0.55),
   );
 
   return (
-    <div className="ibm-card p-3">
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">
-        Era-aware calibration drift (STS-PROM in modern TAVI)
-      </h3>
+    <div className="ibm-card p-4">
+      <p className="eyebrow">Calibration drift</p>
+      <h3 className="card-title mb-2">Era-aware drift: STS-PROM in modern TAVI</h3>
+      <div className="figure-plate px-1 pt-2">
       <Plot
         data={[
           {
             type: "bar",
             x: O_E_TABLE.map((d) => `D${d.decile}`),
             y: O_E_TABLE.map((d) => d.oe),
-            marker: { color: colors },
+            marker: { color: colors, line: { color: "#ffffff", width: 1 } },
             text: O_E_TABLE.map((d) => d.oe.toFixed(2)),
             textposition: "outside",
+            textfont: { family: "ui-monospace, Menlo, monospace", size: 10 },
+            cliponaxis: false,
             customdata: O_E_TABLE.map((d) => [d.range]),
             hovertemplate:
               "Decile %{x}<br>Raw STS range: %{customdata[0]}<br>O/E: %{y}<extra></extra>",
@@ -48,24 +50,22 @@ export function CalibrationPlot() {
             mode: "lines",
             x: O_E_TABLE.map((d) => `D${d.decile}`),
             y: Array(O_E_TABLE.length).fill(1.0),
-            line: { color: "rgba(0,0,0,0.4)", dash: "dash" },
+            line: { color: COLORS.ink, dash: "dash", width: 1.2 },
             hoverinfo: "skip",
             showlegend: false,
           },
         ]}
-        layout={{
-          height: 260,
-          margin: { l: 40, r: 10, t: 10, b: 40 },
-          xaxis: { title: { text: "Raw STS-PROM decile" }, tickfont: { size: 10 } },
+        layout={layout({
+          height: 280,
+          bargap: 0.3,
+          xaxis: { title: { text: "Raw STS-PROM decile" }, showgrid: false },
           yaxis: { title: { text: "Observed / Expected" }, range: [0, 1.8] },
           showlegend: false,
-          font: { family: "Times New Roman, Times, serif", size: 11 },
-          paper_bgcolor: "white",
-          plot_bgcolor: "white",
-        }}
-        config={{ displayModeBar: false, responsive: true }}
+        })}
+        config={config("sts-calibration-drift")}
         style={{ width: "100%" }}
       />
+      </div>
       <p className="text-xs text-gray-500 mt-1">
         Patient's decile highlighted in IBM blue. O/E &gt; 1 means STS-PROM
         under-predicts; &lt; 1 means it over-predicts.

@@ -7,21 +7,62 @@
     @apply antialiased;
   }
   body {
-    @apply bg-white text-gray-900 font-sans;
+    @apply bg-slate-50 text-gray-900 font-sans;
+  }
+  /* Page atmosphere: a faint IBM-blue wash and dot grid behind everything,
+     fixed so it never repaints on scroll. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(60rem 28rem at 90% -10%, rgb(15 98 254 / 0.09), transparent 70%),
+      radial-gradient(48rem 24rem at 0% 0%, rgb(15 98 254 / 0.05), transparent 70%),
+      radial-gradient(rgb(15 23 42 / 0.05) 1px, transparent 1px) 0 0 / 22px 22px;
+    mask-image: linear-gradient(to bottom, black, black 35%, transparent 80%);
+  }
+  ::selection {
+    background: rgb(15 98 254 / 0.18);
   }
   *:focus-visible {
     @apply outline-none ring-2 ring-ibm-500 ring-offset-2 rounded-sm;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
 @layer components {
   .ibm-card {
-    @apply bg-white border border-gray-200 rounded-md shadow-sm;
+    @apply bg-white border border-slate-200/80 rounded-xl shadow-card;
   }
   .ibm-btn-primary {
-    @apply inline-flex items-center justify-center px-4 py-2 bg-ibm-500 text-white text-sm font-medium hover:bg-ibm-600 active:bg-ibm-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-white text-sm font-semibold
+      bg-gradient-to-b from-ibm-500 to-ibm-600 shadow-glow
+      hover:from-ibm-600 hover:to-ibm-700 active:to-ibm-800
+      disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none transition-all;
   }
   .ibm-btn-secondary {
-    @apply inline-flex items-center justify-center px-3 py-1.5 bg-white border border-gray-300 text-gray-900 text-sm font-medium hover:bg-gray-50 active:bg-gray-100 transition-colors;
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-300
+      text-gray-900 text-sm font-medium shadow-sm hover:border-ibm-400 hover:text-ibm-700 active:bg-slate-50 transition-colors;
+  }
+  /* Small uppercase label above a section or a figure. */
+  .eyebrow {
+    @apply text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ibm-600;
+  }
+  .card-title {
+    @apply text-[15px] font-semibold text-gray-900;
+  }
+  /* A figure's own canvas inside a card. */
+  .figure-plate {
+    @apply rounded-lg border border-slate-200 bg-gradient-to-b from-white to-slate-50/70;
   }
 }

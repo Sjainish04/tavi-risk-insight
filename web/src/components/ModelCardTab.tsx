@@ -42,7 +42,7 @@ const OVERVIEW_SECTIONS: SectionBlock[] = [
       "**Clinical**: pulled from the EHR via FHIR (Epic Cupid / Cerner Cardiovascular)",
       "**Imaging**: CT-derived measurements from PACS or 3mensio Structural Heart workflow",
       "**Frailty**: bedside-collected (5-meter gait speed, Clinical Frailty Scale)",
-      "**Output**: structured risk estimates, per-device assessment, Heart Team note — exportable to EHR.",
+      "**Output**: structured risk estimates, per-device assessment, Heart Team note, exportable to EHR.",
     ],
   },
   {
@@ -73,7 +73,7 @@ const METHODS_SECTIONS: SectionBlock[] = [
     title: "Futility composite",
     body: [
       "Transparent linear composite (threshold 0.50) over: severe frailty (CFS ≥ 7, +0.30), age &gt; 90 (+0.20), albumin &lt; 3.0 g/dL (+0.20), dialysis (+0.15), severe gait-speed (&lt;0.5 m/s, +0.15), multimorbidity ≥ 3 (+0.10), NYHA IV (+0.05), LVEF &lt; 25% (+0.05).",
-      "When raised, the **alternative is medical therapy** (diuretics, neurohormonal blockade, palliative referral) — SAVR is not appropriate when TAVI is futile.",
+      "When raised, the **alternative is medical therapy** (diuretics, neurohormonal blockade, palliative referral). SAVR is not appropriate when TAVI is futile.",
       "Evidence: ACC/AHA 2020; Afilalo JACC 2017; Shimura JACC Cardiovasc Interv 2017.",
     ],
   },
@@ -91,7 +91,7 @@ const METHODS_SECTIONS: SectionBlock[] = [
   {
     title: "Per-device sizing (manufacturer IFU)",
     body: [
-      "Annular sizing tables — summarised; consult full IFU for clinical use:",
+      "Annular sizing tables (summarised; consult the full IFU for clinical use):",
       "- **Edwards SAPIEN 3 Ultra**: by annular area (273–680 mm² → 20/23/26/29 mm). Target 0–15 % area oversizing.",
       "- **Medtronic Evolut FX+**: by annular perimeter (56.5–94.3 mm → 23/26/29/34 mm). Target 10–25 % perimeter oversizing.",
       "- **Abbott Navitor**: by annular area (283–572 mm² → 23/25/27/29 mm). NaviSeal active sealing.",
@@ -111,7 +111,7 @@ const METHODS_SECTIONS: SectionBlock[] = [
   {
     title: "Special considerations rules",
     body: [
-      "Per-device clinical-context flags — referenced in source comments:",
+      "Per-device clinical-context flags (referenced in source comments):",
       "- Bicuspid AV: balloon-expandable preferred (Yoon JACC 2017)",
       "- Concomitant ≥ moderate AR: prefer active-sealing (Navitor / Evolut FX+)",
       "- Hostile iliofemoral access: alternative access (Linke JACC CV Interv 2020)",
@@ -132,7 +132,7 @@ const METHODS_SECTIONS: SectionBlock[] = [
   {
     title: "Risk-score accompaniments",
     body: [
-      "Each ML probability is delivered with: **95% CI** (Wilson interval at training-cohort effective n), **decile placement** vs. cohort, **base-rate multiplier** vs. cohort 3 % target, and **clinical-language drivers** with `is_modifiable` flag and a target value (`modify_to`) — albumin, hemoglobin, gait speed, NYHA. Drivers are the SHAP top-5 mapped to readable labels with approximate per-feature impact in percentage points.",
+      "Each ML probability is delivered with: **95% CI** (Wilson interval at training-cohort effective n), **decile placement** vs. cohort, **base-rate multiplier** vs. cohort 3 % target, and **clinical-language drivers** with `is_modifiable` flag and a target value (`modify_to`), albumin, hemoglobin, gait speed, NYHA. Drivers are the SHAP top-5 mapped to readable labels with approximate per-feature impact in percentage points.",
     ],
     see_also: "this-case",
   },
@@ -143,22 +143,22 @@ const VALIDATION_TEXT_SECTIONS: SectionBlock[] = [
     title: "TRIPOD+AI compliance (current scope)",
     body: [
       "✅ Source of data documented (synthetic, deterministic seed=42)",
-      "✅ Sample size justified — 5,000 patients, base rate ~3 %",
+      "✅ Sample size justified: 5,000 patients, base rate ~3 %",
       "✅ Predictors locked at decision time (no peri-procedural leakage)",
       "✅ Performance reported: AUROC, AUPRC, Brier, calibration plot",
       "✅ Internal validation: 5-fold stratified CV + held-out test",
-      "❌ External validation — not performed (synthetic only)",
-      "❌ Fairness analysis by sex / race / age — partial (sex coded; race not in synthetic schema)",
-      "❌ Prospective clinical-impact study — out of scope for v0.1",
+      "❌ External validation: not performed (synthetic only)",
+      "❌ Fairness analysis by sex / race / age: partial (sex coded; race not in synthetic schema)",
+      "❌ Prospective clinical-impact study: out of scope for v0.1",
     ],
   },
   {
     title: "PROBAST risk-of-bias self-assessment",
     body: [
-      "**Participants** — high (synthetic cohort, not real patients)",
-      "**Predictors** — low (locked pre-procedure, no leakage)",
-      "**Outcome** — low (well-defined, complete labels in synthetic data)",
-      "**Analysis** — moderate (single calibration fold, no external test)",
+      "**Participants**: high (synthetic cohort, not real patients)",
+      "**Predictors**: low (locked pre-procedure, no leakage)",
+      "**Outcome**: low (well-defined, complete labels in synthetic data)",
+      "**Analysis**: moderate (single calibration fold, no external test)",
       "**Overall**: HIGH risk of bias by PROBAST. Honest disclosure: this version is an architectural prototype, not a clinically validated model.",
     ],
   },

@@ -71,7 +71,7 @@ export function streamExplain(
         // SSE event boundaries are an empty line, which per spec may be
         // \n\n, \r\n\r\n, or \r\r. sse-starlette emits CRLF, so splitting
         // on the literal "\n\n" never matches and the buffer accumulates
-        // the whole stream — tokens never reach onToken.
+        // the whole stream: tokens never reach onToken.
         const events = buf.split(/\r?\n\r?\n/);
         buf = events.pop() ?? "";
         for (const evt of events) {
@@ -83,7 +83,7 @@ export function streamExplain(
               event = line.slice(6).trim();
             } else if (line.startsWith("data:")) {
               // SSE spec: skip exactly ONE optional leading space after the
-              // colon. Do NOT trim — leading spaces inside tokens are
+              // colon. Do NOT trim, leading spaces inside tokens are
               // meaningful (e.g. " Clinical" needs the space preserved).
               dataLines.push(line.startsWith("data: ") ? line.slice(6) : line.slice(5));
             }

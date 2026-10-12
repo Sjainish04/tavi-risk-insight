@@ -1,6 +1,6 @@
 import { HeartPulse } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cleanText, cn } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 import type { CoronaryRiskGrade } from "@/lib/types";
 
@@ -18,7 +18,7 @@ const GRADE_LABEL: Record<CoronaryRiskGrade, string> = {
 
 // Filter out meta-explanatory reasons that aren't patient-specific
 function patientReasons(reasons: string[]): string[] {
-  return reasons.filter((r) => !r.toLowerCase().includes("thresholds shifted"));
+  return reasons.filter((r) => !r.toLowerCase().includes("thresholds shifted")).map(cleanText);
 }
 
 export function CoronaryRiskCard() {
@@ -26,10 +26,10 @@ export function CoronaryRiskCard() {
   if (!result || result.device_assessments.length === 0) return null;
 
   return (
-    <div className="ibm-card p-3">
+    <div className="ibm-card p-4">
       <div className="flex items-center gap-2 mb-2">
         <HeartPulse className="w-4 h-4 text-ibm-500" />
-        <h3 className="text-sm font-semibold text-gray-900">
+        <h3 className="card-title">
           Coronary obstruction risk · per device
         </h3>
       </div>

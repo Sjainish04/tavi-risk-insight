@@ -2,6 +2,7 @@ import { Sparkles, StopCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { type HealthInfo, getHealth } from "@/lib/api";
+import { cleanText } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 
 const PROVIDER_LABEL: Record<string, string> = {
@@ -34,7 +35,7 @@ export function ExplanationPanel() {
   return (
     <div className="ibm-card p-4 space-y-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+        <h3 className="card-title flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-ibm-500" />
           Heart Team note
         </h3>
@@ -59,15 +60,15 @@ export function ExplanationPanel() {
       </div>
 
       {error && (
-        <p className="text-sm text-red-600 bg-red-50 border border-red-200 p-2 rounded-sm">
+        <p className="text-sm text-rose-700 bg-rose-50 border border-rose-200 p-2.5 rounded-lg">
           {error}
         </p>
       )}
 
-      <div className="min-h-[140px] p-3 bg-gray-50 border border-gray-200 rounded-sm text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
-        {explanation ||
+      <div className="figure-plate min-h-[160px] p-4 text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
+        {(explanation && cleanText(explanation)) ||
           (loading
-            ? "…"
+            ? "Writing the note…"
             : 'Click "Generate explanation" to stream a clinical summary for the Heart Team.')}
       </div>
 

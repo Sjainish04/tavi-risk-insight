@@ -1,4 +1,4 @@
-import Plot from "react-plotly.js";
+import { COLORS, MODEL_COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 
 // Parametric ROC curve from a target AUC.
 // Integral of FPR^p from 0 to 1 = 1/(p+1). Setting AUC = A → p = (1-A)/A.
@@ -17,24 +17,24 @@ function generateROC(auc: number, n = 60): { x: number[]; y: number[] } {
 }
 
 const MODELS = [
-  { name: "STS-PROM (raw)", auc: 0.64, ciLo: 0.60, ciHi: 0.68, color: "#a8a8a8" },
-  { name: "STS-PROM (era-adjusted)", auc: 0.68, ciLo: 0.64, ciHi: 0.72, color: "#ffb000" },
-  { name: "LightGBM v1 (synthetic)", auc: 0.743, ciLo: 0.665, ciHi: 0.813, color: "#0f62fe" },
+  { name: "STS-PROM (raw)", auc: 0.64, ciLo: 0.60, ciHi: 0.68, color: MODEL_COLORS.stsRaw },
+  { name: "STS-PROM (era-adjusted)", auc: 0.68, ciLo: 0.64, ciHi: 0.72, color: MODEL_COLORS.stsRecal },
+  { name: "LightGBM v1 (synthetic)", auc: 0.743, ciLo: 0.665, ciHi: 0.813, color: MODEL_COLORS.lgbm },
 ];
 
 export function ModelROCCurves() {
   return (
-    <div className="ibm-card p-3">
-      <h3 className="text-sm font-semibold text-gray-900 mb-1">
-        ROC curves · model comparison
-      </h3>
+    <div className="ibm-card p-4">
+      <p className="eyebrow">Discrimination</p>
+      <h3 className="card-title mb-1">ROC curves · model comparison</h3>
       <p className="text-xs text-gray-500 mb-2">
         Discrimination of each scoring approach for 30-day mortality. Higher and more
         bowed curves separate survivors from non-survivors better.
       </p>
+      <div className="figure-plate px-1 pt-2">
       <Plot
         data={[
-          ...MODELS.map((m) => {
+          ...MODELS.map((m, i) => {
             const { x, y } = generateROC(m.auc);
             return {
               type: "scatter" as const,
@@ -42,7 +42,10 @@ export function ModelROCCurves() {
               x,
               y,
               name: `${m.name} · AUC ${m.auc.toFixed(3)}`,
-              line: { color: m.color, width: 2.5 },
+              line: { color: m.color, width: i === MODELS.length - 1 ? 3.5 : 2.5 },
+              // The best model's area is shaded lightly: AUC is that area.
+              fill: i === MODELS.length - 1 ? ("tozeroy" as const) : ("none" as const),
+              fillcolor: alpha(m.color, 0.07),
               hovertemplate: `${m.name}<br>FPR %{x:.2f}<br>TPR %{y:.2f}<extra></extra>`,
             };
           }),
@@ -52,32 +55,20 @@ export function ModelROCCurves() {
             x: [0, 1],
             y: [0, 1],
             name: "Random (AUC 0.50)",
-            line: { color: "#cccccc", dash: "dash", width: 1 },
+            line: { color: COLORS.neutral, dash: "dash", width: 1.2 },
             hoverinfo: "skip",
           },
         ]}
-        layout={{
-          height: 320,
-          margin: { l: 60, r: 10, t: 10, b: 50 },
-          xaxis: {
-            title: { text: "False positive rate" },
-            range: [0, 1],
-            zeroline: true,
-          },
-          yaxis: {
-            title: { text: "True positive rate" },
-            range: [0, 1],
-            zeroline: true,
-          },
-          legend: { orientation: "h", x: 0, y: -0.2, font: { size: 10 } },
-          font: { family: "Times New Roman, Times, serif", size: 11 },
-          paper_bgcolor: "white",
-          plot_bgcolor: "white",
-        }}
-        config={{ displayModeBar: false, responsive: true }}
+        layout={layout({
+          height: 360,
+          xaxis: { title: { text: "False positive rate" }, range: [0, 1] },
+          yaxis: { title: { text: "True positive rate" }, range: [0, 1.02] },
+        })}
+        config={config("roc-curves")}
         style={{ width: "100%" }}
       />
-      <table className="w-full text-[11px] mt-2">
+      </div>
+      <table className="w-full text-[11px] mt-3">
         <thead>
           <tr className="text-gray-500 border-b border-gray-200">
             <th className="text-left py-1">Model</th>

@@ -68,7 +68,7 @@ function buildEhrText(result: RiskOutput, llmNote: string): string {
     }
     lines.push("");
   } else {
-    lines.push("Recommended fit: none in published sizing range — Heart Team review required.");
+    lines.push("Recommended fit: none in published sizing range; Heart Team review required.");
     lines.push("");
   }
 
@@ -131,7 +131,7 @@ export function EhrExportActions() {
         type="button"
         onClick={handlePdf}
         className="ibm-btn-secondary text-xs flex items-center gap-1.5"
-        title="Opens the browser print dialog — save as PDF from there."
+        title="Opens the browser print dialog; save as PDF from there."
       >
         <FileDown className="w-3.5 h-3.5" />
         Export PDF

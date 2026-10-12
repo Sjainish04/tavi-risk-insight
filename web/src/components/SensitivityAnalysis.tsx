@@ -1,4 +1,4 @@
-import Plot from "react-plotly.js";
+import { COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 
 import { usePrediction } from "@/store/prediction";
 
@@ -11,16 +11,15 @@ export function SensitivityAnalysis() {
     .sort((a, b) => b.magnitude_pp - a.magnitude_pp);
 
   return (
-    <div className="ibm-card p-3">
-      <h3 className="text-sm font-semibold text-gray-900 mb-1">
-        What-if · risk reduction from modifiable factors
-      </h3>
+    <div className="ibm-card p-4">
+      <p className="eyebrow">What-if</p>
+      <h3 className="card-title mb-1">Risk reduction from modifiable factors</h3>
       <p className="text-xs text-gray-500 mb-2">
         Estimated 30-day risk drop if each modifiable factor reaches its target before
         the procedure. Approximations from per-feature SHAP magnitudes.
       </p>
       {modifiables.length === 0 ? (
-        <div className="bg-gray-50 border border-gray-200 rounded-sm p-4 text-center">
+        <div className="figure-plate p-5 text-center">
           <p className="text-sm text-gray-700 font-medium">
             No modifiable factors flagged for this patient.
           </p>
@@ -40,26 +39,27 @@ export function SensitivityAnalysis() {
                 y: modifiables.map(
                   (d) => `${d.feature_label}${d.modify_to ? ` → ${d.modify_to}` : ""}`,
                 ),
-                marker: { color: "#0f62fe" },
+                marker: { color: alpha(COLORS.ibm, 0.8), line: { color: COLORS.ibm, width: 1.5 } },
                 text: modifiables.map((d) => `−${d.magnitude_pp.toFixed(1)} pp`),
                 textposition: "outside",
+                textfont: { family: "ui-monospace, Menlo, monospace", size: 11 },
+                cliponaxis: false,
                 hovertemplate: "%{y}<br>Estimated reduction: %{x:.1f} pp<extra></extra>",
               },
             ]}
-            layout={{
-              height: Math.max(160, 50 + modifiables.length * 60),
-              margin: { l: 280, r: 60, t: 10, b: 40 },
+            layout={layout({
+              height: Math.max(170, 60 + modifiables.length * 56),
+              margin: { l: 12, r: 64, t: 8, b: 48 },
+              bargap: 0.4,
               xaxis: {
                 title: { text: "Estimated risk reduction (percentage points)" },
                 zeroline: true,
+                zerolinecolor: COLORS.ink,
               },
-              yaxis: { tickfont: { size: 11 } },
-              font: { family: "Times New Roman, Times, serif", size: 11 },
-              paper_bgcolor: "white",
-              plot_bgcolor: "white",
+              yaxis: { tickfont: { size: 12, color: COLORS.ink }, showgrid: false },
               showlegend: false,
-            }}
-            config={{ displayModeBar: false, responsive: true }}
+            })}
+            config={config("what-if")}
             style={{ width: "100%" }}
           />
           <p className="text-[10px] text-gray-400 mt-1 italic">

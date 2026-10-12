@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-/** Tailwind class merger — combines clsx and tailwind-merge. */
+/** Tailwind class merger: combines clsx and tailwind-merge. */
 export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
@@ -44,3 +44,28 @@ export const RISK_BAND_TEXT: Record<RiskBand, string> = {
   intermediate: "text-amber-700",
   high: "text-red-700",
 };
+
+/** Text from the backend and the language model, tidied for display.
+ *
+ *  The API's own strings and the streamed Heart Team note can contain em dashes;
+ *  the site does not use them. A dash that introduces an explanation becomes a
+ *  colon (a comma if the line already has a colon), and an opening or closing
+ *  dash is dropped. The API text itself is left alone, so exports and logs keep
+ *  exactly what the server sent. */
+export function cleanText(text: string): string {
+  return text
+    .split("\n")
+    .map((line) => {
+      let seenColon = false;
+      return line.replace(
+        /(\S?)(\s*)\u2014(\s*)/g,
+        (match: string, before: string, _l: string, _r: string, offset: number) => {
+          seenColon = seenColon || line.slice(0, offset).includes(":");
+          // A dash that opens or closes a line only wraps a phrase: drop it.
+          if (!before || offset + match.length >= line.length) return before;
+          return `${before}${seenColon ? ", " : ": "}`;
+        },
+      );
+    })
+    .join("\n");
+}

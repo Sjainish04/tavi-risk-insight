@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "TAVI Risk Insight — React frontend for IBM Z × UNSA Sheridan Hackathon",
+  "description": "TAVI Risk Insight: React frontend for IBM Z × UNSA Sheridan Hackathon",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

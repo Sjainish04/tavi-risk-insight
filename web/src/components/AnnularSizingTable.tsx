@@ -1,8 +1,9 @@
 import { Cpu, Info, Trophy } from "lucide-react";
 
 import type { DeviceAssessment } from "@/lib/types";
-import { cn, fmtPct } from "@/lib/utils";
+import { cleanText, cn, fmtPct } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
+import { InlineBar } from "./InlineBar";
 
 const VALVE_CLASS_LABEL: Record<DeviceAssessment["valve_class"], string> = {
   "balloon-expandable": "Balloon-expandable",
@@ -34,12 +35,15 @@ export function AnnularSizingTable() {
       : -1;
 
   const noneInRange = bestIdx === -1;
+  // Shared scales so the three devices' bars compare directly.
+  const ppmMax = Math.max(...devices.map((d) => d.predicted_ppm_30d), 0.01) * 1.15;
+  const pvlMax = Math.max(...devices.map((d) => d.predicted_pvl_moderate), 0.01) * 1.15;
 
   return (
     <div className="ibm-card p-4 space-y-3">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
+          <h3 className="card-title flex items-center gap-2">
             <Cpu className="w-4 h-4 text-ibm-500" />
             Per-device assessment · sizing + complications
           </h3>
@@ -50,7 +54,7 @@ export function AnnularSizingTable() {
           </p>
         </div>
         {!result.has_ct_inputs && (
-          <span className="text-[10px] uppercase tracking-wide text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-sm whitespace-nowrap">
+          <span className="text-[10px] uppercase tracking-wide text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full whitespace-nowrap">
             CT pending
           </span>
         )}
@@ -74,7 +78,7 @@ export function AnnularSizingTable() {
                 key={d.valve}
                 className={cn(
                   "border-b border-gray-100 last:border-0",
-                  i === bestIdx && "bg-ibm-50",
+                  i === bestIdx && "bg-gradient-to-r from-ibm-50 to-transparent",
                 )}
               >
                 <td className="px-2 py-3">
@@ -83,7 +87,14 @@ export function AnnularSizingTable() {
                       <Trophy className="w-3.5 h-3.5 text-ibm-600 mt-0.5 flex-shrink-0" />
                     )}
                     <div>
-                      <div className="font-medium text-gray-900">{d.valve}</div>
+                      <div className="font-medium text-gray-900">
+                        {d.valve}
+                        {i === bestIdx && (
+                          <span className="ml-2 align-middle text-[9px] font-semibold uppercase tracking-wider text-white bg-ibm-500 px-1.5 py-0.5 rounded-full">
+                            Recommended
+                          </span>
+                        )}
+                      </div>
                       <div className="text-[11px] text-gray-500">
                         {VALVE_CLASS_LABEL[d.valve_class]}
                       </div>
@@ -94,23 +105,29 @@ export function AnnularSizingTable() {
                   {d.sizing.recommended_size_mm ? (
                     <span className="font-mono">{d.sizing.recommended_size_mm} mm</span>
                   ) : (
-                    <span className="text-amber-700 text-xs">—</span>
+                    <span className="text-amber-700 text-xs">n/a</span>
                   )}
                   <div className="text-[11px] text-gray-500 leading-snug">
                     {d.sizing.in_range ? "in range" : "outside range"}
                   </div>
                 </td>
                 <td className="px-2 py-3 text-right font-mono text-gray-700 text-xs">
-                  {d.sizing.oversizing_pct == null ? "—" : `${d.sizing.oversizing_pct}%`}
+                  {d.sizing.oversizing_pct == null ? "n/a" : `${d.sizing.oversizing_pct}%`}
                 </td>
                 <td className="px-2 py-3 text-right font-mono text-gray-900">
                   {fmtPct(d.predicted_mortality_30d)}
                 </td>
                 <td className="px-2 py-3 text-right font-mono text-gray-900">
                   {fmtPct(d.predicted_ppm_30d)}
+                  <span className="mt-1 block">
+                    <InlineBar value={d.predicted_ppm_30d} max={ppmMax} color="#7c3aed" />
+                  </span>
                 </td>
                 <td className="px-2 py-3 text-right font-mono text-gray-900">
                   {fmtPct(d.predicted_pvl_moderate)}
+                  <span className="mt-1 block">
+                    <InlineBar value={d.predicted_pvl_moderate} max={pvlMax} color="#0d9488" />
+                  </span>
                 </td>
               </tr>
             ))}
@@ -119,13 +136,13 @@ export function AnnularSizingTable() {
       </div>
 
       {noneInRange && (
-        <div className="bg-amber-50 border border-amber-200 rounded-sm p-2.5">
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
           <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-amber-800 mb-1">
             <Info className="w-3 h-3" />
             No device in published sizing range
           </div>
           <p className="text-xs text-amber-900 leading-snug">
-            Annulus is outside the IFU range for all three FDA-cleared families — Heart Team
+            Annulus is outside the IFU range for all three FDA-cleared families; Heart Team
             review required. Consider explant SAVR, larger-than-published off-label sizing
             with operator experience, or alternative center referral.
           </p>
@@ -133,12 +150,12 @@ export function AnnularSizingTable() {
       )}
 
       {!noneInRange && devices[bestIdx].sizing.note && (
-        <div className="bg-gray-50 border border-gray-200 rounded-sm p-2.5">
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-3">
           <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-gray-500 mb-1">
             <Info className="w-3 h-3" />
             Sizing note · {devices[bestIdx].valve}
           </div>
-          <p className="text-xs text-gray-700 leading-snug">{devices[bestIdx].sizing.note}</p>
+          <p className="text-xs text-gray-700 leading-snug">{cleanText(devices[bestIdx].sizing.note)}</p>
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 import { AlertCircle, ChevronDown, Database, Image, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -9,7 +9,7 @@ import { usePrediction } from "@/store/prediction";
 
 const fieldLabel = "block text-xs font-medium text-gray-700 mb-1";
 const fieldInput =
-  "w-full px-2.5 py-1.5 text-sm border border-gray-300 rounded-sm bg-white focus:border-ibm-500 focus:ring-1 focus:ring-ibm-500 outline-none";
+  "w-full px-3 py-2 text-sm border border-slate-300 rounded-lg bg-white shadow-sm transition-shadow focus:border-ibm-500 focus:ring-4 focus:ring-ibm-500/15 outline-none";
 
 interface FieldProps {
   label: string;
@@ -50,21 +50,21 @@ function clinicalAlert(field: string, raw: unknown): string | null {
   if (v == null) return null;
   switch (field) {
     case "egfr":
-      if (v < 30) return "Severe CKD (eGFR < 30) — high AKI risk; pre-op renal optimisation recommended.";
-      if (v < 45) return "Moderate CKD — monitor renal function peri-procedure.";
+      if (v < 30) return "Severe CKD (eGFR < 30): high AKI risk; pre-op renal optimisation recommended.";
+      if (v < 45) return "Moderate CKD: monitor renal function peri-procedure.";
       return null;
     case "hemoglobin_g_dl":
-      if (v < 9) return "Severe anaemia (Hb < 9) — major bleeding risk; treat before elective procedure.";
-      if (v < 11) return "Anaemia — consider iron / EPO before procedure.";
+      if (v < 9) return "Severe anaemia (Hb < 9): major bleeding risk; treat before elective procedure.";
+      if (v < 11) return "Anaemia: consider iron / EPO before procedure.";
       return null;
     case "albumin_g_dl":
-      if (v < 2.5) return "Severe hypoalbuminaemia (< 2.5) — frailty marker; nutrition consult recommended.";
+      if (v < 2.5) return "Severe hypoalbuminaemia (< 2.5): frailty marker; nutrition consult recommended.";
       return null;
     case "lvef_pct":
-      if (v < 25) return "Severely reduced LVEF (< 25 %) — high peri-procedural mortality.";
+      if (v < 25) return "Severely reduced LVEF (< 25 %): high peri-procedural mortality.";
       return null;
     case "aortic_valve_area_cm2":
-      if (v < 0.5) return "Critical AS (AVA < 0.5 cm²) — expedited Heart Team review.";
+      if (v < 0.5) return "Critical AS (AVA < 0.5 cm²): expedited Heart Team review.";
       return null;
     default:
       return null;
@@ -103,7 +103,7 @@ function Section({ title, source, defaultOpen = true, children }: SectionProps) 
         <div className="flex items-center gap-2">
           <span className="text-sm font-semibold text-gray-900">{title}</span>
           {source && (
-            <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 bg-gray-100 text-gray-600 rounded-sm">
+            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 bg-ibm-50 text-ibm-700 ring-1 ring-ibm-100 rounded-full">
               {source}
             </span>
           )}
@@ -123,6 +123,8 @@ function Section({ title, source, defaultOpen = true, children }: SectionProps) 
 export function PatientForm() {
   const submit = usePrediction((s) => s.predict);
   const loading = usePrediction((s) => s.loading);
+  const presetKey = usePrediction((s) => s.presetKey);
+  const presetNonce = usePrediction((s) => s.presetNonce);
 
   const {
     register,
@@ -134,6 +136,12 @@ export function PatientForm() {
     resolver: zodResolver(patientSchema),
     defaultValues: demoPresets.intermediateRisk.values,
   });
+
+  // A demo case launched from the start screen loads into the form as well, so
+  // "Edit case" opens the values that produced the result on screen.
+  useEffect(() => {
+    if (presetKey) reset(demoPresets[presetKey].values);
+  }, [presetKey, presetNonce, reset]);
 
   // Live clinical alerts on out-of-range (but valid) values
   const alerts = {
@@ -151,10 +159,10 @@ export function PatientForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="ibm-card sticky top-4"
+      className="ibm-card lg:sticky lg:top-20"
     >
       {/* EHR loader */}
-      <div className="p-3 border-b border-gray-200 bg-gray-50 rounded-t-md">
+      <div className="p-3 border-b border-slate-200 bg-gradient-to-b from-ibm-50/70 to-slate-50 rounded-t-xl">
         <div className="flex items-center gap-1.5 text-xs font-medium text-gray-700 mb-2">
           <Database className="w-3.5 h-3.5 text-ibm-500" />
           Load case from EHR (FHIR / Epic Cupid)
@@ -165,7 +173,7 @@ export function PatientForm() {
               type="button"
               key={k}
               onClick={() => reset(p.values)}
-              className="w-full text-left px-2 py-1.5 hover:bg-white border border-transparent hover:border-gray-200 rounded-sm transition-colors group"
+              className="w-full text-left px-2.5 py-2 hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-sm rounded-lg transition-all group"
             >
               <div className="text-xs font-medium text-gray-900 group-hover:text-ibm-700">
                 {p.label}
@@ -262,10 +270,10 @@ export function PatientForm() {
                 {...register("aortic_regurgitation_grade", { valueAsNumber: true })}
                 className={fieldInput}
               >
-                <option value={0}>0 — none</option>
-                <option value={1}>1 — mild</option>
-                <option value={2}>2 — moderate</option>
-                <option value={3}>3 — severe</option>
+                <option value={0}>0: none</option>
+                <option value={1}>1: mild</option>
+                <option value={2}>2: moderate</option>
+                <option value={3}>3: severe</option>
               </select>
             </Field>
             <label className="col-span-2 flex items-center gap-2 text-xs text-gray-700 cursor-pointer hover:bg-gray-50 px-1.5 py-1 rounded-sm">
@@ -508,7 +516,7 @@ export function PatientForm() {
         </Section>
       </div>
 
-      <div className="p-3 border-t border-gray-200 bg-gray-50 rounded-b-md">
+      <div className="p-3 border-t border-slate-200 bg-slate-50 rounded-b-xl">
         <button
           type="submit"
           disabled={loading}

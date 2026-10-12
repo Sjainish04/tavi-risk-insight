@@ -1,5 +1,4 @@
-import Plot from "react-plotly.js";
-
+import { COLORS, Plot, alpha, config, layout } from "@/lib/plot";
 import { fmtShap } from "@/lib/utils";
 import { usePrediction } from "@/store/prediction";
 
@@ -14,57 +13,69 @@ export function ShapWaterfall() {
 
   if (drivers.length === 0) return null;
 
+  const colorOf = (d: (typeof drivers)[number]) => {
+    if (d.is_modifiable && d.effect === "increases") return COLORS.modifiable;
+    return d.effect === "increases" ? COLORS.increases : COLORS.decreases;
+  };
+
   return (
-    <div className="ibm-card p-3">
-      <h3 className="text-sm font-semibold text-gray-900 mb-2">
-        Top contributors to risk-score prediction
-      </h3>
-      <Plot
-        data={[
-          {
-            type: "bar",
-            orientation: "h",
-            // Show signed pp magnitude so red = adds risk, green = subtracts
-            x: drivers.map((d) => (d.effect === "increases" ? d.magnitude_pp : -d.magnitude_pp)),
-            y: drivers.map((d) => d.feature_label),
-            marker: {
-              color: drivers.map((d) => {
-                if (d.is_modifiable && d.effect === "increases") return "#f1c21b"; // modifiable amber
-                return d.effect === "increases" ? "#da1e28" : "#198038";
-              }),
+    <div className="ibm-card p-4">
+      <p className="eyebrow">Explainability</p>
+      <h3 className="card-title mb-2">Top contributors to the risk-score prediction</h3>
+      <div className="figure-plate px-1 pt-2">
+        <Plot
+          data={[
+            {
+              type: "bar",
+              orientation: "h",
+              // Show signed pp magnitude so rose = adds risk, emerald = subtracts
+              x: drivers.map((d) => (d.effect === "increases" ? d.magnitude_pp : -d.magnitude_pp)),
+              y: drivers.map((d) => d.feature_label),
+              marker: {
+                color: drivers.map((d) => alpha(colorOf(d), 0.85)),
+                line: { color: drivers.map(colorOf), width: 1.5 },
+              },
+              text: drivers.map((d) =>
+                d.effect === "increases" ? `+${d.magnitude_pp.toFixed(1)} pp` : `−${d.magnitude_pp.toFixed(1)} pp`,
+              ),
+              textposition: "outside",
+              textfont: { family: "ui-monospace, Menlo, monospace", size: 11 },
+              cliponaxis: false,
+              hovertemplate: "<b>%{y}</b><br>impact %{text}<extra></extra>",
             },
-            text: drivers.map((d) =>
-              d.effect === "increases" ? `+${d.magnitude_pp.toFixed(1)} pp` : `−${d.magnitude_pp.toFixed(1)} pp`,
-            ),
-            textposition: "outside",
-            hovertemplate:
-              "%{y}<br>impact: %{text}<extra></extra>",
-          },
-        ]}
-        layout={{
-          height: 220,
-          margin: { l: 220, r: 40, t: 10, b: 30 },
-          xaxis: { title: { text: "Risk impact (percentage points)" }, zeroline: true },
-          yaxis: { automargin: true, tickfont: { size: 11 } },
-          font: { family: "Times New Roman, Times, serif", size: 11 },
-          paper_bgcolor: "white",
-          plot_bgcolor: "white",
-        }}
-        config={{ displayModeBar: false, responsive: true }}
-        style={{ width: "100%" }}
-      />
-      <div className="flex items-center gap-3 text-[11px] text-gray-500 mt-1">
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 rounded-sm bg-[#da1e28]" /> increases risk
+          ]}
+          layout={layout({
+            height: Math.max(220, 70 + drivers.length * 42),
+            margin: { l: 12, r: 56, t: 8, b: 44 },
+            bargap: 0.35,
+            xaxis: {
+              title: { text: "Risk impact (percentage points)" },
+              zeroline: true,
+              zerolinewidth: 2,
+              zerolinecolor: COLORS.ink,
+            },
+            yaxis: { tickfont: { size: 12, color: COLORS.ink }, showgrid: false },
+            showlegend: false,
+          })}
+          config={config("risk-contributors")}
+          style={{ width: "100%" }}
+        />
+      </div>
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-gray-600 mt-2">
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: COLORS.increases }} />
+          increases risk
         </span>
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 rounded-sm bg-[#f1c21b]" /> modifiable (increases risk)
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: COLORS.modifiable }} />
+          modifiable (increases risk)
         </span>
-        <span className="flex items-center gap-1">
-          <span className="inline-block w-2 h-2 rounded-sm bg-[#198038]" /> decreases risk
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: COLORS.decreases }} />
+          decreases risk
         </span>
       </div>
-      <p className="text-[10px] text-gray-400 mt-1 leading-snug">
+      <p className="text-[10px] text-gray-500 mt-1 leading-snug">
         Approximate per-feature impact in absolute percentage points (SHAP × logistic working-point slope).
         Ranking is reliable; absolute pp is a heuristic.
       </p>
