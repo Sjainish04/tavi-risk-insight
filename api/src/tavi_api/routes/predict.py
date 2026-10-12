@@ -1,4 +1,4 @@
-"""POST /predict — runs all risk scores + the production model + SHAP for a patient,
+"""POST /predict: runs all risk scores + the production model + SHAP for a patient,
 plus severity, futility, procedural complications, per-device sizing, coronary risk,
 and special considerations.
 
@@ -49,7 +49,7 @@ router = APIRouter()
 # Threshold range for decision curve analysis (Vickers & Elkin 2006)
 DCA_THRESHOLDS = [round(t, 3) for t in [0.01, 0.02, 0.03, 0.05, 0.07, 0.10, 0.15, 0.20]]
 
-# Cohort base rate (synthetic ~3% target; observed 4.76% — see model_comparison.json)
+# Cohort base rate (synthetic ~3% target; observed 4.76%; see model_comparison.json)
 _COHORT_BASE_RATE = 0.03
 
 # Map our internal valve labels to the sizing-module device keys
@@ -96,7 +96,7 @@ async def predict(patient: PatientInput, request: Request) -> RiskOutput:
     v3_model = getattr(request.app.state, "stacking_model", None)
     if v1_model is None:
         raise HTTPException(
-            status_code=503, detail="LightGBM not loaded — run `uv run tavi-train`."
+            status_code=503, detail="LightGBM not loaded; run `uv run tavi-train`."
         )
 
     brdav_result = await predict_brdav(patient)
@@ -147,7 +147,7 @@ async def predict(patient: PatientInput, request: Request) -> RiskOutput:
         else:
             sizing = AnnularSizing(
                 recommended_size_mm=None,
-                recommended_size_label=f"{sim.valve} — sizing table unavailable",
+                recommended_size_label=f"{sim.valve}: sizing table unavailable",
                 oversizing_pct=None,
                 in_range=False,
                 note="No sizing table registered for this device.",

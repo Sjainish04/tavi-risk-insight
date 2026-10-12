@@ -62,7 +62,7 @@ async def stream_watsonx(prompt: str) -> AsyncIterator[str]:
         if "unsafe" in verdict.lower():
             safe = False
             logger.warning(f"Granite Guardian flagged response as unsafe; sanitizing")
-    except Exception as exc:  # noqa: BLE001 — best-effort safety filter
+    except Exception as exc:  # noqa: BLE001  (best-effort safety filter)
         logger.warning(f"Granite Guardian unavailable: {exc}; passing through")
 
     if not safe:

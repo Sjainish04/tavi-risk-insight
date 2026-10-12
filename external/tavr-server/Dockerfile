@@ -1,4 +1,4 @@
-# brdav inference microservice — Python 3.8 (matches Brüggemann 2024's lightning 2.0).
+# brdav inference microservice: Python 3.8 (matches Brüggemann 2024's lightning 2.0).
 #
 # Build context: external/
 # Build:  ibmcloud cr build -t us.icr.io/tavi-hackathon/brdav:v1 \

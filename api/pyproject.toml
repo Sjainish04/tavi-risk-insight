@@ -1,7 +1,7 @@
 [project]
 name = "tavi-api"
 version = "0.1.0"
-description = "TAVI Risk Insight — FastAPI backend for IBM Z × UNSA Sheridan Hackathon"
+description = "TAVI Risk Insight: FastAPI backend for IBM Z × UNSA Sheridan Hackathon"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }

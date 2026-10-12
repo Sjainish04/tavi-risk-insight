@@ -7,9 +7,9 @@ Self-expanding supra-annular valves (Evolut family) are more risk-sensitive
 because their leaflets sit higher in the sinus; thresholds shift up by 2 mm.
 
 References:
-- Ribeiro HB et al. JACC 2013;62(17):1552-62 — coronary obstruction predictors.
-- Yamamoto M et al. Circ Cardiovasc Interv 2014;7(5):683-91 — pooled analysis.
-- Lederman RJ et al. JACC Cardiovasc Interv 2019 — BASILICA for high-risk anatomy.
+- Ribeiro HB et al. JACC 2013;62(17):1552-62; coronary obstruction predictors.
+- Yamamoto M et al. Circ Cardiovasc Interv 2014;7(5):683-91, pooled analysis.
+- Lederman RJ et al. JACC Cardiovasc Interv 2019: BASILICA for high-risk anatomy.
 """
 
 from __future__ import annotations
@@ -65,7 +65,7 @@ def coronary_obstruction_risk(
     ):
         return CoronaryObstructionRisk(
             grade="intermediate",
-            reasons=["CT measurements not provided — cannot rule out obstruction risk."],
+            reasons=["CT measurements not provided: cannot rule out obstruction risk."],
         )
 
     is_high = False
@@ -109,7 +109,7 @@ def coronary_obstruction_risk(
 
     if valve_class == "self-expanding-supra-annular" and (is_high or is_intermediate):
         reasons.append(
-            "Self-expanding supra-annular valve — leaflets sit higher in sinus; thresholds shifted +2 mm."
+            "Self-expanding supra-annular valve: leaflets sit higher in sinus; thresholds shifted +2 mm."
         )
 
     if is_high:

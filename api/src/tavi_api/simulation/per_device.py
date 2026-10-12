@@ -92,19 +92,19 @@ def simulate_devices(
             if ms < 5.0 and prof.valve_class.startswith("self-expanding"):
                 ppm *= 1.5
                 notes.append(
-                    f"Membranous septum {ms:.1f} mm < 5 mm — elevated PPM risk for "
+                    f"Membranous septum {ms:.1f} mm < 5 mm: elevated PPM risk for "
                     "self-expanding deployment."
                 )
             elif ms < 5.0:
                 ppm *= 1.2
                 notes.append(
-                    f"Membranous septum {ms:.1f} mm < 5 mm — modestly elevated PPM risk."
+                    f"Membranous septum {ms:.1f} mm < 5 mm: modestly elevated PPM risk."
                 )
 
         if patient.calcium_volume_au is not None and patient.calcium_volume_au > 1000:
             pvl *= 1.4
             notes.append(
-                f"Calcium volume {patient.calcium_volume_au:.0f} AU — elevated PVL risk."
+                f"Calcium volume {patient.calcium_volume_au:.0f} AU: elevated PVL risk."
             )
 
         if (
@@ -113,7 +113,7 @@ def simulate_devices(
         ):
             mort *= 1.10
             notes.append(
-                f"Left-main height {patient.distance_to_left_main_mm:.1f} mm < 10 mm — "
+                f"Left-main height {patient.distance_to_left_main_mm:.1f} mm < 10 mm: "
                 "consider coronary protection."
             )
 
@@ -138,7 +138,7 @@ def simulate_devices(
     if not has_ct:
         for r in results:
             r.notes.append(
-                "CT-derived features not provided — predictions based on clinical "
+                "CT-derived features not provided: predictions based on clinical "
                 "variables and published baseline rates only."
             )
 

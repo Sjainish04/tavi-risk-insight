@@ -1,14 +1,14 @@
 """Train 4 model variants on the same synthetic cohort, evaluate with bootstrap CIs.
 
 Variants:
-  v1  LightGBM (baseline, 26 features) — same as production
+  v1  LightGBM (baseline, 26 features), same as production
   v2  LightGBM + brdav probability as feature 27 (real-data knowledge transfer)
   v3  Stacking ensemble: LGBM + CatBoost + LR (all on v2 features), final estimator LR
   v4  TabPFN v2 (zero-training tabular foundation model) on v2 features
 
 Output:
-  api/artifacts/model_comparison.json — for the frontend Model Card
-  api/models/v2_lgbm_brdav.pkl + calibrator_v2.pkl — production swap candidate
+  api/artifacts/model_comparison.json (for the frontend Model Card
+  api/models/v2_lgbm_brdav.pkl + calibrator_v2.pkl) production swap candidate
 
 Run: cd api && uv run python scripts/train_model_variants.py
 """
@@ -232,7 +232,7 @@ def main() -> None:
             t_train = time.perf_counter() - t0
             cal = calibrate(model, X_test, y_test)
             y_pred_cal = cal.predict_proba(X_test)[:, 1]
-            # RAW model predictions for the calibration curve — using the calibrated
+            # RAW model predictions for the calibration curve, using the calibrated
             # values would be circular since the calibrator was fit on this test fold.
             y_pred_raw = model.predict_proba(X_test)[:, 1]
         except Exception as exc:  # noqa: BLE001
@@ -292,7 +292,7 @@ def main() -> None:
 
     # brdav as a "5th opinion" calibration curve on the same test set.
     # Endpoint differs (all-cause follow-up vs 30-d), so the curve is for
-    # discrimination/ranking comparison only — direct calibration is
+    # discrimination/ranking comparison only: direct calibration is
     # methodologically off because brdav targets a different outcome.
     brdav_curve = by_decile(y_test, brdav_test)
     brdav_metrics = bootstrap_metrics(y_test, brdav_test)
@@ -306,7 +306,7 @@ def main() -> None:
         "n_bootstraps": N_BOOTSTRAPS,
         "brdav_on_test": {
             "name": "brdav_followup",
-            "label": "Brüggemann 2024 (real cohort, n=1,449) — different endpoint",
+            "label": "Brüggemann 2024 (real cohort, n=1,449): different endpoint",
             "calibration_curve": brdav_curve,
             **brdav_metrics,
             **brdav_calib,

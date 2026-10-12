@@ -1,4 +1,4 @@
-# Backend FastAPI image — Python 3.12 slim, uv-managed.
+# Backend FastAPI image: Python 3.12 slim, uv-managed.
 #
 # Build context: api/ (this Dockerfile lives in the same dir).
 # Build:  ibmcloud cr build -t us.icr.io/tavi-hackathon/backend:v1 ./api
@@ -39,7 +39,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy only the venv + app — drops uv binary, build artifacts, etc.
+# Copy only the venv + app: drops uv binary, build artifacts, etc.
 COPY --from=builder /app/.venv /app/.venv
 COPY --from=builder /app/src /app/src
 COPY --from=builder /app/models /app/models

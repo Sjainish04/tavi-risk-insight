@@ -1,4 +1,4 @@
-"""Premium fallback (OpenAI / Anthropic) — used only if env keys exist."""
+"""Premium fallback (OpenAI / Anthropic), used only if env keys exist."""
 
 from __future__ import annotations
 

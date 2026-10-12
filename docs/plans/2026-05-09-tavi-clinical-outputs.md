@@ -6,7 +6,7 @@
 
 **Architecture:** Extend Pydantic schema with severity inputs (AVA, gradient, peak velocity) and clinical anatomy (BAV flag, sinus of Valsalva, AR grade, frailty scale). Add focused scoring modules (`severity.py`, `futility.py`, `complications.py`) and a new `sizing/` package (annular, coronary obstruction, considerations). Enrich `RiskOutput`. On the frontend, extend the form, add new output cards, upgrade the risk panel.
 
-**Tech stack:** Existing — FastAPI + Pydantic v2 + LightGBM + SHAP (backend); Vite + React + zustand + zod + Plotly (frontend). No new dependencies.
+**Tech stack:** Existing; FastAPI + Pydantic v2 + LightGBM + SHAP (backend); Vite + React + zustand + zod + Plotly (frontend). No new dependencies.
 
 ---
 
@@ -73,7 +73,7 @@
 
 ---
 
-## Tasks (16 total — see chat for executed code)
+## Tasks (16 total; see chat for executed code)
 
 The chat-side execution covers all 16 tasks in batches:
 
@@ -98,11 +98,11 @@ The chat-side execution covers all 16 tasks in batches:
 
 ## Notes for the executor
 
-- This project is **not a git repo** — skip `git commit` steps.
-- `tests/` directory does not exist yet — create it with `__init__.py`.
-- `api/.env.example` is in a denied path — do not attempt to read it.
+- This project is **not a git repo**: skip `git commit` steps.
+- `tests/` directory does not exist yet: create it with `__init__.py`.
+- `api/.env.example` is in a denied path: do not attempt to read it.
 - LightGBM is **not retrained**; new fields used only for new modules.
 - All new probability outputs include `lo`, `hi`, `base_rate`, `multiplier_vs_base`. CI heuristic: ±25% of point estimate; document.
-- Baseline rates are from VARC-3 contemporary literature — cite in source comments.
-- Sizing tables are simplified manufacturer IFU summaries — note "consult full IFU for clinical use."
-- All severity / futility / complication / sizing / coronary / considerations modules are **pure functions** — no I/O, no global state, fast tests.
+- Baseline rates are from VARC-3 contemporary literature: cite in source comments.
+- Sizing tables are simplified manufacturer IFU summaries: note "consult full IFU for clinical use."
+- All severity / futility / complication / sizing / coronary / considerations modules are **pure functions**: no I/O, no global state, fast tests.

@@ -6,7 +6,7 @@
   "n_bootstraps": 500,
   "brdav_on_test": {
     "name": "brdav_followup",
-    "label": "Br\u00fcggemann 2024 (real cohort, n=1,449) \u2014 different endpoint",
+    "label": "Br\u00fcggemann 2024 (real cohort, n=1,449): different endpoint",
     "calibration_curve": [
       {
         "decile": 0,

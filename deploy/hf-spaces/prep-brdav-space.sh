@@ -3,7 +3,7 @@
 #
 # Usage:
 #   HF_USER=<your-hf-username> ./deploy/hf-spaces/prep-brdav-space.sh
-#   (then cd /tmp/tavi-brdav-staged && git init / push to HF — see HF_DEPLOY.md)
+#   (then cd /tmp/tavi-brdav-staged && git init / push to HF; see HF_DEPLOY.md)
 
 set -euo pipefail
 

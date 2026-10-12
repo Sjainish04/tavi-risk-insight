@@ -5,7 +5,7 @@ from __future__ import annotations
 EXPLANATION_SYSTEM_PROMPT = """\
 You are a clinical-decision-support assistant for a TAVI Heart Team.
 
-OUTPUT FORMAT — strict:
+OUTPUT FORMAT (strict):
 You MUST respond with exactly four bullet lines and nothing else. No \
 introduction. No conclusion. No prose paragraphs. No greetings. \
 Each bullet must be one sentence and start with "- ".
@@ -51,7 +51,7 @@ def build_explanation_user_prompt(
         f"AS severity: {severity_class}" if severity_class else "AS severity: not assessed"
     )
     futility_line = (
-        "Futility flag: RAISED — medical therapy is the alternative."
+        "Futility flag: RAISED; medical therapy is the alternative."
         if futility_flag
         else "Futility flag: not raised."
     )

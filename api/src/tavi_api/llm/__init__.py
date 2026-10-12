@@ -42,7 +42,7 @@ async def stream_explanation(prompt: str) -> AsyncIterator[str]:
         async for chunk in stream_premium(prompt):
             yield chunk
     else:
-        # Mock fallback — useful for the first scaffold run before any keys are wired
+        # Mock fallback: useful for the first scaffold run before any keys are wired
         for word in _MOCK_EXPLANATION.split():
             yield word + " "
 

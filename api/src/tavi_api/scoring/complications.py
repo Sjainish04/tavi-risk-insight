@@ -84,7 +84,7 @@ def _aki(p: PatientInput) -> ProbabilityWithCI:
     if p.creatinine_mg_dl > 2.0:
         risk *= 1.3
     if p.on_dialysis:
-        risk = 0.001  # already on RRT — AKI as defined doesn't apply
+        risk = 0.001  # already on RRT; AKI as defined doesn't apply
     return _wrap(risk, _BASE_AKI)
 
 

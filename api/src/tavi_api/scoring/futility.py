@@ -3,14 +3,14 @@
 Returns a 0-1 composite from multiple frailty / comorbidity / functional drivers.
 Threshold 0.50 = futility flag raised. The clinical alternative when futility is
 flagged is **medical therapy** (diuretics, neurohormonal blockade, palliative-care
-referral) — NOT SAVR. SAVR carries higher operative mortality on the same frail
+referral), NOT SAVR. SAVR carries higher operative mortality on the same frail
 patient, so if TAVI is futile, surgery is more so.
 
 Reference:
 - Otto CM et al. 2020 ACC/AHA Valve Guideline (Class IIa: medical therapy for
   severe AS with limited life expectancy regardless of valve approach).
-- Afilalo J et al. JACC 2017 — frailty in TAVI outcomes.
-- Shimura T et al. JACC Cardiovasc Interv 2017 — CFS predicts 1-year mortality.
+- Afilalo J et al. JACC 2017: frailty in TAVI outcomes.
+- Shimura T et al. JACC Cardiovasc Interv 2017: CFS predicts 1-year mortality.
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ def assess_futility(p: PatientInput) -> FutilityAssessment:
     score = 0.0
     drivers: list[str] = []
 
-    # Severe frailty (Rockwood CFS) — strongest single predictor of 1-year mortality
+    # Severe frailty (Rockwood CFS), strongest single predictor of 1-year mortality
     if p.clinical_frailty_scale is not None and p.clinical_frailty_scale >= 7:
         score += 0.30
         drivers.append(f"Severe frailty (CFS {p.clinical_frailty_scale} ≥ 7)")

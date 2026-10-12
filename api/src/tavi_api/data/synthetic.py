@@ -8,7 +8,7 @@ Risk era). Outcome is sampled from a logistic ground-truth so that:
 - Tail risk is irreducible (~5% noise injected into the logit)
 
 CT-derived features are sampled with realistic missingness (~40% NaN) to mirror
-real-world data — not every TAVI candidate has uploaded CT measurements at the
+real-world data, not every TAVI candidate has uploaded CT measurements at the
 time of risk assessment. LightGBM handles NaN natively.
 
 This is illustrative data for hackathon demonstration of calibration drift,
@@ -44,7 +44,7 @@ FEATURE_COLUMNS: list[str] = [
     "nyha_class_num",
     "urgency_num",
     "gait_speed_m_per_s",
-    # CT-derived (optional — NaN when imaging not yet uploaded)
+    # CT-derived (optional: NaN when imaging not yet uploaded)
     "annular_area_mm2",
     "calcium_volume_au",
     "membranous_septum_length_mm",
@@ -120,7 +120,7 @@ def generate_synthetic_cohort(
     ms_length = rng.normal(7, 2.0, n).clip(2, 14)
     lm_height = rng.normal(13, 2.5, n).clip(5, 22)
 
-    # Apply missingness (per-patient, all CT or none — mimics real workflow)
+    # Apply missingness (per-patient, all CT or none: mimics real workflow)
     ct_missing = rng.uniform(0, 1, n) < ct_missing_rate
     annular_area_obs = np.where(ct_missing, np.nan, annular_area)
     calcium_obs = np.where(ct_missing, np.nan, calcium)

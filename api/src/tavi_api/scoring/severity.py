@@ -46,7 +46,7 @@ def assess_severity(p: PatientInput) -> SeverityAssessment:
             severity_class="very_severe",
             criteria_met=criteria_met,
             notes=(
-                "Very severe AS — mean gradient ≥ 60 mmHg or peak velocity ≥ 5.0 m/s. "
+                "Very severe AS: mean gradient ≥ 60 mmHg or peak velocity ≥ 5.0 m/s. "
                 "Symptomatic patients have Class I indication for valve replacement."
             ),
         )
@@ -72,18 +72,18 @@ def assess_severity(p: PatientInput) -> SeverityAssessment:
             notes=None,
         )
 
-    # Not severe — classify roughly as moderate vs not_severe
+    # Not severe, classify roughly as moderate vs not_severe
     if ava < 1.5 or mg >= 20 or pv >= 3.0:
         return SeverityAssessment(
             is_severe=False,
             severity_class="moderate",
             criteria_met=[],
-            notes="Moderate AS — TAVI not indicated by current guideline criteria.",
+            notes="Moderate AS: TAVI not indicated by current guideline criteria.",
         )
 
     return SeverityAssessment(
         is_severe=False,
         severity_class="not_severe",
         criteria_met=[],
-        notes="Mild or no AS — re-evaluate echo findings.",
+        notes="Mild or no AS: re-evaluate echo findings.",
     )

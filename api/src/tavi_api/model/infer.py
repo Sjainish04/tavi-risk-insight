@@ -41,7 +41,7 @@ def _patient_to_row(p: PatientInput) -> np.ndarray:
             {"I": 1, "II": 2, "III": 3, "IV": 4}[p.nyha_class],
             {"elective": 0, "urgent": 1, "emergent": 2}[p.urgency],
             p.gait_speed_m_per_s if p.gait_speed_m_per_s is not None else 0.85,
-            # CT-derived (NaN when not provided — LightGBM handles NaN natively)
+            # CT-derived (NaN when not provided: LightGBM handles NaN natively)
             p.annular_area_mm2 if p.annular_area_mm2 is not None else np.nan,
             p.calcium_volume_au if p.calcium_volume_au is not None else np.nan,
             p.membranous_septum_length_mm
@@ -65,7 +65,7 @@ class RiskModel:
     def predict(self, patient: PatientInput) -> tuple[float, list[ShapContribution]]:
         row = _patient_to_row(patient).reshape(1, -1)
         proba = float(self.calibrator.predict_proba(row)[0, 1])
-        # SHAP on the raw classifier (trees) — we explain the pre-calibration model
+        # SHAP on the raw classifier (trees): we explain the pre-calibration model
         shap_vals = self.explainer.shap_values(row)
         # LightGBM binary returns either a single array or [class0, class1]
         if isinstance(shap_vals, list) and len(shap_vals) == 2:
@@ -128,7 +128,7 @@ def load_model(model_dir: str | Path = "models") -> RiskModel:
 @dataclass
 class StackingRiskModel:
     """v3 ensemble: LGBM + CatBoost + LR (final estimator LR), trained with brdav as
-    feature 27. SHAP is computed on the inner LGBM submodel — explains the LGBM's
+    feature 27. SHAP is computed on the inner LGBM submodel: explains the LGBM's
     contribution within the ensemble, not the full stacked output (sklearn doesn't
     expose ensemble-level attributions; this is the standard hackathon compromise).
     """

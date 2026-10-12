@@ -20,7 +20,7 @@ from __future__ import annotations
 
 # Decile bounds (raw STS-PROM probability) and observed/expected ratios
 # from published contemporary TAVI cohorts. Lower deciles under-predict
-# (O/E > 1), upper deciles over-predict (O/E < 1) — opposite directions.
+# (O/E > 1), upper deciles over-predict (O/E < 1), opposite directions.
 _RECALIBRATION_TABLE: list[dict[str, float]] = [
     {"decile": 0, "raw_lo": 0.000, "raw_hi": 0.010, "oe_ratio": 1.55},
     {"decile": 1, "raw_lo": 0.010, "raw_hi": 0.015, "oe_ratio": 1.42},

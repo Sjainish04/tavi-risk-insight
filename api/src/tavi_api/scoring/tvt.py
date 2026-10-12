@@ -10,7 +10,7 @@ References:
 - Edwards FH et al. JAMA Cardiology 2016;1(1):46–52.
   https://jamanetwork.com/journals/jamacardiology/fullarticle/2499814
 - Pilgrim T et al. Swiss validation. https://pubmed.ncbi.nlm.nih.gov/29127116/
-- Vemulapalli S et al. JSCAI 2024 — contemporary calibration findings.
+- Vemulapalli S et al. JSCAI 2024: contemporary calibration findings.
   https://www.jscai.org/article/S2772-9303(23)00027-3/fulltext
 
 Note: this is an approximation, not the exact model. Coefficients are derived

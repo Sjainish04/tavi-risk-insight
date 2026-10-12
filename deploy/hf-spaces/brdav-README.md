@@ -46,4 +46,4 @@ rather than absolute probability comparison.
 
 ## Source repo
 
-[github.com/Sjainish04/tavi-risk-insight](https://github.com/Sjainish04/tavi-risk-insight) — `external/tavr-server/`.
+[github.com/Sjainish04/tavi-risk-insight](https://github.com/Sjainish04/tavi-risk-insight): `external/tavr-server/`.

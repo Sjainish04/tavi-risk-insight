@@ -69,7 +69,7 @@ def sts_prom_30day_mortality(patient: PatientInput) -> float:
     """Predicted 30-day operative mortality after isolated AVR.
 
     Returns a probability in [0, 1]. Note: STS-PROM was trained on SAVR
-    patients; in modern TAVI cohorts it miscalibrates 2–5x — see
+    patients; in modern TAVI cohorts it miscalibrates 2–5x; see
     recalibration.py and the corpus in `research/02-scoring-methods.md`.
     """
     feats = _build_features(patient)

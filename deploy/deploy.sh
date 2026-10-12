@@ -9,7 +9,7 @@
 # Run from repo root:
 #   ./deploy/deploy.sh
 #
-# The script is idempotent — re-running rebuilds + redeploys with new image versions.
+# The script is idempotent: re-running rebuilds + redeploys with new image versions.
 
 set -euo pipefail
 

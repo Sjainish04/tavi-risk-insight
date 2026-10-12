@@ -27,16 +27,16 @@ async def lifespan(app: FastAPI):
         app.state.risk_model = load_model(settings.model_dir)
         logger.success(f"loaded LightGBM (AUROC={app.state.risk_model.metadata.get('test_auroc', 'n/a'):.3f})")
     except FileNotFoundError:
-        logger.warning("LightGBM artifacts not found — run `uv run tavi-train` to create them. /predict will return 503 until then.")
+        logger.warning("LightGBM artifacts not found; run `uv run tavi-train` to create them. /predict will return 503 until then.")
         app.state.risk_model = None
 
-    # v3 stacking (winner among local model variants). Optional — if not present,
+    # v3 stacking (winner among local model variants). Optional: if not present,
     # /predict falls back to v1 LGBM. Train via scripts/train_model_variants.py.
     app.state.stacking_model = load_stacking_model(settings.model_dir)
     if app.state.stacking_model is not None:
         logger.success("loaded v3 stacking ensemble (LGBM + CatBoost + LR, brdav-aware)")
     else:
-        logger.info("v3 stacking artifacts not found — /predict will use v1 LightGBM")
+        logger.info("v3 stacking artifacts not found; /predict will use v1 LightGBM")
 
     yield
     logger.info("tavi-api shutting down")

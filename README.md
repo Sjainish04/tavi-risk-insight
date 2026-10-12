@@ -1,8 +1,8 @@
 # TAVI Risk Insight
 
-**Decision support for the structural heart team — calibration-drift-aware TAVI mortality prediction with real-cohort external validation, IBM Granite + Granite Guardian narrative, and per-device procedural sizing.**
+**Decision support for the structural heart team: calibration-drift-aware TAVI mortality prediction with real-cohort external validation, IBM Granite + Granite Guardian narrative, and per-device procedural sizing.**
 
-> Every TAVI risk score in clinical use today (STS-PROM, EuroSCORE II, even ACC/STS TVT) miscalibrates 2–5× in modern low-risk-leaning cohorts. This tool surfaces that drift, cross-checks against a real-data-trained external oracle (Brüggemann 2024, *Sci Rep*, n=1,449), and produces a Heart-Team-grade narrative — streamed live from IBM Granite-4 with Granite Guardian as the safety filter.
+> Every TAVI risk score in clinical use today (STS-PROM, EuroSCORE II, even ACC/STS TVT) miscalibrates 2–5× in modern low-risk-leaning cohorts. This tool surfaces that drift, cross-checks against a real-data-trained external oracle (Brüggemann 2024, *Sci Rep*, n=1,449), and produces a Heart-Team-grade narrative, streamed live from IBM Granite-4 with Granite Guardian as the safety filter.
 
 Built for the **IBM Z × UNSA Sheridan Hackathon**.
 
@@ -14,14 +14,14 @@ Built for the **IBM Z × UNSA Sheridan Hackathon**.
 2. **Confirm AS severity** per ACC/AHA 2020: AVA, mean gradient, peak velocity → severe / very severe / low-flow-low-gradient / moderate.
 3. **Composite futility check**: severe frailty + age + albumin + dialysis + multimorbidity → recommend medical therapy when TAVI is futile.
 4. **Compute a 5-model risk panel**:
-   - **STS-PROM 2018** (raw, SAVR-trained — known to miscalibrate)
+   - **STS-PROM 2018** (raw, SAVR-trained: known to miscalibrate)
    - **STS-PROM era-recalibrated** (Vemulapalli 2024 + Edwards 2019 + Structural Heart 2022 anchors)
    - **ACC/STS TVT Registry** (Edwards 2016, TAVI-native)
-   - **v3 Stacking ensemble** (LightGBM + CatBoost + LR with Brüggemann oracle as feature 27) — production model, AUROC **0.781 [0.726, 0.838]**
-   - **Brüggemann 2024 5th opinion** (real-cohort-trained Swin-UNETR, AUROC 0.725 on 1,449 real TAVR patients) — runs as a Python 3.8 microservice, called per request
-5. **VARC-3 procedural complications**: 30-day stroke, AKI 2-3, major vascular, life-threatening bleed — each with 95% CI and patient-specific multipliers vs. cohort base rate.
+   - **v3 Stacking ensemble** (LightGBM + CatBoost + LR with Brüggemann oracle as feature 27): production model, AUROC **0.781 [0.726, 0.838]**
+   - **Brüggemann 2024 5th opinion** (real-cohort-trained Swin-UNETR, AUROC 0.725 on 1,449 real TAVR patients): runs as a Python 3.8 microservice, called per request
+5. **VARC-3 procedural complications**: 30-day stroke, AKI 2-3, major vascular, life-threatening bleed; each with 95% CI and patient-specific multipliers vs. cohort base rate.
 6. **Per-device assessment** for SAPIEN 3 Ultra · Evolut FX+ · Navitor: predicted mortality / PPM / PVL, manufacturer-IFU-based annular sizing, coronary obstruction risk grade, and clinical-context considerations (bicuspid valve, hostile access, low LVEF).
-7. **Heart-Team narrative** streamed from **IBM Granite-4 H-Small** on watsonx.ai — every response classified by **IBM Granite Guardian 3-8B** as a medical-safety filter before tokens reach the clinician.
+7. **Heart-Team narrative** streamed from **IBM Granite-4 H-Small** on watsonx.ai: every response classified by **IBM Granite Guardian 3-8B** as a medical-safety filter before tokens reach the clinician.
 
 ---
 
@@ -29,10 +29,10 @@ Built for the **IBM Z × UNSA Sheridan Hackathon**.
 
 The Model Card tab (in the running app) renders three live data sections:
 
-- **Model Comparison** — bootstrap 95% CI on AUROC for 4 variants (v1 LGBM, v2 LGBM+brdav, v3 stacking, v4 TabPFN cloud), plus 6 published external benchmarks (Brüggemann, Cui 2025 MULTINet, STS-PROM, ACC/STS TVT, EuroSCORE II, TRIM Heinze 2023). Includes a reliability diagram showing raw-prediction calibration before isotonic.
-- **Decision Curve Analysis** — population-level Net Benefit (Vickers & Elkin 2006) at clinical thresholds, computed via MSKCC's `dcurves`.
-- **Fairness audit** — equalized-odds difference + AUROC gap by sex via Microsoft `fairlearn`. Top finding: adding the Brüggemann oracle as a feature **closed the female-male AUROC gap from 7.4 pp to 0.4 pp** — adding real-cohort knowledge improved fairness.
-- **External validation against Brüggemann 2024** — Spearman ρ = 0.53 between our recal STS-PROM and brdav across 5,000 patients; rank agreement preserved despite the endpoint mismatch (30-d vs all-cause follow-up).
+- **Model Comparison**: bootstrap 95% CI on AUROC for 4 variants (v1 LGBM, v2 LGBM+brdav, v3 stacking, v4 TabPFN cloud), plus 6 published external benchmarks (Brüggemann, Cui 2025 MULTINet, STS-PROM, ACC/STS TVT, EuroSCORE II, TRIM Heinze 2023). Includes a reliability diagram showing raw-prediction calibration before isotonic.
+- **Decision Curve Analysis**: population-level Net Benefit (Vickers & Elkin 2006) at clinical thresholds, computed via MSKCC's `dcurves`.
+- **Fairness audit**: equalized-odds difference + AUROC gap by sex via Microsoft `fairlearn`. Top finding: adding the Brüggemann oracle as a feature **closed the female-male AUROC gap from 7.4 pp to 0.4 pp**, adding real-cohort knowledge improved fairness.
+- **External validation against Brüggemann 2024**: Spearman ρ = 0.53 between our recal STS-PROM and brdav across 5,000 patients; rank agreement preserved despite the endpoint mismatch (30-d vs all-cause follow-up).
 
 ---
 
@@ -119,7 +119,7 @@ api/                              # FastAPI backend (Python 3.12, uv-managed)
 │  ├─ analyze_brdav_vs_recal.py   # Spearman ρ, decile O/E, calibration vs brdav
 │  ├─ train_model_variants.py     # v1, v2, v3 (stacking), v4 (TabPFN cloud) with bootstrap CI
 │  └─ dca_and_fairness.py         # decision-curve + fairlearn equalized-odds by sex/age
-├─ models/                        # gitignored — pickles + calibrators (regenerate via tavi-train)
+├─ models/                        # gitignored; pickles + calibrators (regenerate via tavi-train)
 └─ artifacts/                     # gitignored parquet, committed JSON for the frontend Model Card
 
 web/                              # Vite + React + TS + Tailwind frontend
@@ -144,12 +144,12 @@ web/                              # Vite + React + TS + Tailwind frontend
    ├─ dca_fairness.json
    └─ brdav_vs_recal.json
 
-external/                         # gitignored — vendored repos + venvs + downloaded models
+external/                         # gitignored; vendored repos + venvs + downloaded models
 ├─ tavr/                          # github.com/brdav/tavr (MIT)
 ├─ tavr-cache/                    # tavr_swin_unetr_checkpoint.ckpt (~144 MB)
 ├─ tavr-venv/                     # Python 3.8 venv for brdav (~800 MB)
 ├─ tavr-server/                   # FastAPI microservice wrapping brdav inference
-└─ synthea/                       # github.com/synthetichealth/synthea (Apache 2.0) — second cohort generator
+└─ synthea/                       # github.com/synthetichealth/synthea (Apache 2.0), second cohort generator
 
 deploy/                           # Code Engine deploy script (alternative to HF Spaces / Vercel)
 ```
@@ -167,7 +167,7 @@ Bootstrap-AUROC on a 1,000-patient held-out test fold (500 bootstraps):
 | **v3 Stacking** | LGBM + CatBoost + LR ensemble, brdav-aware | **0.781** | [0.726, 0.838] | 0.042 | **1.06** | 12 s |
 | v4 TabPFN v2 (cloud) | foundation model via Prior Labs | 0.814 | [0.771, 0.862] | 0.042 | 1.43 | 1 s |
 
-**v3 Stacking is the production model** because it's the AUROC winner *and* the well-calibrated winner that runs **fully locally** with no cloud dependency. v4 TabPFN beats it on AUROC but routes patient features through Prior Labs cloud — kept as a roadmap option.
+**v3 Stacking is the production model** because it's the AUROC winner *and* the well-calibrated winner that runs **fully locally** with no cloud dependency. v4 TabPFN beats it on AUROC but routes patient features through Prior Labs cloud: kept as a roadmap option.
 
 ### External benchmark band (real cohorts, published)
 
@@ -186,9 +186,9 @@ Bootstrap-AUROC on a 1,000-patient held-out test fold (500 bootstraps):
 
 ## Honest limitations
 
-- **Training data is synthetic** (5,000-patient generator, deterministic seed=42). The recalibration approach is the contribution; production deployment requires retraining on real registry data (MIMIC-IV TAVR via PhysioNet credentialing is the next step — 5-7 day wait).
+- **Training data is synthetic** (5,000-patient generator, deterministic seed=42). The recalibration approach is the contribution; production deployment requires retraining on real registry data (MIMIC-IV TAVR via PhysioNet credentialing is the next step: 5-7 day wait).
 - **STS-PROM is a reduced-form approximation** (~12 most influential features). The real STS calculator has 60+ inputs. The PyPI `sts-risk-calculator` package wraps the official site via WebSocket but isn't batch-friendly.
-- **brdav predicts all-cause follow-up mortality** (not 30-day). Direct probability comparison would mislead — that's why we report rank correlation (Spearman ρ) and label the brdav card explicitly.
+- **brdav predicts all-cause follow-up mortality** (not 30-day). Direct probability comparison would mislead: that's why we report rank correlation (Spearman ρ) and label the brdav card explicitly.
 - **PROBAST self-assessment**: HIGH risk of bias by participants criterion (synthetic cohort). Honestly disclosed in the Model Card tab.
 - **No HIPAA review**. Demo only. Production deployment requires PHI handling design, BAA with cloud providers, and review by an IRB / institutional privacy office.
 
@@ -196,8 +196,8 @@ Bootstrap-AUROC on a 1,000-patient held-out test fold (500 bootstraps):
 
 ## SDG alignment
 
-- **SDG 3** (Good Health · 3.4 reduce premature NCD mortality) — better-calibrated risk reduces undertreatment of low-risk patients and overtreatment of high-risk patients.
-- **SDG 10** (Reduced Inequalities · 10.3) — STS-PROM miscalibration is non-uniform; our fairness audit (`fairlearn`) shows v2-with-brdav closes the female-male AUROC gap from 7.4 pp to 0.4 pp.
+- **SDG 3** (Good Health · 3.4 reduce premature NCD mortality): better-calibrated risk reduces undertreatment of low-risk patients and overtreatment of high-risk patients.
+- **SDG 10** (Reduced Inequalities · 10.3): STS-PROM miscalibration is non-uniform; our fairness audit (`fairlearn`) shows v2-with-brdav closes the female-male AUROC gap from 7.4 pp to 0.4 pp.
 
 ---
 
@@ -210,7 +210,7 @@ Three platforms in production:
 | Frontend | Vercel Hobby | static SPA, edge CDN |
 | Backend FastAPI | Hugging Face Spaces (Docker SDK) | 2 vCPU + 16 GB RAM, always-on |
 | brdav microservice | Hugging Face Spaces (Docker SDK) | 600 MB models baked in, Python 3.8 |
-| LLM (Granite-4 + Guardian) | **IBM watsonx.ai (us-south)** | **already live** — kept on IBM for the medical-safety story |
+| LLM (Granite-4 + Guardian) | **IBM watsonx.ai (us-south)** | **already live**: kept on IBM for the medical-safety story |
 
 Alternative paths in `deploy/`: full IBM Code Engine (`deploy/deploy.sh` requires a PAYG IBM Cloud account).
 
@@ -223,7 +223,7 @@ Alternative paths in `deploy/`: full IBM Code Engine (`deploy/deploy.sh` require
 - Bruggemann D et al. *Sci Rep* 2024;14:12526. **The brdav oracle.**
 - Cui M et al. *J Clin Med* 2025;14:8620. MULTINet on MIMIC-IV TAVR.
 - Heinze G et al. *EHJ Digital Health* 2023. TRIM model on GARY.
-- Mack MJ et al. *NEJM* 2019. PARTNER 3 — SAPIEN 3 baseline.
+- Mack MJ et al. *NEJM* 2019. PARTNER 3: SAPIEN 3 baseline.
 - Reardon MJ et al. *NEJM* 2017; Popma JJ et al. *NEJM* 2019. SURTAVI / Evolut Low Risk.
 - Linke A et al. *JACC: Interv* 2023. PORTICO NG / Navitor.
 - Vickers AJ, Elkin EB. *Med Decis Making* 2006. Decision curve analysis.
@@ -233,12 +233,12 @@ Alternative paths in `deploy/`: full IBM Code Engine (`deploy/deploy.sh` require
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Vendored repos (`external/tavr` brdav, `external/synthea`) retain their own licenses (MIT and Apache 2.0 respectively).
+MIT; see [LICENSE](LICENSE). Vendored repos (`external/tavr` brdav, `external/synthea`) retain their own licenses (MIT and Apache 2.0 respectively).
 
 ---
 
 ## Authors
 
-- **Jainish Solanki** — ML Engineer at Netramark Corporation; UofT MEng (Mechanical & Industrial Engineering); B.Tech (Aerospace, IIT Kharagpur) — _team lead_
-- **Siddhartha Pahari** — Material Discovery & Energy Storage Materials Engieering  at Rain Carbon Inc; UofT Basc Eng. Chemical Engineering
+- **Jainish Solanki**: ML Engineer at Netramark Corporation; UofT MEng (Mechanical & Industrial Engineering); B.Tech (Aerospace, IIT Kharagpur); _team lead_
+- **Siddhartha Pahari**: Material Discovery & Energy Storage Materials Engieering  at Rain Carbon Inc; UofT Basc Eng. Chemical Engineering
 - IBM Z × UNSA Sheridan Hackathon team

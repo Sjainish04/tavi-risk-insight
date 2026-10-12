@@ -1,4 +1,4 @@
-"""brdav inference microservice — runs in tavr-venv (Python 3.8).
+"""brdav inference microservice: runs in tavr-venv (Python 3.8).
 
 Loads the Brüggemann 2024 Swin-UNETR checkpoint once at startup and exposes
 synchronous inference over HTTP. The TAVI main API on :8000 calls this on

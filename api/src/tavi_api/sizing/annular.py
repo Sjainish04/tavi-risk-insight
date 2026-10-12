@@ -20,7 +20,7 @@ DeviceKey = Literal["sapien_3_ultra", "evolut_fx_plus", "navitor"]
 DEVICE_KEYS: tuple[DeviceKey, ...] = ("sapien_3_ultra", "evolut_fx_plus", "navitor")
 
 
-# SAPIEN 3 Ultra — sized primarily by annular AREA (mm^2)
+# SAPIEN 3 Ultra: sized primarily by annular AREA (mm^2)
 _SAPIEN_3_ULTRA: list[dict] = [
     {"size_mm": 20, "area_min": 273, "area_max": 345},
     {"size_mm": 23, "area_min": 338, "area_max": 430},
@@ -28,7 +28,7 @@ _SAPIEN_3_ULTRA: list[dict] = [
     {"size_mm": 29, "area_min": 540, "area_max": 680},
 ]
 
-# Evolut FX+ — sized by annular PERIMETER (mm); area provided as a guide
+# Evolut FX+: sized by annular PERIMETER (mm); area provided as a guide
 _EVOLUT_FX_PLUS: list[dict] = [
     {"size_mm": 23, "perim_min": 56.5, "perim_max": 62.8, "area_min": 254, "area_max": 314},
     {"size_mm": 26, "perim_min": 62.8, "perim_max": 72.3, "area_min": 314, "area_max": 415},
@@ -36,7 +36,7 @@ _EVOLUT_FX_PLUS: list[dict] = [
     {"size_mm": 34, "perim_min": 81.7, "perim_max": 94.3, "area_min": 530, "area_max": 707},
 ]
 
-# Navitor — sized by annular AREA (mm^2)
+# Navitor: sized by annular AREA (mm^2)
 _NAVITOR: list[dict] = [
     {"size_mm": 23, "area_min": 283, "area_max": 346},
     {"size_mm": 25, "area_min": 346, "area_max": 415},
@@ -69,10 +69,10 @@ def _pick_evolut_by_perimeter(perimeter: float, table: list[dict]) -> dict | Non
 def _missing_ct(device_label: str) -> AnnularSizing:
     return AnnularSizing(
         recommended_size_mm=None,
-        recommended_size_label=f"{device_label} — sizing pending",
+        recommended_size_label=f"{device_label}: sizing pending",
         oversizing_pct=None,
         in_range=False,
-        note="CT not available — sizing requires preprocedural CT (annular area + perimeter).",
+        note="CT not available: sizing requires preprocedural CT (annular area + perimeter).",
     )
 
 
@@ -85,10 +85,10 @@ def _out_of_range(device_label: str, area: float | None, perim: float | None) ->
     measured_str = ", ".join(measured) or "n/a"
     return AnnularSizing(
         recommended_size_mm=None,
-        recommended_size_label=f"{device_label} — annulus outside published range",
+        recommended_size_label=f"{device_label}: annulus outside published range",
         oversizing_pct=None,
         in_range=False,
-        note=f"Annulus ({measured_str}) outside published {device_label} sizing range — Heart Team review required.",
+        note=f"Annulus ({measured_str}) outside published {device_label} sizing range; Heart Team review required.",
     )
 
 
@@ -140,7 +140,7 @@ def size_for_device(
                 oversizing_pct=None,
                 in_range=True,
                 note=(
-                    f"Sized by area approximation ({annular_area_mm2:.0f} mm²) — "
+                    f"Sized by area approximation ({annular_area_mm2:.0f} mm²); "
                     "perimeter measurement preferred for Evolut."
                 ),
             )

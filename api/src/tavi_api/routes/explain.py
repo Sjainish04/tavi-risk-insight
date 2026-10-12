@@ -1,4 +1,4 @@
-"""SSE /explain — streams a Heart-Team-grade clinical narrative from the LLM."""
+"""SSE /explain: streams a Heart-Team-grade clinical narrative from the LLM."""
 
 from __future__ import annotations
 

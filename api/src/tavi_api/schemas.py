@@ -29,7 +29,7 @@ class PatientInput(BaseModel):
     albumin_g_dl: float = Field(..., ge=1.0, le=6.0)
     nt_probnp_pg_ml: float | None = Field(None, ge=0, le=70_000)
 
-    # Aortic-valve hemodynamics (echo) — required for severity assessment
+    # Aortic-valve hemodynamics (echo), required for severity assessment
     aortic_valve_area_cm2: float = Field(..., ge=0.2, le=4.0, description="AVA (cm^2)")
     mean_aortic_gradient_mmhg: float = Field(
         ..., ge=0, le=120, description="Mean transaortic gradient (mmHg)"
@@ -67,7 +67,7 @@ class PatientInput(BaseModel):
         None, ge=1, le=9, description="Rockwood Clinical Frailty Scale 1-9"
     )
 
-    # CT-derived anatomical features (optional — typically populated from PACS / 3mensio)
+    # CT-derived anatomical features (optional: typically populated from PACS / 3mensio)
     annular_area_mm2: float | None = Field(None, ge=200, le=900)
     annular_perimeter_mm: float | None = Field(None, ge=50, le=120)
     calcium_volume_au: float | None = Field(None, ge=0, le=8_000)

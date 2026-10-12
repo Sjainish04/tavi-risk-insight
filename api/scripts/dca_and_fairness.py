@@ -118,7 +118,7 @@ def main() -> None:
             y_pred=y_hat,
             sensitive_features=sex_test,
         )
-        # The auroc metric needs y_score, not y_pred — recompute with raw probabilities
+        # The auroc metric needs y_score, not y_pred: recompute with raw probabilities
         sex_groups = sorted(np.unique(sex_test).tolist())
         per_sex = {}
         for g in sex_groups:
@@ -163,7 +163,7 @@ def main() -> None:
     ARTIFACT_PATH.write_text(json.dumps(artifact, indent=2))
     print(f"Saved -> {ARTIFACT_PATH}")
     print()
-    print("Summary — equalized-odds difference by sex (closer to 0 = fairer):")
+    print("Summary, equalized-odds difference by sex (closer to 0 = fairer):")
     for name, f in fairness_data.items():
         print(f"  {name:<22}  EOD_sex = {f['equalized_odds_difference_sex']:.3f}  "
               f"sex_aurocs: female={f['by_sex'].get('female', {}).get('auroc')} male={f['by_sex'].get('male', {}).get('auroc')}")

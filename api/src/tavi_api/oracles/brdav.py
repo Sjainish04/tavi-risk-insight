@@ -1,4 +1,4 @@
-"""Brüggemann 2024 (brdav) oracle — calls the local microservice on :8001.
+"""Brüggemann 2024 (brdav) oracle: calls the local microservice on :8001.
 
 The mapping between our PatientInput schema and brdav's 25 tabular + 15 measurement
 fields is centralized here so the live /predict path and offline batch scripts

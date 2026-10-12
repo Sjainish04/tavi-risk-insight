@@ -2,7 +2,7 @@
 
 Used to encrypt the watsonx API key at rest in the deployed environment.
 Production migration target is IBM Cloud HPCS on IBM Z LinuxONE (FIPS 140-2
-Level 4) — the call surface stays the same, so the swap is a single import.
+Level 4), the call surface stays the same, so the swap is a single import.
 
 CLI:
     uv run tavi-encrypt WATSONX_API_KEY

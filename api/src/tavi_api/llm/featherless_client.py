@@ -24,7 +24,7 @@ async def stream_featherless(prompt: str) -> AsyncIterator[str]:
 
     # Many Featherless-hosted models (Mistral family especially) reject the
     # system role and require user/assistant alternation. Send the full prompt
-    # as a single user message — works across Granite, BioMistral, Llama.
+    # as a single user message: works across Granite, BioMistral, Llama.
     messages = [{"role": "user", "content": prompt}]
 
     client = AsyncOpenAI(

@@ -1,7 +1,7 @@
 """Credential encryption layer.
 
 Hackathon scope: software Fernet (AES-128 in CBC + HMAC-SHA256). Production
-target: IBM Cloud Hyper Protect Crypto Services on IBM Z LinuxONE — see
+target: IBM Cloud Hyper Protect Crypto Services on IBM Z LinuxONE; see
 HACKATHON_PLAN.md "IBM Z positioning" for the migration path.
 """
 

@@ -79,7 +79,7 @@ def main() -> int:
     print(f"Compute resources associated to project:")
     compute = entity.get("compute") or []
     if not compute:
-        print("  NONE — this is the bug. Click '+ Associate service' / '+ New service' in the project.")
+        print("  NONE; this is the bug. Click '+ Associate service' / '+ New service' in the project.")
     for c in compute:
         print(f"  - {c.get('name')} ({c.get('type')}) → guid {c.get('guid')}")
     return 0
