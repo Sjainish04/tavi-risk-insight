@@ -83,7 +83,9 @@ export function layout(overrides: Partial<Layout> = {}): Partial<Layout> {
       font: { size: 11, color: COLORS.text },
       bgcolor: "rgba(0,0,0,0)",
     },
-    transition: { duration: 500, easing: "cubic-in-out" },
+    // No layout.transition: an animated update draws shapes and annotations
+    // after a delay, and a chart unmounted in that window (switching tabs)
+    // throws inside Plotly ("reading '_plots'").
     ...overrides,
     xaxis: axis(overrides.xaxis ?? {}),
     yaxis: axis(overrides.yaxis ?? {}),
